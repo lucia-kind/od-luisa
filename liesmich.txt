@@ -2,4 +2,4 @@
 
 Git und Github werden verwendet für Briefing, Projektdokumentation, Canvas, Code etc.
 -----------------
-Link: https://github.com/heylucyhey/od-luisa
+Link: https://github.com/lucia-kind/od-luisa
