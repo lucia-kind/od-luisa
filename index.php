@@ -26,7 +26,7 @@
     <ul>
         <?php while ($dog = mysqli_fetch_assoc($result)) { ?>
           <li class="dragend-page">
-            <p><?php echo $dog['hundename']; ?></p>
+            <p>"name"<?php echo $dog['hundename']; ?></p>
             <p>0.01% in Z&uuml;rich</p>
             <p>99 Herzen</p>
             <p>1/19</p>
