@@ -1,4 +1,11 @@
 <?php
+	require_once("system/data.php");
+	require_once("system/security.php");
+
+    $result = get_dogs_name();
+?>
+
+<?php
   session_start();
 	if(!isset($_SESSION['userid'])){
 		header("Location:index.php");

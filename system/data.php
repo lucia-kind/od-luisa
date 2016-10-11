@@ -57,10 +57,6 @@
 	/* Hundenamen
 	/* ****************************************************** */
 
-   
-    
-
-
     function get_dogs_name(){
     $sql = "SELECT hundename FROM hunde ORDER BY RAND() LIMIT 20;";
 		return get_result($sql);
