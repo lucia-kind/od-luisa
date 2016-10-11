@@ -1,4 +1,5 @@
 <?php 
+  require_once("config.php");
   require_once("data.php");
 	
 	function filter_data($input){
