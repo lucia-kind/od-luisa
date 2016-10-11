@@ -681,6 +681,9 @@
       _scrollToPage: function( options, pageNumber ) {
         this.preventScroll = true;
 
+        console.log(options);
+        //function onSwipe(options);
+          
         if ( options ) this._calcNewPage( options, pageNumber );
 
         this._animateScroll();
