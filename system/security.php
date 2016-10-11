@@ -1,6 +1,6 @@
 <?php 
-  require_once("config.php");
-  require_once("data.php");
+  require_once("system/config.php");
+  require_once("system/data.php");
 	
 	function filter_data($input){
 		$db = get_db_connection();
