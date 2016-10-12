@@ -29,7 +29,7 @@
             <ul>
                 <?php while ($dog = mysqli_fetch_assoc($result)) { ?>
                   <li class="dragend-page">
-                    <p class="name"><?php echo $dog['hundename']; ?></p>
+                    <p id="<?php echo $dog['id']?>"><?php echo $dog['hundename']; ?></p>
                     <p>0.01% in Z&uuml;rich</p>
                     <p>99 Herzen</p>
                     <p>1/19</p>
@@ -49,11 +49,37 @@
         <div class="clear"></div>
     </div> <!-- menu -->
   </div> <!-- section --> 
+        
+        <pre>
+            <?php $newVar = json_encode($newVar); ?>            
+        </pre> 
     
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/dragend.js"></script>
 
   <script>
+    //SWIPEFUNKTION
+    //var names = <?php echo $newVar ?>;
+    //nur id übergeben? als klasse? oder id?!
+        var names = [];
+      
+    function onSwipe () {
+        if(Right) {
+            names.push('gewswipter Name');            
+        }
+        //ul li delete gswipter name
+    }
+      
+    function onSubmit () {
+        form.hiddenName.value = names;
+    }
+      
+    
+    //localStorage.setItem("names", names);
+    
+    console.log(names);
+    //SWIPEFUNKTION ENDe
+
 
     $(function() {
       new Dragend($("#demo").get(0), {

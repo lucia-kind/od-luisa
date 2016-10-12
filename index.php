@@ -50,7 +50,8 @@
   <script>
       
     //var names = <?php echo $newVar ?>;
-    var names = []; //nur id übergeben? als klasse? oder id?!
+    //nur id übergeben? als klasse? oder id?!
+      var names = [];
       
     function onSwipe () {
         if(Right) {
