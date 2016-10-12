@@ -30,7 +30,7 @@
          <? $newVar[] = $dog['hundename']; ?>
          
           <li class="dragend-page">
-            <p><?php echo $dog['hundename']; ?></p>
+            <p id="<?php echo $dog['id']?>"><?php echo $dog['hundename']; ?></p>
             <p>0.01% in Z&uuml;rich</p>
             <p>99 Herzen</p>
             <p>1/19</p>
@@ -50,7 +50,7 @@
   <script>
       
     //var names = <?php echo $newVar ?>;
-    var names = [];
+    var names = []; //nur id übergeben? als klasse? oder id?!
       
     function onSwipe () {
         if(Right) {

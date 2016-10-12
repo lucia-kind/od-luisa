@@ -680,9 +680,19 @@
 
       _scrollToPage: function( options, pageNumber ) {
         this.preventScroll = true;
+        
+            var likedNames = [];
+            var dislikedNames = [];
 
-        console.log(options);
+        //console.log(options);
         //function onSwipe(options);
+          if(options = "left"){
+              console.log("dislike")
+                dislikedNames.push("hallo");
+              console.log("dislike")
+          }else if (options = "right"){
+              console.log("like")
+          }
           
         if ( options ) this._calcNewPage( options, pageNumber );
 
