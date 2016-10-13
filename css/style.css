@@ -398,3 +398,9 @@ a:hover{
         height: 90%;
         font-size: 1em;
     }
+
+ /* Liste */
+
+    .duell_bg{
+        background-color: #68d2c4;
+    }
