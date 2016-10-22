@@ -17,7 +17,7 @@
 	/* *******************************************************************************************************/
 	function get_db_connection()
 	{
-		$db = mysqli_connect('localhost', DBUSER, DBPW, DBNAME)
+		$db = mysqli_connect('localhost', '467536_2_1', 'NjiUgM756lGA', '467536_2_1')
  		 or die('Fehler beim Verbinden mit dem MySQL-Server.');
   		mysqli_query($db, "SET NAMES 'utf8'");
 		return $db;
@@ -57,9 +57,13 @@
 	/* Hundenamen
 	/* ****************************************************** */
 
+   
+    
+
+
     function get_dogs_name(){
-    $sql = "SELECT hundename, id FROM hunde ORDER BY RAND() LIMIT 20;";
-		return get_result($sql); //und id
+    $sql = "SELECT hundename FROM hunde ORDER BY RAND() LIMIT 20;";
+		return get_result($sql);
 	}
 	
 	/* *********************************************************
