@@ -3,12 +3,84 @@
 	require_once("system/security.php");
 
     $result = get_dogs_name();
+    $row = mysqli_fetch_row ($result);
+    
 ?>
+    <!DOCTYPE html>
+    <html>
 
-<!DOCTYPE html>
-<html>
-<head>
+    <head>
 
+        <title>Hundenamen</title>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="css/style.css">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+
+    </head>
+
+    <body>
+
+        <div id="demo">
+            <ul>
+                <li class="list">
+                    <p id="<?php echo $row['1']?>">
+                        <?php echo $row['0']; ?>
+                    </p>
+                    <p>0.01% in Zürich</p>
+                    <p>99 Herzen</p>
+                    <p>1/19</p>
+                    <p>Test:
+                        <br>
+                        <!--geht jede Zeile durch-->
+                        <? 
+                        print_r($row); 
+                        print_r(mysqli_fetch_row ($result));
+                        ?>
+                    </p>
+                    <!--like und disklike-->
+                    <button onclick="like();">Like</button>
+                    <button onclick="dislike();">Dislike</button>
+                </li>
+            </ul>
+            <? $newVar[] = $row['0']; ?>
+                <!--speichere den aktuellen Namen-->
+
+                <!--geklaut-->
+                <p>Achtung neu</p>
+                <div id="results">
+                    <div class="result"></div>
+                    <div class="result"></div>
+                    <div class="result"></div>
+                </div>
+                <a href="#" id="showMore">Show more</a>
+                <!--geklaut Ende-->
+
+                <!--versuch mit invisible-->
+                <div class="container">
+                    <div class="visible">
+
+                        <?php echo $row['0']; ?>
+
+                    </div>
+
+                    Name:
+                    <?php while ($dog = mysqli_fetch_assoc($result)) { ?>
+                        <div class="invisible">
+
+                            <?php echo $dog['hundename']; ?>
+
+                        </div>
+                        <?php } ?>
+                </div>
+                <button type="button" id="button">click me </button>
+                <!--invisible versuch ende-->
+        </div>
+
+<<<<<<< HEAD
   <title>Hundenamen</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -40,54 +112,62 @@
 
   </div>
     
+=======
+>>>>>>> origin/master
         <pre>
-            <?php $newVar = json_encode($newVar); ?>            
-        </pre>    
-    
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/dragend.js"></script>
+            <?php $newVar = json_encode($newVar);?> <!--damit js das lesen kann-->    
+        </pre>
 
-  <script>
-      
-    //var names = <?php echo $newVar ?>;
-    //nur id übergeben? als klasse? oder id?!
-      var names = [];
-      
-    function onSwipe () {
-        if(Right) {
-            names.push('gewswipter Name');            
-        }
-        //ul li delete gswipter name
-    }
-      
-    function onSubmit () {
-        form.hiddenName.value = names;
-    }
-      
-    
-    //localStorage.setItem("names", names);
-    
-    console.log(names);
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/onSwipe.js"></script>
+        <script type="text/javascript" src="js/load.js"></script>
 
-    $(function() {
-      new Dragend($("#demo").get(0), {
-        afterInitialize: function() {
-          $("#demo").css("visibility", "visible");
-        }
-      });
-    });
+        <script>
+            var names = <?php echo $newVar ?>; //der aktuelle Name
+            //achtung, später nur id übergeben
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-219062-10']);
-    _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+            var disliked = [];
+            var liked = [];
+            var gezeigt = [];
 
-  </script>
 
-</body>
-</html>
+            function like() {
+                liked.push('<?php echo $row[0] ?>');
+                gezeigt.push('<?php echo $row[0] ?>');
+                console.log(liked);
+            }
+
+            function dislike() {
+                disliked.push('<?php echo $row[0] ?>');
+                gezeigt.push('<?php echo $row[0] ?>');
+                console.log(disliked);
+
+            }
+
+            function onSwipe() {
+                if (Right) {
+                    names.push('gewswipter Name');
+                }
+                //ul li delete gswipter name
+            }
+
+            function onSubmit() { //Wenn auf Duell gewechselt wird
+                form.hiddenName.value = names;
+            }
+
+            localStorage.setItem("names", names); //speichere aktuelle Namen
+            console.log(names);
+        </script>
+        <script>
+            $(function () {
+                $("#button").click(function () {
+                    $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
+                    //$("div.container div.visible").first().addClass("invisible").removeClass("visible");
+                });
+            });
+        </script>
+
+    </body>
+
+    </html>
