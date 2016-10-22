@@ -35,8 +35,8 @@
 		$result = mysqli_query($db, $sql);
 		mysqli_close($db);
 		return $result;
-	}
-	
+
+	}	
 	
 	/* *********************************************************
 	/* Login
@@ -61,7 +61,7 @@
     $sql = "SELECT hundename, id FROM hunde ORDER BY RAND() LIMIT 20;";
 		return get_result($sql); //und id
 	}
-	
+
 	/* *********************************************************
 	/* Profil
 	/* ****************************************************** */
