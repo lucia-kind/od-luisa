@@ -1,7 +1,7 @@
 <?php
  ob_start();
  session_start();
- require_once 'dbconnect.php';
+ require_once 'system/data.php';
  
  // if session is not set this will redirect to login page
  if( !isset($_SESSION['user']) ) {
@@ -17,8 +17,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome - <?php echo $userRow['userEmail']; ?></title>
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"  />
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
 
