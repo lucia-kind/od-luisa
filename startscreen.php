@@ -59,63 +59,60 @@
     </div> <!-- menu -->
   </div> <!-- section --> 
     
-    	<section id="animation">
+    <section id="animation">
 
 		<div class="animation-container">
-			<div id="object" class="animate tossing">
-        
-        <div class="section">
-        
-        <div class="topbar">
-            <div class="txt_topbar">Einstellungen</div>
-        </div>
-        
-        <div class="formline">
-            <input type="text" placeholder="Nachname" id="vname" name="vname">
-        </div>
-        
-        <div class="formline">
-            <input type="text" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
-        </div>
-    
-        <div class="formline">
-             <input type="checkbox" id="mw" name="alter"> m
-             <input type="checkbox" id="wm" name="alter"> w
-        </div>
-    
-        <div class="formline">
-            Maximal <input type="text" placeholder="x" id="minimaxi" name="maxi"> Zeichen
-        </div>
-    
-        <div class="formline">
-            Minimal <input type="text" placeholder="x" id="minimaxi" name="mini"> Zeichen
-        </div>
-    
-        <div class="formline">
-            
-            <select id="dropdown"name="Häufigkeit">
-                <option value="häufigkeit">Häufigkeit</option>
-                <option value="sehr beliebt">Sehr beliebt</option>
-                <option value="beliebt">Beliebt</option>
-                <option value="selten">Selten</option>
-                <option value="sehr selten">Sehr selten</option>
-            </select>
-    
-        </div>
-    
-        <div class="formline">
-        </div>
-        <div class="formline">
-        </div>
-        
-        <div class="tickbox">
-       
-		<div class="container einstellungen">
-			<a href="#" id="slideDownBtn" class="button">Slide Down &#8595;</a>
-		</div>
-        </div>
-    
-    </div> <!-- section -->
+            <div id="object" class="animate tossing">
+                <div class="section">
+                    <div class="topbar">
+                        <div class="txt_topbar">Einstellungen</div>
+                    </div>
+
+                    <div class="formline">
+                        <input type="text" placeholder="Nachname" id="vname" name="vname">
+                    </div>
+
+                    <div class="formline">
+                        <input type="text" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
+                    </div>
+
+                    <div class="formline">
+                         <input type="checkbox" id="mw" name="alter"> m
+                         <input type="checkbox" id="wm" name="alter"> w
+                    </div>
+
+                    <div class="formline">
+                        Maximal <input type="text" placeholder="x" id="minimaxi" name="maxi"> Zeichen
+                    </div>
+
+                    <div class="formline">
+                        Minimal <input type="text" placeholder="x" id="minimaxi" name="mini"> Zeichen
+                    </div>
+
+                    <div class="formline">
+
+                        <select id="dropdown"name="Häufigkeit">
+                            <option value="häufigkeit">Häufigkeit</option>
+                            <option value="sehr beliebt">Sehr beliebt</option>
+                            <option value="beliebt">Beliebt</option>
+                            <option value="selten">Selten</option>
+                            <option value="sehr selten">Sehr selten</option>
+                        </select>
+
+                    </div>
+
+                    <div class="formline">
+                    </div>
+
+                    <div class="formline">
+                    </div>
+
+                    <div class="tickbox">
+                        <div class="container einstellungen">
+                        <a href="#" id="slideDownBtn" class="button">Slide Down &#8595;</a>
+                        </div>
+                    </div>
+                </div> <!-- section -->
             
             </div>
             
@@ -140,19 +137,20 @@
 		
 		var topOfWindow = $(window).scrollTop();
 			if (imagePos < topOfWindow+400) {
-				$(this).addClass("slideUp");
+				$(this).addClass("slideUp, slideDown");
 			}
 		});
 	});
 
-/* ENTRANCES */
+        /* ENTRANCES */
 		$('#slideUpBtn').click(function() {
 			$(this).each(function(){
 					$('#object').removeClass();	
 					$('#object').addClass("slideUp");
 				});
 		});
-$('#slideDownBtn').click(function() {
+        
+        $('#slideDownBtn').click(function() {
 			$(this).each(function(){
 					$('#object').removeClass();				
 					$('#object').addClass("slideDown");

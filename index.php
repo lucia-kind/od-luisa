@@ -20,8 +20,8 @@
 </head>
 <body>
 
-
-
+    
+    
   <div id="demo">
     <ul>
         <?php while ($dog = mysqli_fetch_assoc($result)) { ?>
