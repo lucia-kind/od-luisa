@@ -378,6 +378,7 @@ input:focus {
 
 /* Duell Einstellung */
 
+<<<<<<< HEAD
 .duell_bottom_einst {
     position: relative;
     padding-top: 1%;
@@ -429,3 +430,68 @@ button {
 .visible {
     display: block;
 }
+=======
+    .duell_bottom_einst{
+        position: relative;
+        padding-top: 1%;
+        height: 10%;
+        width: 100%;
+        font-size: 1.2em;
+        background-color: #68d2c4;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .button_duell:focus, .button_duell:focus{
+        outline: none;
+    }
+
+    .duell_bottom_einst a{
+        color: #ffffff;
+    }
+
+    .button_duell{
+        background-color: #f0414b;
+        border: none;
+        color: white;
+        width: 100%;
+        height: 90%;
+        font-size: 1em;
+    }
+
+ /* Liste */
+
+    .duell_bg{
+        background-color: #68d2c4;
+    }
+
+/* Startscreen */
+
+    .section{
+    background-color: white;
+}
+
+    #object{
+        min-height: 700px;
+        visibility: hidden;
+    }
+
+    a.button {
+        padding: 6px 16px;
+        background-color: #61e69d;
+        color: #FFFFFF;
+        text-decoration: none;
+        border-bottom: 4px solid #5cd994;
+        margin: 0px 15px 15px 0px;
+        display: inline-block;
+        border-radius: 5px;
+        font-size: 16px;       
+}
+
+    #slideUpBtn{
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+    }
+>>>>>>> origin/master
