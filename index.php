@@ -31,30 +31,31 @@
                 Name:
 
                 <?php 
-                  $array = [];
+                  $array = [];//leerer Array für 20 Namen
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
-                    <!--                   hier werden 20 Namen aufgelistet-->
+                    <!-- hier werden 20 Namen aufgelistet-->
                     <div id="<?php echo $dog['id']?>" class="dogname">
                         <?php $newVar = $dog['hundename'];
                         array_push($array, $dog['hundename']);
+                            //und im Array gespeichert
                                    echo $dog['hundename'];
+                             //wird angezeigt
                         ?>
 
                     </div>
                     <?php } 
                         ?>
 
-
             </div>
             <button type="button" id="button">click me </button>
             <!--invisible versuch ende-->
-            <button onclick="like()">LIKE</button>
-            <button onclick="dislike()">DISLIKE</button>
+            <button onclick="like();">LIKE</button>
+            <button onclick="dislike();">DISLIKE</button>
 
         </div>
 
         <pre>
-            <?php $varNew = json_encode($newVar);
+            <?php
                print_r($array);?><!--letzter?-->
              <!--damit js das lesen kann-->  
         </pre>
@@ -64,63 +65,58 @@
         <script type="text/javascript" src="js/load.js"></script>
 
         <script>
-            var names = <?php echo $varNew; ?> //der aktuelle Name
-                //achtung, später nur id übergeben
+            //der aktuelle Name
+            //achtung, später nur id übergeben
 
             var disliked = [];
             var liked = [];
-            var gezeigt = [];
 
-
+            //Tinderfunktionen
             function like() {
-                liked.push(<?php echo $varNew ?>);
-                gezeigt.push(<?php echo $varNew ?>);
+                liked.push("<?php echo array_shift($array); ?>");
+                //wendet es so oder so an? why?
                 console.log("liked:" + liked);
             }
 
             function dislike() {
-                disliked.push(<?php echo $varNew ?>);
-                gezeigt.push(<?php echo $varNew ?>);
+                disliked.push("<?php echo array_shift($array); ?>");
+                //wendet es so oder so an? why?
                 console.log("disliked:" + disliked);
 
             }
+            //Tinderfunktionen Ende
 
-            function onSwipe() {
-                if (Right) {
-                    names.push('gewswipter Name');
-                }
-                //ul li delete gswipter name
-            }
+            //übergang zum Duell
 
             function onSubmit() { //Wenn auf Duell gewechselt wird
                 form.hiddenName.value = names;
             }
 
-            localStorage.setItem("names", names); //speichere aktuelle Namen
-            console.log(names);
+            //localStorage.setItem("names", names);
+            //speichere aktuelle Namen
+            //console.log(names);
+
+            //übergang zum Duell Ende
+            console.log("<?php echo $array[0]; ?>"); //der erste name des Arrays
         </script>
         <script>
+            //hier wird das Tinder initiert bzw nur ein name angezeigt
             $(document).ready(function () {
-
                 // mache alle unsichtbar ausser das erste
                 $('.dogname').not(':first').addClass("invisible");
-                $('.dogname').first().addClass("visible"); //gibt dem ersten die class visible
-
+                //gibt dem ersten die class visible
+                $('.dogname').first().addClass("visible");
+                //spreche den angezeigten über klasse namen an
+                document.getElementsByClassName('visible')[0].style.color = "blue";
             });
 
-            $(function () { //zeige den nächsten namen in der Liste an
+            //zeige den nächsten namen in der Liste an
+            $(function () {
                 $("#button").click(function () {
                     $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
                     $("div.container div.visible").first().addClass("shown").removeClass("visible");
-                    //erstes element ansprechen
-                    document.getElementsByClassName('visible')[0].style.color = "blue";
-                });
-            });
 
-            //name speichern für später
-            $(document).ready(function () {
-                document.getElementsByClassName('visible')[0].style.color = "blue"; //greift nicht, wieso?
-                console.log("aktueller Name:" + aktuellerName);
+                });
             });
         </script>
 
