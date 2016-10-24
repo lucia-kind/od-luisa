@@ -30,12 +30,14 @@
 
                 Name:
 
-                <?php while ($dog = mysqli_fetch_assoc($result)) { ?>
+                <?php 
+                  $array = [];
+                while ($dog = mysqli_fetch_assoc($result)) { ?>
                     <!--                   hier werden 20 Namen aufgelistet-->
                     <div id="<?php echo $dog['id']?>" class="dogname">
-
-                        <?php echo $dog['hundename'];
-                        $newVar = $dog['hundename'];
+                        <?php $newVar = $dog['hundename'];
+                        array_push($array, $dog['hundename']);
+                                   echo $dog['hundename'];
                         ?>
 
                     </div>
@@ -52,7 +54,9 @@
         </div>
 
         <pre>
-            <?php $newVar = json_encode($newVar);?> <!--damit js das lesen kann-->  
+            <?php $varNew = json_encode($newVar);
+               print_r($array);?><!--letzter?-->
+             <!--damit js das lesen kann-->  
         </pre>
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -60,8 +64,8 @@
         <script type="text/javascript" src="js/load.js"></script>
 
         <script>
-            var names = <?php echo $newVar ?>; //der aktuelle Name
-            //achtung, später nur id übergeben
+            var names = <?php echo $varNew; ?> //der aktuelle Name
+                //achtung, später nur id übergeben
 
             var disliked = [];
             var liked = [];
@@ -69,15 +73,15 @@
 
 
             function like() {
-                liked.push('<?php echo $newVar ?>');
-                gezeigt.push('<?php echo $newVar ?>');
-                console.log(liked);
+                liked.push(<?php echo $varNew ?>);
+                gezeigt.push(<?php echo $varNew ?>);
+                console.log("liked:" + liked);
             }
 
             function dislike() {
-                disliked.push('<?php echo $newVar ?>');
-                gezeigt.push('<?php echo $newVar ?>');
-                console.log(disliked);
+                disliked.push(<?php echo $varNew ?>);
+                gezeigt.push(<?php echo $varNew ?>);
+                console.log("disliked:" + disliked);
 
             }
 
@@ -108,12 +112,14 @@
                 $("#button").click(function () {
                     $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
                     $("div.container div.visible").first().addClass("shown").removeClass("visible");
+                    //erstes element ansprechen
+                    document.getElementsByClassName('visible')[0].style.color = "blue";
                 });
             });
 
             //name speichern für später
             $(document).ready(function () {
-                document.getElementsByClassName('.visible').style.color = "blue"; //greift nicht, wieso?
+                document.getElementsByClassName('visible')[0].style.color = "blue"; //greift nicht, wieso?
                 console.log("aktueller Name:" + aktuellerName);
             });
         </script>
