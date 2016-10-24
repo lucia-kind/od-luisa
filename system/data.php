@@ -29,6 +29,7 @@
 	/* Führt die SQL-Anweisung $sql aus, liefert das Ergebnis zurück und schliesst die DB-Verbindung
 	/* Alle Weiteren Funktionen rufen get_result() direkt oder indirekt auf.
 	/* *******************************************************************************************************/
+
 	function get_result($sql)
 	{
 		$db = get_db_connection();	
@@ -36,9 +37,7 @@
 		mysqli_close($db);
 		return $result;
 	}
-	
 
-	
 	/* *********************************************************
 	/* Hundenamen
 	/* ****************************************************** */
