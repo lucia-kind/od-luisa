@@ -81,6 +81,13 @@
     </div> <!-- menu -->
   </div> <!-- section --> 
     
+        <pre>
+            <?php
+               print_r($array);?><!--letzter?-->
+             <!--damit js das lesen kann-->  
+        </pre>
+    
+<!-- STOP FILTER TIME --> 
     <section id="animation">
 
 		<div class="animation-container">
@@ -144,11 +151,7 @@
 	</section>
 
         
-        <pre>
-            <?php $newVar = json_encode($newVar); ?>
-                 
-        </pre> 
-    
+
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/onSwipe.js"></script>
     <script type="text/javascript" src="js/load.js"></script>
