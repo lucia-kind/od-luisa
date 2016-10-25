@@ -1,5 +1,5 @@
 <?php
-	
+	require_once('config.php');
 		
 	/* *******************************************************************************************************
 	/* data.php regelt die DB-Verbindung und fast den gesammten Datenverkehr der Site.

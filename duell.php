@@ -1,5 +1,9 @@
 <?php
-	require_once("system/data.php");
+    /* Immer für geschützen Bereich oben*/
+	session_start(); 
+    if (isset($Session["email"])) {
+    /**/
+    require_once("system/data.php");
 	require_once("system/security.php");
 ?>
 
@@ -59,3 +63,13 @@
 
 </body>
 </html>
+
+<?php
+        /* immer für geschützen Bereich unten */
+    } else {
+?>
+Bitte erst einloggen, <a href="login.php">hier</a>.
+
+<?php
+    }
+?>

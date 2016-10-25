@@ -1,50 +1,114 @@
-<?php 
-session_start();
-$pdo = new PDO('mysql:host=luisa.local;dbname=467536_2_1', 'root', '');
- 
-if(isset($_GET['login'])) {
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	
-	$statement = $pdo->prepare("SELECT * FROM user WHERE email = :email");
-	$result = $statement->execute(array('email' => $email));
-	$user = $statement->fetch();
-	
-    //Überprüfung des Passworts
-	if ($user !== false && password_verify($password, $user['password'])) {
-		$_SESSION['userid'] = $user['user_id'];
-		die('Login erfolgreich. Weiter zu <a href="geheim.php">internen Bereich</a>');
-	} else {
-		$errorMessage = "E-Mail oder Passwort war ungültig<br>";
-	}
-	
-}
+<?php
+    session_start(); /* Cookie wird erstellt*/
+    require_once("system/data.php");
+    $verhalten = 0;
+
+    if(!isset($_SESSION["email"]) and !isset($_GET["page"])){
+        $verhalten = 0;
+    }
+    
+    if(isset($_GET["page"]) && $_GET["page"] == "log") { 
+        
+    $email = strtolower($_POST["email"]);
+    $password = ($_POST["password"]);
+    
+    $control = 0;
+    $abfrage = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
+    $ergebnis = get_result($abfrage)->fetch_assoc();
+  
+
+
+    if($ergebnis)
+    {
+        print_r("login erfolgreich! juhui!");
+        $_SESSION["currentUser"]  = $ergebnis;
+    }
+        else
+        {
+            print_r("login falsch! bäh!");
+        }
+        
+        
+     }
 ?>
 
 <!DOCTYPE html> 
 <html> 
 <head>
-  <title>Login</title>	
+  <title>Luisa - Die Namensapp</title>	
+    <link rel="stylesheet" href="css/style.css">
+    <?php
+        if($verhalten == 1) {
+    ?>
+        <meta http-equiv="refresh" content="3"; URL="seite2.php" />
+    <?php
+        }
+    ?>
 </head> 
-<body>
- 
-<?php 
-if(isset($errorMessage)) {
-	echo $errorMessage;
-}
-?>
- 
-<form action="?login=1" method="post">
-E-Mail:<br>
-<input type="email" size="40" maxlength="250" name="email"><br><br>
- 
-Dein Passwort:<br>
-<input type="password" size="40"  maxlength="250" name="password"><br>
- 
-<input type="submit" value="Abschicken">
-    
-    Abfrage schicken
-mysqli_num_rows wieviele zeilen kommen zurück?
-</form> 
-</body>
+    <body>
+        <form method="post" action="login2.php?page=log">
+            <div class="section">
+                <div class="registrieren topbar">
+                    <div class="txt_topbar">Login</div>
+                </div>
+                
+                <div class="formline">
+                 
+                </div>
+
+                <div class="formline">
+                    <?php
+                    if($verhalten == 0){
+                    ?>
+                    Bitte logge dich ein:<br/>
+                </div>
+
+                <div class="formline">
+                    <input placeholder="E-Mail" type="email" id="email" name="email"/> <br/>
+                </div>
+
+                <div class="formline">
+                    <input type="password" placeholder="Passwort" id="pw" name="password"/> <br/>
+                </div>
+                
+                <div class="formline">
+                 
+                </div>
+                
+                <div class="formline duell_link">
+                    <a href="registrieren.php">registrieren</a>
+                </div>
+                
+                <div class="formline">
+                 
+                </div>
+                
+                <div class="formline">
+                 
+                </div>
+                
+                <div class="duell_bottom">   
+                    <input type="submit" class="submit" name="einloggen"/>
+                </div>
+            </div> <!-- section -->
+        </form>
+            
+        
+        <?php
+        }
+        if ($verhalten == 1) {
+        ?>
+        
+        Du hast dich richtig eingeloggt und wirst nun weitergleitet ....
+        
+        <?php
+        }
+        if ($verhalten == 2) {
+        ?>
+        Du hast dich nicht richtig eingeloggt. <a href="login2.php">Zurück</a>
+        <?php
+        }
+        ?>
+        
+    </body>
 </html>
