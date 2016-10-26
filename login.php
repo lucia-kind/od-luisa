@@ -28,8 +28,8 @@
             print_r("login falsch! bäh!");
         }
         
-        
-     }
+    }
+    
 ?>
 
 <!DOCTYPE html> 
@@ -46,7 +46,7 @@
     ?>
 </head> 
     <body>
-        <form method="post" action="login2.php?page=log">
+        <form method="post" action="login.php?page=log">
             <div class="section">
                 <div class="registrieren topbar">
                     <div class="txt_topbar">Login</div>
@@ -105,7 +105,7 @@
         }
         if ($verhalten == 2) {
         ?>
-        Du hast dich nicht richtig eingeloggt. <a href="login2.php">Zurück</a>
+        Du hast dich nicht richtig eingeloggt. <a href="login.php">Zurück</a>
         <?php
         }
         ?>
