@@ -2,7 +2,7 @@
 session_start();
 require_once("system/data.php");
 require_once("system/security.php");
-$pdo = new PDO('mysql:host=luisa.local;dbname=467536_2_1', 'root', '');
+
 ?>
 
 <!DOCTYPE html> 

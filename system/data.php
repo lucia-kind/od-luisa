@@ -23,6 +23,10 @@
 		return $db;
 	}
 	
+    $pdo = new PDO('mysql:host=luisa.local;dbname=467536_2_1', 'root', '');
+
+    /* $pdo = new PDO('mysql:host=luisa.local;dbname=467536_2_1', '467536_2_1', 'NjiUgM756lGA');
+
 	/* *******************************************************************************************************
 	/* get_result($sql)
 	/*
