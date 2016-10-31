@@ -4,6 +4,7 @@
 	require_once("system/functions.php");
 
     $result = get_dogs_name();
+    //$result= update_namelist($hauf, $anfang, $max, $min, $geschlecht);
 ?>
     <!DOCTYPE html>
     <html>
@@ -44,8 +45,6 @@
             var anfang;
             var geschlecht;
 
-
-
             //<!-- test post form-->
 
             var haufen = <?php echo json_encode($hauf); ?>;
@@ -73,11 +72,12 @@
                             Name:
 
                             <?php 
-                  $array = [];//leerer Array für 20 Namen
+                  $array = [];//leerer Array für Namen
+                              //<!-- hier werden X Namen aufgelistet-->
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
-                                <!-- hier werden 20 Namen aufgelistet-->
+
                                 <div id="<?php echo $dog['id']?>" class="dogname">
-                                    <?php $newVar = $dog['hundename'];
+                                    <?php
                         array_push($array, $dog['hundename']);
                             //und im Array gespeichert
                                    echo $dog['hundename'];
@@ -85,8 +85,7 @@
                         ?>
 
                                 </div>
-                                <?php } 
-                        ?>
+                                <?php } ?>
                         </ul>
                     </div>
                     <!-- container -->
@@ -107,7 +106,7 @@
             </div>
             <!-- hearts -->
             <div class="menu">
-                <div class="duell"><a href="registrieren.php">Duell!</a></div>
+                <div id="duell_start" class="duell"><a href="registrieren.php">Duell!</a></div>
                 <section id="actions">
 
                     <div class="container einstellungen">
@@ -230,9 +229,13 @@
 
             //übergang zum Duell
 
-            function onSubmit() { //Wenn auf Duell gewechselt wird
+            $("#duell_start").click(function () {
+                localStorage.setItem("liked", JSON.stringify(liked));
+            });
+
+            /*function onSubmit() { //Wenn auf Duell gewechselt wird
                 form.hiddenName.value = names;
-            }
+            }*/
 
             //localStorage.setItem("names", names);
             //speichere aktuelle Namen

@@ -13,36 +13,38 @@ if(isset($_POST['SubmitButton'])){ //check if form was submitted
     $max = $_POST["maxi"];
     $min = $_POST["mini"];
     $geschlecht = $_POST["geschlecht"];
+    update_namelist($hauf, $anfang, $max, $min, $geschlecht);
 }
+
 function update_namelist($hauf, $anfang, $max, $min, $geschlecht)
   {
     $sql_ok = false;
     $sql = "SELECT vorname FROM baby WHERE";//baby oder hund?
     if($anfang != ""){
-      $sql .= "'vorname' LIKE '$anfang'%, ";
+      $sql .= "'vorname' LIKE '$anfang'% AND ";
       $sql_ok = true;
     }
     if($max != ""){
-      $sql .= "CHAR_LENGTH(vorname) <= '$max', ";
+      $sql .= "CHAR_LENGTH(vorname) <= '$max' AND ";
       $sql_ok = true;
     }
     if($min != ""){
-      $sql .= "CHAR_LENGTH(vorname) >= '$min', ";
+      $sql .= "CHAR_LENGTH(vorname) >= '$min' AND ";
       $sql_ok = true;
     }
     if($geschlecht != ""){
-      $sql .= "geschlecht = '$geschlecht', ";
+      $sql .= "geschlecht = '$geschlecht' AND ";
       $sql_ok = true;
     }
     
-    $sql = substr_replace($sql, ' ', -2, 1);
+    $sql = substr_replace($sql, ' ', -4);
 
     $sql .= ";";
 
     if($sql_ok){
-      return get_result($sql);
+      $result = get_result($sql);
     }else {
-      return false;
+      console.log("FEHLERFEHLERFEHLER. Aber keine Panik. Wir schaffen das.");
     }
   }
 ?>
