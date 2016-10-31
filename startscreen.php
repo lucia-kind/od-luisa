@@ -5,7 +5,6 @@
 
     $result = get_dogs_name();
 ?>
-
     <!DOCTYPE html>
     <html>
 
@@ -35,6 +34,27 @@
                 //spreche den angezeigten über klasse namen an
                 document.getElementsByClassName('visible')[0].style.color = "blue";
             });
+
+
+            //Variablen definieren
+            var haufen;
+            var nachname;
+            var max;
+            var min;
+            var anfang;
+            var geschlecht;
+
+
+
+            //<!-- test post form-->
+
+            var haufen = <?php echo json_encode($hauf); ?>;
+            var nachname = <?php echo json_encode($nachname); ?>;
+            var max = <?php echo json_encode($max); ?>;
+            var min = <?php echo json_encode($min); ?>;
+            var anfang = <?php echo json_encode($anfang); ?>;
+            var geschlecht = <?php echo json_encode($geschlecht); ?>;
+            console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht);
         </script>
 
     </head>
@@ -122,8 +142,8 @@
                             </div>
 
                             <div class="formline">
-                                <input type="radio" id="m" name="geschlecht"> m
-                                <input type="radio" id="w" name="geschlecht"> w
+                                <input type="radio" name="geschlecht" value="m">m
+                                <input type="radio" name="geschlecht" value="w">w
                             </div>
 
                             <div class="formline">
@@ -220,18 +240,6 @@
 
             //übergang zum Duell Ende
             console.log("<?php echo $array[0]; ?>"); //der erste name des Arrays
-
-
-
-            //<!-- test post form-->
-
-            var haufen = <?php echo json_encode($hauf); ?>;
-            var nachname = <?php echo json_encode($nachname); ?>;
-            var max = <?php echo json_encode($max); ?>;
-            var min = <?php echo json_encode($min); ?>;
-            var anfang = <?php echo json_encode($anfang); ?>;
-            var geschlecht = <?php echo json_encode($geschlecht); ?>;
-            console.log("Haüfigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht);
         </script>
 
         <!--Tinder Ende -->
