@@ -267,6 +267,27 @@
      font-size: 1.2em;
  }
  
+ .dauer {
+     position: relative;
+     font-size: 1.2em;
+ }
+
+.item-content{
+    text-align: center;
+}
+
+.list-block{
+    border: none;
+    margin: 0;
+}
+
+.lol{
+   background-color: #f0414b;
+    color: white;
+    font-size: 1em;
+
+}
+
  textarea:focus,
  input:focus {
      outline: none;
