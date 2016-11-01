@@ -3,8 +3,8 @@
 	require_once("system/security.php");
 	require_once("system/functions.php");
 
-    $result = get_dogs_name();
-    //$result= update_namelist($hauf, $anfang, $max, $min, $geschlecht);
+    //$result = get_dogs_name();
+    $result= update_namelist($hauf, $anfang, $max, $min, $geschlecht);
 ?>
     <!DOCTYPE html>
     <html>
@@ -69,23 +69,23 @@
                 <div id="demo slider">
                     <div class="container">
                         <ul>
-                            Name:
-
                             <?php 
                   $array = [];//leerer Array für Namen
                               //<!-- hier werden X Namen aufgelistet-->
+                            
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
 
                                 <div id="<?php echo $dog['id']?>" class="dogname">
                                     <?php
-                        array_push($array, $dog['hundename']);
+                        array_push($array, $dog['name']);
                             //und im Array gespeichert
-                                   echo $dog['hundename'];
+                                   echo $dog['name'];
                              //wird angezeigt
                         ?>
 
                                 </div>
                                 <?php } ?>
+                                    <?php echo $nachname;?>
                         </ul>
                     </div>
                     <!-- container -->
@@ -141,8 +141,8 @@
                             </div>
 
                             <div class="formline">
-                                <input type="radio" name="geschlecht" value="m">m
-                                <input type="radio" name="geschlecht" value="w">w
+                                <input type="radio" name="geschlecht" value="männlich">männlich
+                                <input type="radio" name="geschlecht" value="weiblich">weiblich
                             </div>
 
                             <div class="formline">
@@ -162,19 +162,19 @@
                                     <option value="sehr beliebt">Sehr beliebt</option>
                                     <option value="beliebt">Beliebt</option>
                                     <option value="selten">Selten</option>
-                                    <option value="sehr selten">Sehr selten</option>
                                 </select>
 
                             </div>
 
                             <div class="formline">
-                                <input type="submit" name="SubmitButton" />
-                                <!--geht nicht ohne-->
+
                             </div>
                             <div class="formline">
                             </div>
 
                             <div id="filter" class="tickbox">
+                                <input type="submit" name="SubmitButton" />
+                                <!--geht nicht ohne-->
                                 <input style="padding-top: 5%; height: 35%;" type="image" src="img/tick.png" onclick="window.location.href='/startscreen.php';" />
                             </div>
 

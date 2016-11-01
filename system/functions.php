@@ -12,24 +12,56 @@ if(isset($_POST['SubmitButton'])){ //check if form was submitted
     $nachname = $_POST["vname"];//What tun wir damit?
     $max = $_POST["maxi"];
     $min = $_POST["mini"];
-    $geschlecht = $_POST["geschlecht"];
+    $geschlecht = $_POST['geschlecht'];
     update_namelist($hauf, $anfang, $max, $min, $geschlecht);
 }
 
 function update_namelist($hauf, $anfang, $max, $min, $geschlecht)
   {
     $sql_ok = false;
-    $sql = "SELECT vorname FROM baby WHERE";//baby oder hund?
+    $sql ="";
+    if($hauf != ""){
+        if($hauf== "sehr beliebt"){
+            $sql .= "SELECT name
+                    FROM    (
+                        SELECT hunde_merge_name_anzahl.*, @counter := @counter +1 AS counter
+                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        ORDER BY anzahl DESC   
+                    ) AS X
+                    where counter <= (33/100 * @counter) AND ";
+                      $sql_ok = true;            
+        }
+        else if($hauf== "beliebt"){
+             $sql .= "SELECT name
+                    FROM    (
+                        SELECT hunde_merge_name_anzahl.*, @counter := @counter +1 AS counter
+                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        ORDER BY anzahl DESC   
+                    ) AS X
+                    where counter <= (66/100 * @counter) AND counter >= (33/100 * @counter) AND ";
+                      $sql_ok = true;    
+            
+        } else if($hauf=="selten"){
+            $sql .= "SELECT name
+                    FROM    (
+                        SELECT hunde_merge_name_anzahl.*, @counter := @counter +1 AS counter
+                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        ORDER BY anzahl ASC   
+                    ) AS X
+                    where counter <= (33/100 * @counter) AND ";
+                      $sql_ok = true;            
+        }
+    }
     if($anfang != ""){
-      $sql .= "'vorname' LIKE '$anfang'% AND ";
+      $sql .= "name LIKE '$anfang%' AND ";
       $sql_ok = true;
     }
     if($max != ""){
-      $sql .= "CHAR_LENGTH(vorname) <= '$max' AND ";
+      $sql .= "CHAR_LENGTH(name) <= $max AND ";
       $sql_ok = true;
     }
     if($min != ""){
-      $sql .= "CHAR_LENGTH(vorname) >= '$min' AND ";
+      $sql .= "CHAR_LENGTH(name) >= $min AND ";
       $sql_ok = true;
     }
     if($geschlecht != ""){
@@ -37,14 +69,15 @@ function update_namelist($hauf, $anfang, $max, $min, $geschlecht)
       $sql_ok = true;
     }
     
-    $sql = substr_replace($sql, ' ', -4);
+    $sql = substr_replace($sql, '', -4);
 
-    $sql .= ";";
+    $sql .= "ORDER BY anzahl DESC;";
 
     if($sql_ok){
-      $result = get_result($sql);
+        return get_result($sql);
     }else {
-      console.log("FEHLERFEHLERFEHLER. Aber keine Panik. Wir schaffen das.");
+        $sql = "SELECT name FROM hunde_merge_name_anzahl ORDER BY RAND() LIMIT 20;"; //Limit später weg
+     return get_result($sql);
     }
   }
 ?>
