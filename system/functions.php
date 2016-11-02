@@ -12,7 +12,9 @@ if(isset($_POST['SubmitButton'])){ //check if form was submitted
     $nachname = $_POST["vname"];//What tun wir damit?
     $max = $_POST["maxi"];
     $min = $_POST["mini"];
-    $geschlecht = $_POST['geschlecht'];
+    if(isset($_POST["geschlecht"])) {
+       $geschlecht = $_POST['geschlecht'];
+        }
     update_namelist($hauf, $anfang, $max, $min, $geschlecht);
 }
 
