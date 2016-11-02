@@ -19,9 +19,11 @@
             </div>
             <div class="select_duellone">
                 <div id="name01" class="txt_one">Lorano</div>
+                <!--noch austauschen-->
             </div>
             <div class="select_duelltwo">
                 <div id="name02" class="txt_two">WauWau</div>
+                <!--noch austauschen-->
             </div>
         </div>
 
