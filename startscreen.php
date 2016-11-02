@@ -203,7 +203,7 @@
             var liked = [];
 
             //Tinderfunktionen
-            function like() {
+            function like() { //parameter übergeben
                 liked.push(namensArray[0]);
                 namensArray.shift();
 

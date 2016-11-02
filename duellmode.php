@@ -23,6 +23,8 @@
                     i++;
                 } else {
                     console.log("Halt! Du bist zu weit gegangen.");
+                    var winner = document.getElementById('name01').innerHTML;
+                    console.log(winner);
                 }
             }
             document.getElementById('name02').onclick = function () {
@@ -30,7 +32,8 @@
                     document.getElementById('name01').innerHTML = duell_array.shift();
                     i++;
                 } else {
-                    console.log("Halt! Du bist zu weit gegangen.");
+                    var winner = document.getElementById('name02').innerHTML;
+                    console.log(winner);
                 }
 
             }
