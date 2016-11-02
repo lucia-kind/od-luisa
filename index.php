@@ -12,13 +12,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="css/style.css">
-        <script>
-            function get_type() {
-                document.getElementById("baby").onclick = function () {
-                    document.getElementById("typ").value = "baby";
-                }
-            }
-        </script>
+
 
     </head>
 
@@ -38,9 +32,22 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
-        <form method="POST">
+        <form id="hidden-form" method="POST">
             <input type="hidden" name="typ" id="typ">
         </form>
+
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script>
+            var form = document.getElementById("hidden-form");
+            document.getElementById("baby").addEventListener("click", function () {
+                document.getElementById("typ").value = "baby";
+                //form.submit();
+            });
+            //            document.getElementById("baby").onclick = function () {
+            //                document.getElementById("typ").value = "baby";
+            //                //form.submit();
+            //            }
+        </script>
 
     </body>
 

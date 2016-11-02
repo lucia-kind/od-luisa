@@ -233,13 +233,6 @@
                 localStorage.setItem("liked", JSON.stringify(liked));
             });
 
-            /*function onSubmit() { //Wenn auf Duell gewechselt wird
-                form.hiddenName.value = names;
-            }*/
-
-            //localStorage.setItem("names", names);
-            //speichere aktuelle Namen
-            //console.log(names);
 
             //übergang zum Duell Ende
             console.log("<?php echo $array[0]; ?>"); //der erste name des Arrays
