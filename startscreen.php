@@ -64,7 +64,9 @@
 
         <div class="section">
             <div class="topbar">
-                <div class="txt_topbar">Babyname</div>
+                <div class="txt_topbar">Babyname | Typ:
+                    <?php print_r($type); ?>
+                </div>
             </div>
             <!-- topbar -->
             <div class="name_tinder">
@@ -213,7 +215,7 @@
                 //nächster Name
                 $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
                 $("div.container div.visible").first().addClass("shown").removeClass("visible");
-                document.getElementsByClassName('visible')[0].style.color = "blue";
+                //document.getElementsByClassName('visible')[0].style.color = "blue";
             }
 
             function dislike() {
@@ -224,7 +226,7 @@
                 //nächster Name
                 $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
                 $("div.container div.visible").first().addClass("shown").removeClass("visible");
-                document.getElementsByClassName('visible')[0].style.color = "blue";
+                //document.getElementsByClassName('visible')[0].style.color = "blue";
 
             }
             //Tinderfunktionen Ende

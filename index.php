@@ -43,11 +43,11 @@
                 if (type == baby) {
                     document.getElementById("typ").value = "baby";
                     form.submit();
-                    window.location.href = 'startscreen.php';
+                    window.location.href = 'startscreen.php?typ=baby';
                 } else if (type == hund) {
                     document.getElementById("typ").value = "hund";
                     form.submit();
-                    window.location.href = 'startscreen.php';
+                    window.location.href = 'startscreen.php?typ=hund)';
                 } else {
                     console.log("Fehler. Kein Typ ausgewählt.")
                 }
