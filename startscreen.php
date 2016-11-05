@@ -5,6 +5,8 @@
 
     //$result = get_dogs_name();
     $result= update_namelist($hauf, $anfang, $max, $min, $geschlecht);
+    //macht die Abfrage über die Datenbank
+
 ?>
     <!DOCTYPE html>
     <html>

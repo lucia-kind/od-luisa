@@ -18,6 +18,8 @@ if(isset($_POST['SubmitButton'])){ //check if form was submitted
     update_namelist($hauf, $anfang, $max, $min, $geschlecht);
 }
 
+$type = $_GET['typ'];
+
 function update_namelist($hauf, $anfang, $max, $min, $geschlecht)
   {
     $sql_ok = false;
