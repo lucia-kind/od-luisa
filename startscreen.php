@@ -4,7 +4,7 @@
 	require_once("system/functions.php");
 
     //$result = get_dogs_name();
-    $result= update_namelist($hauf, $anfang, $max, $min, $geschlecht);
+    $result= update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
     //macht die Abfrage über die Datenbank
 
 ?>
@@ -55,7 +55,8 @@
             var min = <?php echo json_encode($min); ?>;
             var anfang = <?php echo json_encode($anfang); ?>;
             var geschlecht = <?php echo json_encode($geschlecht); ?>;
-            console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht);
+            var type = <?php echo json_encode($type); ?>;
+            console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht + "typ:" + type);
         </script>
 
     </head>

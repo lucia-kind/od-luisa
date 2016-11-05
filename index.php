@@ -31,11 +31,7 @@
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-
-        <form id="hidden-form">
-            <input type="hidden" name="typ" id="typ">
-        </form>
-
+        
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script>
             function hidden_type(type) {

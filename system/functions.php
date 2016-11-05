@@ -5,6 +5,11 @@
     $max="";
     $min="";
     $geschlecht="";
+ if(isset($_GET["typ"])) {
+    $type = $_GET["typ"];
+ } else {
+     $type = "not defined";
+ }
 
 if(isset($_POST['SubmitButton'])){ //check if form was submitted
     $hauf = $_POST['Häufigkeit'];//Achtung: wie berechnen wir die?
@@ -15,12 +20,12 @@ if(isset($_POST['SubmitButton'])){ //check if form was submitted
     if(isset($_POST["geschlecht"])) {
        $geschlecht = $_POST['geschlecht'];
         }
-    update_namelist($hauf, $anfang, $max, $min, $geschlecht);
+    update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
 }
 
-$type = $_GET["typ"];
 
-function update_namelist($hauf, $anfang, $max, $min, $geschlecht)
+
+function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
   {
     $sql_ok = false;
     $sql ="";
