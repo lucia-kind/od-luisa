@@ -31,19 +31,19 @@
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-        
+
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script>
             function hidden_type(type) {
                 var form = document.getElementById("hidden-form");
                 if (type == baby) {
-                    document.getElementById("typ").value = "baby";
-                    form.submit();
+                    //                    document.getElementById("typ").value = "baby";
+                    //                    form.submit();
                     window.location.href = 'startscreen.php?typ=baby';
                 } else if (type == hund) {
-                    document.getElementById("typ").value = "hund";
-                    form.submit();
-                    window.location.href = 'startscreen.php?typ=hund)';
+                    //                    document.getElementById("typ").value = "hund";
+                    //                    form.submit();
+                    window.location.href = 'startscreen.php?typ=hund';
                 } else {
                     console.log("Fehler. Kein Typ ausgewählt.")
                 }
