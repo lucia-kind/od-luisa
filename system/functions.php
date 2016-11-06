@@ -50,7 +50,7 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
             $sql .= "SELECT name
                     FROM    (
                         SELECT baby_merge_vorname_anzahl.*, @counter := @counter +1 AS counter
-                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        FROM (select @counter:=0) AS initvar, baby_merge_vorname_anzahl
                         ORDER BY anzahl DESC   
                     ) AS X
                     where counter <= (33/100 * @counter) AND ";
@@ -70,7 +70,7 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
              $sql .= "SELECT name
                     FROM    (
                         SELECT baby_merge_vorname_anzahl.*, @counter := @counter +1 AS counter
-                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        FROM (select @counter:=0) AS initvar, baby_merge_vorname_anzahl
                         ORDER BY anzahl DESC   
                     ) AS X
                     where counter <= (66/100 * @counter) AND counter >= (33/100 * @counter) AND ";
@@ -89,7 +89,7 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
             $sql .= "SELECT name
                     FROM    (
                         SELECT baby_merge_vorname_anzahl.*, @counter := @counter +1 AS counter
-                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        FROM (select @counter:=0) AS initvar, baby_merge_vorname_anzahl
                         ORDER BY anzahl ASC   
                     ) AS X
                     where counter <= (33/100 * @counter) AND ";
