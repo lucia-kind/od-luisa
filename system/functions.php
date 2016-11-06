@@ -30,7 +30,14 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
     $sql_ok = false;
     $sql ="";
     if($hauf != ""){
-        if($hauf== "sehr beliebt"){
+        if($hauf == "häufigkeit" && $type == "hund"){
+            $sql .= "SELECT name, id FROM hunde_merge_name_anzahl WHERE ";
+            $sql_ok = "true";
+        } if($hauf == "häufigkeit" && $type == "baby"){
+            $sql .= "SELECT name, id FROM baby_merge_vorname_anzahl WHERE ";
+            $sql_ok = "true";
+        }
+        if($hauf== "sehr beliebt" && $type == "hund"){
             $sql .= "SELECT name
                     FROM    (
                         SELECT hunde_merge_name_anzahl.*, @counter := @counter +1 AS counter
@@ -39,8 +46,17 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
                     ) AS X
                     where counter <= (33/100 * @counter) AND ";
                       $sql_ok = true;            
+        } else if($hauf== "sehr beliebt" && $type == "baby"){
+            $sql .= "SELECT name
+                    FROM    (
+                        SELECT baby_merge_vorname_anzahl.*, @counter := @counter +1 AS counter
+                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        ORDER BY anzahl DESC   
+                    ) AS X
+                    where counter <= (33/100 * @counter) AND ";
+                      $sql_ok = true;            
         }
-        else if($hauf== "beliebt"){
+        else if($hauf== "beliebt" && $type == "hund"){
              $sql .= "SELECT name
                     FROM    (
                         SELECT hunde_merge_name_anzahl.*, @counter := @counter +1 AS counter
@@ -50,10 +66,29 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
                     where counter <= (66/100 * @counter) AND counter >= (33/100 * @counter) AND ";
                       $sql_ok = true;    
             
-        } else if($hauf=="selten"){
+        } else if($hauf== "beliebt" && $type == "baby"){
+             $sql .= "SELECT name
+                    FROM    (
+                        SELECT baby_merge_vorname_anzahl.*, @counter := @counter +1 AS counter
+                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        ORDER BY anzahl DESC   
+                    ) AS X
+                    where counter <= (66/100 * @counter) AND counter >= (33/100 * @counter) AND ";
+                      $sql_ok = true;    
+            
+        } else if($hauf=="selten" && $type == "hund"){
             $sql .= "SELECT name
                     FROM    (
                         SELECT hunde_merge_name_anzahl.*, @counter := @counter +1 AS counter
+                        FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
+                        ORDER BY anzahl ASC   
+                    ) AS X
+                    where counter <= (33/100 * @counter) AND ";
+                      $sql_ok = true;            
+        } else if($hauf=="selten" && $type == "baby"){
+            $sql .= "SELECT name
+                    FROM    (
+                        SELECT baby_merge_vorname_anzahl.*, @counter := @counter +1 AS counter
                         FROM (select @counter:=0) AS initvar, hunde_merge_name_anzahl
                         ORDER BY anzahl ASC   
                     ) AS X
@@ -84,8 +119,12 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
 
     if($sql_ok){
         return get_result($sql);
-    }else {
-        $sql = "SELECT name FROM hunde_merge_name_anzahl ORDER BY RAND() LIMIT 20;"; //Limit später weg
+    }else if($type == "hund"){
+        $sql = "SELECT name, id FROM hunde_merge_name_anzahl ORDER BY RAND() LIMIT 20;"; //Limit später weg
+     return get_result($sql);
+    }
+    else if($type == "baby"){
+        $sql = "SELECT name, id FROM baby_merge_vorname_anzahl ORDER BY RAND() LIMIT 20;"; //Limit später weg
      return get_result($sql);
     }
   }
