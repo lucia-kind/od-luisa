@@ -25,6 +25,8 @@
         
         <div class="formline">
         </div>
+        <div class="formline">
+        </div>
  
         
         <div class="dauer">
@@ -32,13 +34,8 @@
                      <div class="list-block">
                         <ul>
                            <li>
-                              <div class="item-content">
-                                 <div class="item-inner">
-                                    <div class="item-input lol">
-                                        
-                                       <input style="color:white;" type="text" placeholder="Dauer" readonly id="calendar-range">
-                                    </div>
-                                 </div>
+                              <div style="width: 92.5%; background-color: #f0414b;" class="item-content">
+                          <input style="padding-left:42%;" type="text" placeholder="Dauer" readonly id="calendar-range">
                               </div>
                            </li>
                         </ul>

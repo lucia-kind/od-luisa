@@ -161,6 +161,7 @@
      background-color: #68d2c4;
      vertical-align: middle;
      text-align: center;
+     border: none;
  }
  
 .duell a{
@@ -382,6 +383,7 @@
  .dauer {
      position: relative;
      font-size: 1.2em;
+     height: 10%;
  }
 
 .item-content{
@@ -517,6 +519,25 @@
 }
 
  /* Duell Einstellung */
+
+.list-block ul:before,
+.list-block ul:after {
+    background-color: white;
+}
+
+.dauer{
+    padding-left: 2.5%;
+}
+
+.list-block .item-content{
+    padding-left: 5%!important;
+}
+
+.list-block input[type=time], .list-block input[type=number], .list-block input[type=search], .list-block input[type=text], .list-block input[type=password], .list-block input[type=email], .list-block input[type=tel], .list-block input[type=url], .list-block input[type=date], .list-block input[type=datetime-local], .list-block select, .list-block textarea{
+    color: white!important;
+}
+
+
  
  .duell_bottom_einst {
      position: relative;
@@ -583,6 +604,17 @@
      border: none;
  }
 
+.swipeout{
+    background-color: #FFF7F5!important;
+    border-bottom: 3px solid #FFE8E0;
+}
+
+.item-after{
+    background-image: url("/img/heart.svg");
+    background-repeat: no-repeat;
+}
+
+
  /*Isabelles CSS*/
  
  button {
@@ -601,19 +633,6 @@
  .shown {
      display: none;
  }
-
-
-/* List */
-
-.swipeout{
-    background-color: #FFF7F5!important;
-    border-bottom: 3px solid #FFE8E0;
-}
-
-.item-after{
-    background-image: url("/img/heart.svg");
-    background-repeat: no-repeat;
-}
 
 /* Win */
 .heart_win{
