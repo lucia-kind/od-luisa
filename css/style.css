@@ -614,3 +614,21 @@
     background-image: url("/img/heart.svg");
     background-repeat: no-repeat;
 }
+
+/* Win */
+.heart_win{
+    background-image: url("/img/heart.svg");
+    background-repeat: no-repeat;
+    height: 60%;
+    font-size: 5em;
+    font-weight: bold;
+ 
+}
+
+.winner{
+    padding-top: 20%; 
+    width:100%; 
+    margin:0 auto; 
+    text-align: center; 
+    color: white;
+}
