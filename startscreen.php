@@ -63,12 +63,11 @@
         <div class="section">
             <div class="topbar">
                 <div class="txt_topbar">Babyname</div>
-            </div>
-            <!-- topbar -->
+            </div> <!-- topbar -->
             <div class="name_tinder">
                 <div id="demo slider">
                     <div class="container">
-                        <ul>
+                        <ul> 
                             <?php 
                   $array = [];//leerer Array für Namen
                               //<!-- hier werden X Namen aufgelistet-->
@@ -87,12 +86,9 @@
                                 <?php } ?>
                                     <?php echo $nachname;?>
                         </ul>
-                    </div>
-                    <!-- container -->
-                </div>
-                <!-- demo -->
-            </div>
-            <!-- name_tinder -->
+                    </div> <!-- container -->
+                </div> <!-- demo -->
+            </div> <!-- name_tinder -->
             <div class="hearts">
                 <!--<button type="button" id="button">click me </button>-->
                 <!--invisible versuch ende-->
@@ -103,24 +99,23 @@
                     <input type="image" src="img/bheart.png" onclick="dislike();" />
                 </div>
                 <div class="clear"></div>
-            </div>
-            <!-- hearts -->
+            </div> <!-- hearts -->
+            
             <div class="menu">
-                <div id="duell_start" class="duell"><a href="registrieren.php">Duell!</a></div>
+                <div id="duell_start" class="duell"><a href="registrieren.php">Duell!</a></div> 
+        
                 <section id="actions">
 
                     <div class="container einstellungen">
                         <a href="#" id="slideUpBtn" class="button">Einstellungen</a>
                     </div>
 
-                </section>
-            </div>
-            <!-- menu -->
-        </div>
-        <!-- section -->
+                </section> <!-- actions -->
+            </div> <!-- menu -->
+        </div> <!-- section -->
+        
         <!-- STOP FILTER TIME -->
         <section id="animation">
-
             <div class="animation-container">
                 <div id="object" class="animate tossing">
                     <!--FORMULAR ANFANG-->
@@ -156,39 +151,31 @@
                             </div>
 
                             <div class="formline">
-
                                 <select id="dropdown" name="Häufigkeit">
                                     <option value="häufigkeit">Häufigkeit</option>
                                     <option value="sehr beliebt">Sehr beliebt</option>
                                     <option value="beliebt">Beliebt</option>
                                     <option value="selten">Selten</option>
                                 </select>
-
                             </div>
 
                             <div class="formline">
-
                             </div>
+                            
                             <div class="formline">
                             </div>
 
                             <div id="filter" class="tickbox">
-                                <input type="submit" name="SubmitButton" />
+                                <input style="width: 1000px; height: 100px; background:url(img/tick.png);" type="submit" name="SubmitButton" value="Submit"/>
+                            </div> <!-- filter tickbox -->
                                 <!--geht nicht ohne-->
-                                <input style="padding-top: 5%; height: 35%;" type="image" src="img/tick.png" onclick="window.location.href='/startscreen.php';" />
-                            </div>
-
-                        </div>
-                        <!-- section -->
-                    </form>
-                    <!--FORM ENDE -->
-
-                </div>
-
-            </div>
-
-
-        </section>
+                                <!-- <input style="padding-top: 5%; height: 35%;" type="image" src="img/tick.png" onclick="window.location.href='/startscreen.php';" /> -->
+                        </div> <!-- section -->
+                        
+                    </form> <!--FORM ENDE -->
+                </div> <!-- object -->
+            </div> <!-- animation container -->
+        </section>    <!-- section -->
 
 
         <script type="text/javascript" src="js/jquery.min.js"></script>

@@ -141,6 +141,7 @@
      top: 10%;
      font-size: 1.5em;
  }
+
  /* Startscreen Baby + Hunde */
  
  .menu {
@@ -201,12 +202,22 @@
      text-align: center;
      top: 10%;
  }
+
+.dogname a{
+     color: black!important; 
+}
+
+.dogname{
+   
+    font-size: 3em;
+}
  
  .heart {
      float: left;
      width: 50%;
      height: 100%;
  }
+
  /* Duellmode */
  
  .select_duellone {
@@ -256,6 +267,8 @@
      text-align: center;
      vertical-align: middle;
  }
+
+
  /* Filter */
  
  .formline {
@@ -339,6 +352,18 @@
      vertical-align: middle;
      text-align: center;
  }
+
+.tickbox input{
+    background: transparent;
+    color: #fff;
+    border: 0;
+    padding-right: 20px;
+    cursor: pointer;
+    position: relative;
+    padding: 5px 20px 5px 5px;
+    z-index: 1;
+}
+
  /* Registrieren Duell */
  
  .duell_bottom {
@@ -475,3 +500,5 @@
  .shown {
      display: none;
  }
+
+	
