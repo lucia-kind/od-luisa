@@ -61,38 +61,93 @@
 <div class="list-block">
   <ul>
     <!-- one element -->
-      
     <li class="swipeout">
       <div class="swipeout-content item-content duell_bg">
-        <div class="item-media">Duell noch 2 Tage</div>
-      </div>
-    </li>
-    <li class="swipeout">
-      <div class="swipeout-content item-content">
-        <div id="name01" class="item-media">Name 01</div>
+        <div id="name01" class="item-media">Duell noch 2 Tage</div>
       </div>
       <div class="swipeout-actions-right">
         <!-- Add this button and item will be deleted automatically -->
-        <a href="#" class="swipeout-delete">Delete</a>
+        <a style="color:black; background-color:#D7FFF8;" href="#" class="action1">teilen</a>
       </div>
     </li>
-          <li class="swipeout">
+    <li class="swipeout">
       <div class="swipeout-content item-content">
         <div class="item-media">Luisa</div>
-      </div>
-      <div class="swipeout-actions-right">
-        <!-- Add this button and item will be deleted automatically -->
-        <a href="#" class="swipeout-delete">Delete</a>
-      </div>
-    </li>
-    <li class="swipeout">
-      <div class="swipeout-content item-content">
-        <div class="item-media">Lilly-Rosé St. John Michelini Vin Dieselus</div>
     <div class="item-after"><span class="badge bg-green">5</span></div>
       </div>
       <div class="swipeout-actions-right">
         <!-- Add this button and item will be deleted automatically -->
-        <a href="#" class="swipeout-delete">Delete</a>
+        <a href="#" class="swipeout-delete"> <img style="padding: 0px 60px 0px 0px; height: 60%;" src="img/trash.svg"></a>
+      </div>
+    </li>
+    <li class="swipeout">
+      <div class="swipeout-content item-content">
+        <div class="item-media">Lilly-Rosé </div>
+    <div class="item-after"><span class="badge bg-green">5</span></div>
+      </div>
+      <div class="swipeout-actions-right">
+        <!-- Add this button and item will be deleted automatically -->
+        <a href="#" class="swipeout-delete"> <img style="padding: 0px 60px 0px 0px; height: 60%;" src="img/trash.svg"></a>
+      </div>
+    </li>
+    <li class="swipeout">
+      <div class="swipeout-content item-content">
+        <div class="item-media">Valentina </div>
+    <div class="item-after"><span class="badge bg-green">5</span></div>
+      </div>
+      <div class="swipeout-actions-right">
+        <!-- Add this button and item will be deleted automatically -->
+        <a href="#" class="swipeout-delete"> <img style="padding: 0px 60px 0px 0px; height: 60%;" src="img/trash.svg"></a>
+      </div>
+    </li>
+    <li class="swipeout">
+      <div class="swipeout-content item-content">
+        <div class="item-media">Nymeria </div>
+    <div class="item-after"><span class="badge bg-green">5</span></div>
+      </div>
+      <div class="swipeout-actions-right">
+        <!-- Add this button and item will be deleted automatically -->
+        <a href="#" class="swipeout-delete"> <img style="padding: 0px 60px 0px 0px; height: 60%;" src="img/trash.svg"></a>
+      </div>
+    </li>
+    <li class="swipeout">
+      <div class="swipeout-content item-content">
+        <div class="item-media">Mischelle</div>
+    <div class="item-after"><span class="badge bg-green">5</span></div>
+      </div>
+      <div class="swipeout-actions-right">
+        <!-- Add this button and item will be deleted automatically -->
+        <a href="#" class="swipeout-delete"> <img style="padding: 0px 60px 0px 0px; height: 60%;" src="img/trash.svg"></a>
+      </div>
+    </li>
+    <li class="swipeout">
+      <div class="swipeout-content item-content">
+        <div class="item-media">Aline </div>
+    <div class="item-after"><span class="badge bg-green">5</span></div>
+      </div>
+      <div class="swipeout-actions-right">
+        <!-- Add this button and item will be deleted automatically -->
+        <a href="#" class="swipeout-delete"> <img style="padding: 0px 60px 0px 0px; height: 60%;" src="img/trash.svg"></a>
+      </div>
+    </li>
+    <li class="swipeout">
+      <div class="swipeout-content item-content">
+        <div class="item-media">Isabelle </div>
+    <div class="item-after"><span class="badge bg-green">5</span></div>
+      </div>
+      <div class="swipeout-actions-right">
+        <!-- Add this button and item will be deleted automatically -->
+        <a href="#" class="swipeout-delete"> <img style="padding: 0px 60px 0px 0px; height: 60%;" src="img/trash.svg"></a>
+      </div>
+    </li>
+    <li class="swipeout">
+      <div class="swipeout-content item-content">
+        <div class="item-media">Lucia</div>
+    <div class="item-after"><span class="badge bg-green">5</span></div>
+      </div>
+      <div class="swipeout-actions-right">
+        <!-- Add this button and item will be deleted automatically -->
+        <a href="#" class="swipeout-delete"> <img style="padding: 0px 60px 0px 0px; height: 60%;" src="img/trash.svg"></a>
       </div>
     </li>
   </ul>
