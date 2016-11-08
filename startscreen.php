@@ -65,9 +65,16 @@
         <div class="section">
             <div class="topbar">
 
-                <div class="txt_topbar">Babyname | Typ:
-                    <?php print_r($type); ?>
+                <div class="txt_topbar">
+                    <?php if($type == "baby"){
+                echo "Babyname";
+                } else if($type == "hund"){
+                echo "Hundename";
+                } ?>
+
+
                 </div>
+                <!--txt_topbar-->
             </div>
             <!-- topbar -->
 
@@ -201,72 +208,81 @@
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <!-- TINDER CODE-->
-        <script>
-            //der aktuelle Name
-            //achtung, später nur id übergeben
-            var namensArray = <?php echo json_encode($array); ?>;
-            console.log(namensArray);
+        <?php 
+        //like und dislike mit php?
+        
+        
+        ?>
 
-            var disliked = [];
-            var liked = [];
+            <script>
+                //der aktuelle Name
+                //achtung, später nur id übergeben
+                var namensArray = <?php echo json_encode($array); ?>;
+                console.log(namensArray);
 
-            //Tinderfunktionen
-            function like() { //parameter übergeben
-                liked.push(namensArray[0]);
-                namensArray.shift();
+                var disliked = [];
+                var liked = [];
 
-                console.log("liked:" + liked);
-                //nächster Name
-                $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
-                $("div.container div.visible").first().addClass("shown").removeClass("visible");
-            }
+                //Tinderfunktionen
+                function like() { //parameter übergeben
+                    liked.push(namensArray[0]);
+                    namensArray.shift();
 
-            function dislike() {
-                disliked.push(namensArray[0]);
-                namensArray.shift();
+                    console.log("liked:" + liked);
+                    //nächster Name
+                    $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
+                    $("div.container div.visible").first().addClass("shown").removeClass("visible");
+                }
 
-                console.log("disliked:" + disliked);
-                //nächster Name
-                $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
-                $("div.container div.visible").first().addClass("shown").removeClass("visible");
+                function dislike() {
+                    disliked.push(namensArray[0]);
+                    namensArray.shift();
 
-            }
-            //Tinderfunktionen Ende
+                    console.log("disliked:" + disliked);
+                    //nächster Name
+                    $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
+                    $("div.container div.visible").first().addClass("shown").removeClass("visible");
 
-            //übergang zum Duell
+                }
+                //Tinderfunktionen Ende
 
-            $("#duell_start").click(function () {
-                localStorage.setItem("liked", JSON.stringify(liked));
-            });
+                //übergang zum Duell
+                var typ = "<?php echo $type; ?>";
 
-
-            //übergang zum Duell Ende
-            console.log("<?php echo $array[0]; ?>"); //der erste name des Arrays
-        </script>
-
-        <!--Tinder Ende -->
-        <!--filter hoch und runter-->
-
-        <script>
-            $(window).scroll(function () {
-                $('#examples-cta').each(function () {
-                    var imagePos = $(this).offset().top;
-
-                    var topOfWindow = $(window).scrollTop();
-                    if (imagePos < topOfWindow + 400) {
-                        $(this).addClass("slideUp");
-                    }
+                $("#duell_start").click(function () {
+                    localStorage.setItem("liked", JSON.stringify(liked));
+                    localStorage.setItem("type", typ);
                 });
-            });
 
-            /* ENTRANCES */
-            $('#slideUpBtn').click(function () {
-                $(this).each(function () {
-                    $('#object').removeClass();
-                    $('#object').addClass("slideUp");
+
+
+                //übergang zum Duell Ende
+                console.log("<?php echo $array[0]; ?>"); //der erste name des Arrays
+            </script>
+
+            <!--Tinder Ende -->
+            <!--filter hoch und runter-->
+
+            <script>
+                $(window).scroll(function () {
+                    $('#examples-cta').each(function () {
+                        var imagePos = $(this).offset().top;
+
+                        var topOfWindow = $(window).scrollTop();
+                        if (imagePos < topOfWindow + 400) {
+                            $(this).addClass("slideUp");
+                        }
+                    });
                 });
-            });
-        </script>
+
+                /* ENTRANCES */
+                $('#slideUpBtn').click(function () {
+                    $(this).each(function () {
+                        $('#object').removeClass();
+                        $('#object').addClass("slideUp");
+                    });
+                });
+            </script>
 
 
     </body>
