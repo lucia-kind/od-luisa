@@ -49,7 +49,6 @@
         </div>
              
          
-  
    
         <div class="formline">
             <button class="button_duell">Link teilen</button>
