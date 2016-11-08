@@ -19,6 +19,37 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
       
+    <script>
+        var duell = localStorage.getItem('liked');
+        var duell_array = JSON.parse(duell);
+        console.log(duell_array);
+        console.log(duell_array.length);
+        $(document).ready(function () {
+            var i = 0;
+            var laenge = duell_array.length - 2;
+            document.getElementById('name01').innerHTML = duell_array.shift();
+            document.getElementById('name02').innerHTML = duell_array.shift();
+
+            document.getElementById('name01').onclick = function () {
+                if (i < laenge) {
+                    document.getElementById('name02').innerHTML = duell_array.shift();
+                    i++;
+                } else {
+                    console.log("Halt! Du bist zu weit gegangen.");
+                }
+            }
+            document.getElementById('name02').onclick = function () {
+                if (i < laenge) {
+                    document.getElementById('name01').innerHTML = duell_array.shift();
+                    i++;
+                } else {
+                    console.log("Halt! Du bist zu weit gegangen.");
+                }
+
+            }
+        });
+    </script>
+      
   </head>
 <body>
 <!-- On right side -->
@@ -38,7 +69,7 @@
     </li>
     <li class="swipeout">
       <div class="swipeout-content item-content">
-        <div class="item-media">Lucia</div>
+        <div id="name01" class="item-media">Name 01</div>
       </div>
       <div class="swipeout-actions-right">
         <!-- Add this button and item will be deleted automatically -->
@@ -54,11 +85,20 @@
         <a href="#" class="swipeout-delete">Delete</a>
       </div>
     </li>
+    <li class="swipeout">
+      <div class="swipeout-content item-content">
+        <div class="item-media">Lilly-Rosé St. John Michelini Vin Dieselus</div>
+    <div class="item-after"><span class="badge bg-green">5</span></div>
+      </div>
+      <div class="swipeout-actions-right">
+        <!-- Add this button and item will be deleted automatically -->
+        <a href="#" class="swipeout-delete">Delete</a>
+      </div>
+    </li>
   </ul>
 </div>
-     <script>
-         var myApp = new Framework7();
-
+    <script>
+    var myApp = new Framework7();
     var $$ = Dom7;
 
     $$('.action1').on('click', function () {
