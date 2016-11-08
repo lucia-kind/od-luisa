@@ -35,7 +35,6 @@
                 //gibt dem ersten die class visible
                 $('.dogname').first().addClass("visible");
                 //spreche den angezeigten über klasse namen an
-                document.getElementsByClassName('visible')[0].style.color = "blue";
             });
 
 
@@ -216,7 +215,6 @@
                 //nächster Name
                 $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
                 $("div.container div.visible").first().addClass("shown").removeClass("visible");
-                //document.getElementsByClassName('visible')[0].style.color = "blue";
             }
 
             function dislike() {
@@ -227,7 +225,6 @@
                 //nächster Name
                 $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
                 $("div.container div.visible").first().addClass("shown").removeClass("visible");
-                //document.getElementsByClassName('visible')[0].style.color = "blue";
 
             }
             //Tinderfunktionen Ende
