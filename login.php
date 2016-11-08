@@ -26,18 +26,24 @@
         //Update duell
         $duell = json_encode($_POST['duell_list']); 
         $typ = $_POST['typ'];
-        if($typ == "baby"){
+        
+         if($typ == "baby"){
             $query ="INSERT INTO duell (user_id, type, namensliste)
             VALUES ($id, 1, $duell);";
             get_result($query); 
-            header('Location:duellmode.php');
         } else if($typ == "hund"){
             $query ="INSERT INTO duell (user_id, type, namensliste)
             VALUES ($id, 2, $duell);";
             get_result($query);
         }
+         ?>
+    <!--Weiterleitung Duell-->
+    <script>
+        window.location.href = 'duell.php';
+    </script>
+    <?php
         
-        //Weiterleitung Duell
+       
     }
         else
         {
@@ -48,103 +54,103 @@
     
 ?>
 
-    <!DOCTYPE html>
-    <html>
+        <!DOCTYPE html>
+        <html>
 
-    <head>
-        <title>Luisa - Die Namensapp</title>
-        <link rel="stylesheet" href="css/style.css">
-        <?php
+        <head>
+            <title>Luisa - Die Namensapp</title>
+            <link rel="stylesheet" href="css/style.css">
+            <?php
         if($verhalten == 1) {
     ?>
-            <meta http-equiv="refresh" content="3" ; URL="seite2.php" />
-            <?php
+                <meta http-equiv="refresh" content="3" ; URL="seite2.php" />
+                <?php
         }
     ?>
-    </head>
+        </head>
 
-    <body>
-        <form method="post" action="login.php?page=log">
-            <div class="section">
-                <div class="registrieren topbar">
-                    <div class="txt_topbar">Login</div>
-                </div>
+        <body>
+            <form method="post" action="login.php?page=log">
+                <div class="section">
+                    <div class="registrieren topbar">
+                        <div class="txt_topbar">Login</div>
+                    </div>
 
-                <div class="formline">
+                    <div class="formline">
 
-                </div>
+                    </div>
 
-                <div class="formline">
-                    <?php
+                    <div class="formline">
+                        <?php
                     if($verhalten == 0){
                     ?>
-                        Bitte logge dich ein:
+                            Bitte logge dich ein:
+                            <br/>
+                    </div>
+
+                    <div class="formline">
+                        <input placeholder="E-Mail" type="email" id="email" name="email" />
                         <br/>
+                    </div>
+
+                    <div class="formline">
+                        <input type="password" placeholder="Passwort" id="pw" name="password" />
+                        <br/>
+                    </div>
+
+                    <div class="formline">
+
+                    </div>
+
+                    <div class="formline duell_link">
+                        <a href="registrieren.php">registrieren</a>
+                    </div>
+
+                    <div class="formline">
+
+                    </div>
+
+                    <div class="formline">
+                        <input type="hidden" id="duell_list" name="duell_list">
+                        <!--hier speichere ich die Namen für die Datenbank-->
+                        <input type="hidden" id="typ" name="typ">
+                        <!--hier speichere ich den typ für die Datenbank-->
+
+                    </div>
+
+                    <div class="duell_bottom">
+                        <input type="submit" id="submit" class="submit" name="einloggen" />
+                    </div>
                 </div>
-
-                <div class="formline">
-                    <input placeholder="E-Mail" type="email" id="email" name="email" />
-                    <br/>
-                </div>
-
-                <div class="formline">
-                    <input type="password" placeholder="Passwort" id="pw" name="password" />
-                    <br/>
-                </div>
-
-                <div class="formline">
-
-                </div>
-
-                <div class="formline duell_link">
-                    <a href="registrieren.php">registrieren</a>
-                </div>
-
-                <div class="formline">
-
-                </div>
-
-                <div class="formline">
-                    <input type="hidden" id="duell_list" name="duell_list">
-                    <!--hier speichere ich die Namen für die Datenbank-->
-                    <input type="hidden" id="typ" name="typ">
-                    <!--hier speichere ich den typ für die Datenbank-->
-
-                </div>
-
-                <div class="duell_bottom">
-                    <input type="submit" id="submit" class="submit" name="einloggen" />
-                </div>
-            </div>
-            <!-- section -->
-        </form>
-        <script src="js/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                var duell_names = localStorage.getItem("liked");
-                $('#duell_list').val(duell_names);
-                var typ_duell = localStorage.getItem("type");
-                $('#typ').val(typ_duell);
-            });
-        </script>
+                <!-- section -->
+            </form>
+            <script src="js/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var duell_names = localStorage.getItem("liked");
+                    $('#duell_list').val(duell_names);
+                    var typ_duell = localStorage.getItem("type");
+                    $('#typ').val(typ_duell);
+                });
+            </script>
 
 
-        <?php
+            <?php
         }
         if ($verhalten == 1) {
         ?>
 
-            Du hast dich richtig eingeloggt und wirst nun weitergleitet ....
+                Du hast dich richtig eingeloggt und wirst nun weitergleitet ....
 
-            <?php
+                <?php
         }
         if ($verhalten == 2) {
         ?>
-                Du hast dich nicht richtig eingeloggt. <a href="login.php">Zurück</a>
-                <?php
+                    Du hast dich nicht richtig eingeloggt. <a href="login.php">Zurück</a>
+                    <?php
         }
         ?>
 
-    </body>
+        </body>
 
-    </html>
+        </html>
