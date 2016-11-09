@@ -150,11 +150,11 @@
                             </div>
 
                             <div class="formline">
-                                <input type="text" placeholder="Nachname" id="vname" name="vname">
+                                <input pattern="[A-Za-z]" type="text" placeholder="Nachname" id="vname" name="vname">
                             </div>
 
                             <div class="formline">
-                                <input type="text" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
+                                <input type="text" maxlength="1" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
                             </div>
 
                             <div class="formline">
@@ -164,12 +164,12 @@
 
                             <div class="formline">
                                 Maximal
-                                <input type="text" placeholder="x" id="minimaxi" name="maxi"> Zeichen
+                                <input type="number" placeholder="x" max="20" id="minimaxi" name="maxi"> Zeichen
                             </div>
 
                             <div class="formline">
                                 Minimal
-                                <input type="text" placeholder="x" id="minimaxi" name="mini"> Zeichen
+                                <input type="number" max="20" placeholder="x" id="minimaxi" name="mini"> Zeichen
                             </div>
 
                             <div class="formline">
@@ -187,8 +187,8 @@
                             <div class="formline">
                             </div>
 
-                            <div id="filter" class="tickbox">
-                                <input style="width: 1000px; height: 100px; background:url(img/tick.png);" type="submit" name="SubmitButton" value="Submit" />
+                            <div id="filter" style="padding: 10px;" class="tickbox">
+                                <input id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit"/>
                             </div>
                             <!-- filter tickbox -->
                             <!--geht nicht ohne-->
@@ -283,7 +283,7 @@
                     });
                 });
             </script>
-
+            
 
     </body>
 

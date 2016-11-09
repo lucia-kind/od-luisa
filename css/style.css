@@ -432,7 +432,7 @@
      background-color: #fff7f5;
      color: #f0414b;
      font-size: 1em;
-     width: 5%;
+     width: 10%;
      vertical-align: middle;
      text-align: center;
      height: 70%;
@@ -652,4 +652,17 @@
     margin:0 auto; 
     text-align: center; 
     color: white;
+}
+
+input#filtersubmit {
+cursor: pointer;
+text-indent: -99999px;
+border: none;
+width: 41px;
+height: 42px;
+background: transparent url(style/images/search_icon.png) no-repeat scroll;
+}
+
+#filtersubmit{
+    padding: 5%;
 }
