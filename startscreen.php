@@ -4,7 +4,31 @@
 	require_once("system/functions.php");
 
     //$result = get_dogs_name();
-    $result= update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
+    $hauf ="";
+    $anfang="";
+    $nachname="";
+    $max="";
+    $min="";
+    $geschlecht="";
+     if(isset($_GET["typ"])) {
+        $type = $_GET["typ"];
+     } else {
+         $type = "not defined";
+     }
+
+    if(isset($_POST['SubmitButton'])){ //check if form was submitted
+        if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];//Achtung: wie berechnen wir die?
+        //$hauf = $_POST['Haeufigkeit'];
+        $anfang = $_POST["abuchstabe"];
+        $nachname = $_POST["vname"];//What tun wir damit?
+        $max = $_POST["maxi"];
+        $min = $_POST["mini"];
+        if(isset($_POST["geschlecht"])) {
+           $geschlecht = $_POST['geschlecht'];
+            }
+        //update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
+    }
+    $result = update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
     //macht die Abfrage über die Datenbank
 
 ?>
@@ -56,6 +80,15 @@
             var geschlecht = <?php echo json_encode($geschlecht); ?>;
             var type = <?php echo json_encode($type); ?>;
             console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht + "typ:" + type);
+
+
+            //AJAX FORM
+            /*$(document).ready(function () {
+                // bind 'myForm' and provide a simple callback function 
+                $('#myForm').ajaxForm(function () {
+                    alert("Filter angewendet.");
+                });
+            });*/
         </script>
 
     </head>
@@ -87,6 +120,7 @@
                   $array = [];//leerer Array für Namen
                               //<!-- hier werden X Namen aufgelistet-->
                             
+               
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
 
                                 <div id="<?php echo $dog['id']?>" class="dogname">
@@ -141,7 +175,8 @@
             <div class="animation-container">
                 <div id="object" class="animate tossing">
                     <!--FORMULAR ANFANG-->
-                    <form method="post">
+                    <form id="myForm" method="post">
+                        <!--action="filter.php"-->
 
                         <div class="section">
 
@@ -150,7 +185,7 @@
                             </div>
 
                             <div class="formline">
-                                <input pattern="[A-Za-z]" type="text" placeholder="Nachname" id="vname" name="vname">
+                                <input type="text" placeholder="Nachname" id="vname" name="vname">
                             </div>
 
                             <div class="formline">
@@ -173,8 +208,8 @@
                             </div>
 
                             <div class="formline">
-                                <select id="dropdown" name="Häufigkeit">
-                                    <option value="häufigkeit">Häufigkeit</option>
+                                <select id="dropdown" name="Haeufigkeit">
+                                    <option value="haeufigkeit">Häufigkeit</option>
                                     <option value="sehr beliebt">Sehr beliebt</option>
                                     <option value="beliebt">Beliebt</option>
                                     <option value="selten">Selten</option>
@@ -188,7 +223,7 @@
                             </div>
 
                             <div id="filter" style="padding: 10px;" class="tickbox">
-                                <input id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit"/>
+                                <input id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
                             </div>
                             <!-- filter tickbox -->
                             <!--geht nicht ohne-->
@@ -204,9 +239,10 @@
             <!-- animation container -->
         </section>
         <!-- section -->
-                            
+
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
         <!-- TINDER CODE-->
         <?php 
         //like und dislike mit php?
@@ -283,7 +319,7 @@
                     });
                 });
             </script>
-            
+
 
     </body>
 
