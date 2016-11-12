@@ -21,6 +21,7 @@
 
     if($ergebnis)
     {
+        
         print_r("login erfolgreich! juhui!");
         $_SESSION["currentUser"]  = $ergebnis;
         //Update duell
@@ -30,16 +31,19 @@
          if($typ == "baby"){
             $query ="INSERT INTO duell (user_id, type, namensliste)
             VALUES ($id, 1, $duell);";
-            get_result($query); 
+            $result = get_result($query);
+              $duell_id =   $pdo->lastInsertId();
         } else if($typ == "hund"){
             $query ="INSERT INTO duell (user_id, type, namensliste)
             VALUES ($id, 2, $duell);";
-            get_result($query);
+           $result = get_result($query);
+            $duell_id =   $pdo->lastInsertId();
         }
+       
          ?>
     <!--Weiterleitung Duell-->
     <script>
-        window.location.href = 'duell.php';
+        window.location.href = 'duell.php?duell_id=<?php print_r($duell_id) ?>';
     </script>
     <?php
         
