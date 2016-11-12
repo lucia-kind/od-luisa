@@ -147,6 +147,7 @@
                 <div class="bheart">
                     <input style="height: 100px;" type="image" src="img/sheart.svg" onclick="like();" />
                 </div>
+                
                 <div class="bheart">
                     <input style="height: 100px;" type="image" src="img/sbheart.svg" onclick="dislike();" />
                 </div>
@@ -158,11 +159,11 @@
                 <div id="duell_start" class="duell">
                     <a href="registrieren.php" class="duell_startscreen_button">Duell!</a>
                 </div> <!-- duell_start -->
-
+                
                 <div class="einstellungen">
                     <a href="#" id="clickme" class="button"><img style="height: 40px;" src="img/einstellungen.svg"></a>
                 </div>
-        
+                <div class="clear"></div>
             </div>
             <!-- menu -->
         </div>

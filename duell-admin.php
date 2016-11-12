@@ -19,14 +19,45 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
       
+    <script>
+        var duell = localStorage.getItem('liked');
+        var duell_array = JSON.parse(duell);
+        console.log(duell_array);
+        console.log(duell_array.length);
+        $(document).ready(function () {
+            var i = 0;
+            var laenge = duell_array.length - 2;
+            document.getElementById('name01').innerHTML = duell_array.shift();
+            document.getElementById('name02').innerHTML = duell_array.shift();
+
+            document.getElementById('name01').onclick = function () {
+                if (i < laenge) {
+                    document.getElementById('name02').innerHTML = duell_array.shift();
+                    i++;
+                } else {
+                    console.log("Halt! Du bist zu weit gegangen.");
+                }
+            }
+            document.getElementById('name02').onclick = function () {
+                if (i < laenge) {
+                    document.getElementById('name01').innerHTML = duell_array.shift();
+                    i++;
+                } else {
+                    console.log("Halt! Du bist zu weit gegangen.");
+                }
+
+            }
+        });
+    </script>
+      
   </head>
 <body>
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="left">Zwischenstand </div>
-   </div>
-</div>
-    
+<!-- On right side -->
+     <div class="section">
+         <div class="topbar">
+            <div class="txt_topbar">Zwischenstand</div>
+        </div>
+    </div> <!-- section -->
 <div class="list-block">
   <ul>
     <!-- one element -->
@@ -122,6 +153,8 @@
   </ul>
 </div>
     <script>
+    var myApp = new Framework7();
+    var $$ = Dom7;
 
     $$('.action1').on('click', function () {
       myApp.alert('Action 1');
