@@ -21,6 +21,7 @@
 
     if($ergebnis)
     {
+        $duell_id=74;
         print_r("login erfolgreich! juhui!");
         $_SESSION["currentUser"]  = $ergebnis;
         //Update duell
@@ -28,18 +29,22 @@
         $typ = $_POST['typ'];
         
          if($typ == "baby"){
-            $query ="INSERT INTO duell (user_id, type, namensliste)
-            VALUES ($id, 1, $duell);";
-            get_result($query); 
+            $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 1, $duell);";
+            $result = get_result($query);
+              //$duell_id = $pdo->lastInsertId();
+             //$sql = "SELECT id FROM duell ORDER BY id DESC LIMIT 1;";
+             //$duell_id =   get_result($sql);
+             //$duell = json_encode($duell_id);
         } else if($typ == "hund"){
-            $query ="INSERT INTO duell (user_id, type, namensliste)
-            VALUES ($id, 2, $duell);";
-            get_result($query);
+            $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 2, $duell);";
+           //$result = get_result($query);
+            //$duell_id =   $pdo->lastInsertId();
         }
+       
          ?>
     <!--Weiterleitung Duell-->
     <script>
-        window.location.href = 'duell.php';
+        window.location.href = 'duell.php?duell_id=<?php echo $duell_id; ?>';
     </script>
     <?php
         
