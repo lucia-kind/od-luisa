@@ -43,8 +43,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/animations.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+        
+        <link rel="stylesheet" type="text/css" href="css/filterSlide.css">
 
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
@@ -94,7 +94,7 @@
     </head>
 
     <body>
-        <div style="display: none" id="hideAll">&nbsp;</div>
+        
         <div class="section">
             <div class="topbar">
 
@@ -159,26 +159,21 @@
                     <a href="registrieren.php" class="duell_startscreen_button">Duell!</a>
                 </div> <!-- duell_start -->
 
-            <div class="einstellungen">
-                <a href="#" id="slideUpBtn" class="button"><img style="height: 40px;" src="img/einstellungen.svg"></a>
-            </div>
-                
-            <div class="clearfix"></div>
-                <!-- actions -->
+                <div class="einstellungen">
+                    <a href="#" id="clickme" class="button"><img style="height: 40px;" src="img/einstellungen.svg"></a>
+                </div>
+        
             </div>
             <!-- menu -->
         </div>
         <!-- section -->
         <!-- Ende STARTSCREEN --!>
         
-        
-        
-        
 
         <!-- STOP FILTER TIME -->
-        <section id="animation">
-            <div class="animation-container">
-                <div id="object" class="animate tossing">
+       <div id="newsbox">
+        <section id="object">
+             
                     <!--FORMULAR ANFANG-->
                     <form id="myForm" method="post">
                         <!--action="filter.php"-->
@@ -228,7 +223,7 @@
                             </div>
 
                             <div id="filter" style="padding: 10px;" class="tickbox">
-                                <input id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
+                                <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
                             </div>
                             <!-- filter tickbox -->
                             <!--geht nicht ohne-->
@@ -238,13 +233,10 @@
 
                     </form>
                     <!--FORM ENDE -->
-                </div>
-                <!-- object -->
-            </div>
-            <!-- animation container -->
+                 
         </section>
         <!-- section -->
-
+        </div>
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script src="http://malsup.github.com/jquery.form.js"></script>
@@ -302,28 +294,26 @@
             </script>
 
             <!--Tinder Ende -->
-            <!--filter hoch und runter-->
-
+        
+                        <!-- Filter kommt hoch beim laden -->
             <script>
-                $(window).scroll(function () {
-                    $('#examples-cta').each(function () {
-                        var imagePos = $(this).offset().top;
-
-                        var topOfWindow = $(window).scrollTop();
-                        if (imagePos < topOfWindow + 400) {
-                            $(this).addClass("slideUp");
-                        }
-                    });
-                });
-
-                /* ENTRANCES */
-                $('#slideUpBtn').click(function () {
-                    $(this).each(function () {
-                        $('#object').removeClass();
-                        $('#object').addClass("slideUp");
-                    });
-                });
+          $( "#clickme" ).click(function (e) {
+                e.preventDefault();
+                jQuery('#newsbox').slideDown();
+            // Animation complete.
+          });
+       
+                
+            $(document).ready(function() {
+            jQuery('#newsbox').delay(2000).slideDown();
+            jQuery('.newsClose').click(function (e) {
+                e.preventDefault();
+                jQuery('#newsbox').slideUp();
+          
+            });	
+        });	
             </script>
+        
 
 
     </body>
