@@ -1,4 +1,6 @@
- * {
+/* Body */  
+
+* {
      padding: 0;
      margin: 0;
      border: 0;
@@ -21,59 +23,7 @@
      clear: both;
  }
 
- /* LUISA Swipefunction Hunde/Baby */
- 
- #demo {
-     position: relative;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 90%;
-     visibility: hidden;
-     cursor: hand;
-     cursor: -moz-grab;
-     cursor: -webkit-grab;
-     cursor: grab;
- }
- 
- #dragend {
-     position: absolute;
-     bottom: 50px;
-     right: 50px;
-     background: #345;
-     padding: 18px;
-     color: #fff;
-     border-radius: 3px;
-     width: 150px;
-     font-size: 15px;
- }
- 
- #dragend h1 {
-     font-size: 15px;
-     font-weight: normal;
-     margin-bottom: 12px;
- }
- 
- #dragend a {
-     text-decoration: underline;
-     color: #fff
- }
- 
- #demo p {
-     max-width: 600px;
-     margin: 0 auto;
-     padding: 0 30px;
-     margin-bottom: 0px;
- }
- 
- #demo p:first-child {
-     margin-top: 30px;
- }
- 
- #demo p:last-child {
-     margin-bottom: 200px;
- }
- /* SELECT Baby + Hunde */
+ /* Index */
  
  .section {
      position: fixed;
@@ -141,15 +91,26 @@
      position: relative;
      top: 10%;
      font-size: 1.5em;
-    
-
  }
 
+
  /* Startscreen Baby + Hunde */
+
+ .invisible {
+     display: none;
+ }
+ 
+ .visible {
+     display: block;
+ }
+ 
+ .shown {
+     display: none;
+ }
  
  .menu {
      position: relative;
-     height: 10%;
+     height: 20%;
      width: 100%;
      font-size: 1.5em;
  }
@@ -159,15 +120,29 @@
      float: left;
      width: 50%;
      height: 100%;
-     padding-top: 2.5%;
+     padding-top: 1.5%;
      background-color: #68d2c4;
      vertical-align: middle;
      text-align: center;
      border: none;
  }
+
+.duell_startscreen_button{
+     padding: 6px 16px;
+    width: 100%;
+     color: #FFFFFF;
+     text-decoration: none;
+     border-bottom: 4px solid #68D2C4;
+     margin: 0px 15px 15px 0px;
+     display: inline-block;
+     border-radius: 5px;
+    background: #68D2C4;
+}
  
-.duell a{
-    color: white;
+.duell a:focus,
+.duell a:hover{
+    color:white;
+    text-decoration: none;
 }
 
  .einstellungen {
@@ -175,7 +150,7 @@
      float: left;
      width: 50%;
      height: 100%;
-     padding-top: 2.5%;
+     padding-top: 1.5%;
      background-color: #f0414b;
      vertical-align: middle;
      text-align: center;
@@ -184,7 +159,7 @@
  .name_tinder {
      position: relative;
      padding-top: 20%;
-     height: 55%;
+     height: 50%;
      width: 100%;
      background-color: white;
      vertical-align: middle;
@@ -197,7 +172,7 @@
  
  .hearts {
      position: relative;
-     height: 15%;
+     height: 30%;
      width: 100%;
  }
  
@@ -225,6 +200,47 @@
      width: 50%;
      height: 100%;
  }
+
+.section {
+     background-color: white;
+ }
+ 
+ #object {
+     min-height: 700px;
+     visibility: hidden;
+ }
+ 
+ a.button {
+     padding: 6px 16px;
+     background-color: #61e69d;
+     color: #FFFFFF;
+     text-decoration: none;
+     border-bottom: 4px solid #5cd994;
+     margin: 0px 15px 15px 0px;
+     display: inline-block;
+     border-radius: 5px;
+     font-size: 16px;
+ }
+ 
+ #slideUpBtn {
+     width: 100%;
+     height: 100%;
+     background-color: transparent;
+     border: none;
+ }
+
+.swipeout{
+    background-color: #FFF7F5!important;
+    border-bottom: 3px solid #FFE8E0;
+}
+
+.item-after{
+    background-image: url("/img/heart.svg");
+    background-repeat: no-repeat;
+}
+
+
+/* Anzeige nur wenn SQl geladen*/
 
 /* Animation Startscreen */
 
@@ -259,7 +275,6 @@
     opacity: 1\9;
 
 }
-
 
 @keyframes slide-up-fade-in{
     0% {
@@ -317,59 +332,7 @@
 } 
 
 
-	.clearfix {clear: both; zoom: 1;}
-
-
- /* Duellmode */
- 
- .select_duellone {
-     position: relative;
-     height: 45%;
-     width: 100%;
-     background-color: #ffffff;
- }
- 
- .select_duelltwo {
-     position: relative;
-     height: 45%;
-     width: 100%;
-     background-color: #68d2c4;
- }
- 
- .txt_one a {
-     color: #68d2c4;
- }
- 
- .txt_one a:hover {
-     color: #ffe7de;
- }
- 
- .txt_one {
-     position: relative;
-     top: 40%;
-     color: #68d2c4;
-     font-size: 2.5em;
-     text-align: center;
-     vertical-align: middle;
- }
- 
- .txt_two a {
-     color: #ffffff;
- }
- 
- .txt_two a:hover {
-     color: #ffe7de;
- }
- 
- .txt_two {
-     position: relative;
-     top: 40%;
-     color: #ffffff;
-     font-size: 2.5em;
-     text-align: center;
-     vertical-align: middle;
- }
-
+.clearfix {clear: both; zoom: 1;}
 
  /* Filter */
  
@@ -467,6 +430,56 @@
     z-index: 1;
 }
 
+/* Duellmode */
+ 
+ .select_duellone {
+     position: relative;
+     height: 45%;
+     width: 100%;
+     background-color: #ffffff;
+ }
+ 
+ .select_duelltwo {
+     position: relative;
+     height: 45%;
+     width: 100%;
+     background-color: #68d2c4;
+ }
+ 
+ .txt_one a {
+     color: #68d2c4;
+ }
+ 
+ .txt_one a:hover {
+     color: #ffe7de;
+ }
+ 
+ .txt_one {
+     position: relative;
+     top: 40%;
+     color: #68d2c4;
+     font-size: 2.5em;
+     text-align: center;
+     vertical-align: middle;
+ }
+ 
+ .txt_two a {
+     color: #ffffff;
+ }
+ 
+ .txt_two a:hover {
+     color: #ffe7de;
+ }
+ 
+ .txt_two {
+     position: relative;
+     top: 40%;
+     color: #ffffff;
+     font-size: 2.5em;
+     text-align: center;
+     vertical-align: middle;
+ }
+
  /* Registrieren Duell */
  
  .duell_bottom {
@@ -520,7 +533,7 @@
     height: 100%;
 }
 
- /* Duell Einstellung */
+/* Duell Einstellung */
 
 .list-block ul:before,
 .list-block ul:after {
@@ -538,8 +551,6 @@
 .list-block input[type=time], .list-block input[type=number], .list-block input[type=search], .list-block input[type=text], .list-block input[type=password], .list-block input[type=email], .list-block input[type=tel], .list-block input[type=url], .list-block input[type=date], .list-block input[type=datetime-local], .list-block select, .list-block textarea{
     color: white!important;
 }
-
-
  
  .duell_bottom_einst {
      position: relative;
@@ -569,71 +580,14 @@
      height: 90%;
      font-size: 1em;
  }
+
  /* Liste */
+
 .swipeout:first-child {
     border: none;
 }
  .duell_bg {
      background-color: #68d2c4;
- }
- /* Startscreen */
- 
- .section {
-     background-color: white;
- }
- 
- #object {
-     min-height: 700px;
-     visibility: hidden;
- }
- 
- a.button {
-     padding: 6px 16px;
-     background-color: #61e69d;
-     color: #FFFFFF;
-     text-decoration: none;
-     border-bottom: 4px solid #5cd994;
-     margin: 0px 15px 15px 0px;
-     display: inline-block;
-     border-radius: 5px;
-     font-size: 16px;
- }
- 
- #slideUpBtn {
-     width: 100%;
-     height: 100%;
-     background-color: transparent;
-     border: none;
- }
-
-.swipeout{
-    background-color: #FFF7F5!important;
-    border-bottom: 3px solid #FFE8E0;
-}
-
-.item-after{
-    background-image: url("/img/heart.svg");
-    background-repeat: no-repeat;
-}
-
-
- /*Isabelles CSS*/
- 
- button {
-     height: 50px;
-     width: 100px;
- }
- 
- .invisible {
-     display: none;
- }
- 
- .visible {
-     display: block;
- }
- 
- .shown {
-     display: none;
  }
 
 /* Win */

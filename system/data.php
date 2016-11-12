@@ -37,7 +37,11 @@
 	function get_result($sql)
 	{
 		$db = get_db_connection();
+<<<<<<< Updated upstream
         //echo $sql;
+=======
+        // echo $sql;
+>>>>>>> Stashed changes
 		$result = mysqli_query($db, $sql);
 		mysqli_close($db);
 		return $result;
