@@ -104,7 +104,7 @@
  
  .menu {
      position: relative;
-     height: 15%;
+     height: 10%;
      width: 100%;
      font-size: 1.5em;
  }
@@ -131,6 +131,7 @@
      display: inline-block;
      border-radius: 5px;
     background: #68D2C4;
+    -webkit-appearance: none;
 }
  
 .duell a:focus,
@@ -153,7 +154,7 @@
  .name_tinder {
      position: relative;
      padding-top: 10%;
-     height: 40%;
+     height: 45%;
      width: 100%;
      background-color: white;
      vertical-align: middle;
@@ -511,12 +512,22 @@
      width: 100%;
  }
 
+/* Entfernen des Stylings auf IOS Endgeräten */
+
 .submit{
     font-size: 1em;
     background-color: #f0414b;
     color: white;
     width: 100%;
     height: 100%;
+}
+
+input[type='submit']
+{
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;  
+    border-radius: 0;
 }
 
 /* Duell Einstellung */
@@ -603,14 +614,15 @@
 }
 
 input#filtersubmit {
-cursor: pointer;
-text-indent: -99999px;
-border: none;
-width: 41px;
-height: 42px;
-background: transparent url(style/images/search_icon.png) no-repeat scroll;
+    cursor: pointer;
+    text-indent: -99999px;
+    border: none;
+    width: 41px;
+    height: 42px;
+    background: transparent url(style/images/search_icon.png) no-repeat scroll;
 }
 
 #filtersubmit{
     padding: 5%;
+    padding-top: 1%;
 }

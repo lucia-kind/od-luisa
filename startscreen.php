@@ -39,15 +39,18 @@
 
         <title>Luisa - Die Namensapp</title>
 
+        <!-- Meta Information -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+        <!-- CSS -->
         <link rel="stylesheet" href="css/style.css">
-        
         <link rel="stylesheet" type="text/css" href="css/filterSlide.css">
 
+        <!-- SCRIPT -->
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
+        <!-- FONT -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
@@ -219,11 +222,9 @@
 
                             <div class="formline">
                             </div>
-
                             <div class="formline">
                             </div>
-
-                            <div id="filter" style="padding: 10px;" class="tickbox">
+                            <div id="filter" class="tickbox">
                                 <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
                             </div>
                             <!-- filter tickbox -->
