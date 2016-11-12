@@ -43,7 +43,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="css/style.css">
-        
+
         <link rel="stylesheet" type="text/css" href="css/filterSlide.css">
 
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -94,7 +94,7 @@
     </head>
 
     <body>
-        
+
         <div class="section">
             <div class="topbar">
 
@@ -157,12 +157,13 @@
             <div class="menu">
                 <div id="duell_start" class="duell">
                     <a href="registrieren.php" class="duell_startscreen_button">Duell!</a>
-                </div> <!-- duell_start -->
+                </div>
+                <!-- duell_start -->
 
                 <div class="einstellungen">
                     <a href="#" id="clickme" class="button"><img style="height: 40px;" src="img/einstellungen.svg"></a>
                 </div>
-        
+
             </div>
             <!-- menu -->
         </div>
@@ -171,71 +172,71 @@
         
 
         <!-- STOP FILTER TIME -->
-       <div id="newsbox">
-        <section id="object">
-             
-                    <!--FORMULAR ANFANG-->
-                    <form id="myForm" method="post">
-                        <!--action="filter.php"-->
+        <div id="newsbox">
+            <section id="object">
 
-                        <div class="section">
+                <!--FORMULAR ANFANG-->
+                <form id="myForm" method="post">
+                    <!--action="filter.php"-->
 
-                            <div class="topbar">
-                                <div class="txt_topbar">Einstellungen</div>
-                            </div>
+                    <div class="section">
 
-                            <div class="formline">
-                                <input type="text" placeholder="Nachname" id="vname" name="vname">
-                            </div>
-
-                            <div class="formline">
-                                <input type="text" maxlength="1" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
-                            </div>
-
-                            <div class="formline">
-                                <input type="radio" name="geschlecht" value="männlich">männlich
-                                <input type="radio" name="geschlecht" value="weiblich">weiblich
-                            </div>
-
-                            <div class="formline">
-                                Maximal
-                                <input type="number" placeholder="x" max="20" id="minimaxi" name="maxi"> Zeichen
-                            </div>
-
-                            <div class="formline">
-                                Minimal
-                                <input type="number" max="20" placeholder="x" id="minimaxi" name="mini"> Zeichen
-                            </div>
-
-                            <div class="formline">
-                                <select id="dropdown" name="Haeufigkeit">
-                                    <option value="haeufigkeit">Häufigkeit</option>
-                                    <option value="sehr beliebt">Sehr beliebt</option>
-                                    <option value="beliebt">Beliebt</option>
-                                    <option value="selten">Selten</option>
-                                </select>
-                            </div>
-
-                            <div class="formline">
-                            </div>
-
-                            <div class="formline">
-                            </div>
-
-                            <div id="filter" style="padding: 10px;" class="tickbox">
-                                <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
-                            </div>
-                            <!-- filter tickbox -->
-                            <!--geht nicht ohne-->
-                            <!-- <input style="padding-top: 5%; height: 35%;" type="image" src="img/tick.png" onclick="window.location.href='/startscreen.php';" /> -->
+                        <div class="topbar">
+                            <div class="txt_topbar">Einstellungen</div>
                         </div>
-                        <!-- section -->
 
-                    </form>
-                    <!--FORM ENDE -->
-                 
-        </section>
-        <!-- section -->
+                        <div class="formline">
+                            <input type="text" placeholder="Nachname" id="vname" name="vname">
+                        </div>
+
+                        <div class="formline">
+                            <input type="text" maxlength="1" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
+                        </div>
+
+                        <div class="formline">
+                            <input type="radio" name="geschlecht" value="männlich">männlich
+                            <input type="radio" name="geschlecht" value="weiblich">weiblich
+                        </div>
+
+                        <div class="formline">
+                            Maximal
+                            <input type="number" placeholder="x" max="20" id="minimaxi" name="maxi"> Zeichen
+                        </div>
+
+                        <div class="formline">
+                            Minimal
+                            <input type="number" max="20" placeholder="x" id="minimaxi" name="mini"> Zeichen
+                        </div>
+
+                        <div class="formline">
+                            <select id="dropdown" name="Haeufigkeit">
+                                <option value="haeufigkeit">Häufigkeit</option>
+                                <option value="sehr beliebt">Sehr beliebt</option>
+                                <option value="beliebt">Beliebt</option>
+                                <option value="selten">Selten</option>
+                            </select>
+                        </div>
+
+                        <div class="formline">
+                        </div>
+
+                        <div class="formline">
+                        </div>
+
+                        <div id="filter" style="padding: 10px;" class="tickbox">
+                            <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
+                        </div>
+                        <!-- filter tickbox -->
+                        <!--geht nicht ohne-->
+                        <!-- <input style="padding-top: 5%; height: 35%;" type="image" src="img/tick.png" onclick="window.location.href='/startscreen.php';" /> -->
+                    </div>
+                    <!-- section -->
+
+                </form>
+                <!--FORM ENDE -->
+
+            </section>
+            <!-- section -->
         </div>
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -294,26 +295,26 @@
             </script>
 
             <!--Tinder Ende -->
-        
-                        <!-- Filter kommt hoch beim laden -->
+
+            <!-- Filter kommt hoch beim laden -->
             <script>
-          $( "#clickme" ).click(function (e) {
-                e.preventDefault();
-                jQuery('#newsbox').slideDown();
-            // Animation complete.
-          });
-       
-                
-            $(document).ready(function() {
-            jQuery('#newsbox').delay(2000).slideDown();
-            jQuery('.newsClose').click(function (e) {
-                e.preventDefault();
-                jQuery('#newsbox').slideUp();
-          
-            });	
-        });	
+                $("#clickme").click(function (e) {
+                    e.preventDefault();
+                    jQuery('#newsbox').slideDown();
+                    // Animation complete.
+                });
+
+
+                $(document).ready(function () {
+                    jQuery('#newsbox').delay(2000).slideDown();
+                    jQuery('.newsClose').click(function (e) {
+                        e.preventDefault();
+                        jQuery('#newsbox').slideUp();
+
+                    });
+                });
             </script>
-        
+
 
 
     </body>
