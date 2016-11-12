@@ -1,15 +1,13 @@
 <?php
 	require_once("system/data.php");
 	require_once("system/security.php");
+    require_once("system/functions.php");
 ?>
 
     <!DOCTYPE html>
     <html>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <?php 
-        require_once("system/data.php");
-	    require_once("system/security.php");
-	    require_once("system/functions.php");
         
         $duell_id = 74;
         
