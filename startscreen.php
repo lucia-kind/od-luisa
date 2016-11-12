@@ -2,8 +2,6 @@
 	require_once("system/data.php");
 	require_once("system/security.php");
 	require_once("system/functions.php");
-
-    //$result = get_dogs_name();
     $hauf ="";
     $anfang="";
     $nachname="";
@@ -17,8 +15,7 @@
      }
 
     if(isset($_POST['SubmitButton'])){ //check if form was submitted
-        if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];//Achtung: wie berechnen wir die?
-        //$hauf = $_POST['Haeufigkeit'];
+        if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];
         $anfang = $_POST["abuchstabe"];
         $nachname = $_POST["vname"];//What tun wir damit?
         $max = $_POST["maxi"];
@@ -26,7 +23,6 @@
         if(isset($_POST["geschlecht"])) {
            $geschlecht = $_POST['geschlecht'];
             }
-        //update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
     }
     $result = update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
     //macht die Abfrage über die Datenbank
@@ -80,15 +76,6 @@
             var geschlecht = <?php echo json_encode($geschlecht); ?>;
             var type = <?php echo json_encode($type); ?>;
             console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht + "typ:" + type);
-
-
-            //AJAX FORM
-            /*$(document).ready(function () {
-                // bind 'myForm' and provide a simple callback function 
-                $('#myForm').ajaxForm(function () {
-                    alert("Filter angewendet.");
-                });
-            });*/
         </script>
 
     </head>
@@ -129,11 +116,14 @@
                             //und im Array gespeichert
                                    echo $dog['name'];
                              //wird angezeigt
-                        ?>
+                       } ?>
 
                                 </div>
-                                <?php } ?>
+                                <div id="nachname">
+
                                     <?php echo $nachname;?>
+                                </div>
+
                         </ul>
                     </div>
                     <!-- container -->
@@ -210,8 +200,8 @@
                             <div class="formline">
                                 <select id="dropdown" name="Haeufigkeit">
                                     <option value="haeufigkeit">Häufigkeit</option>
-                                    <option value="sehr beliebt">Sehr beliebt</option>
-                                    <option value="beliebt">Beliebt</option>
+                                    <option value="haeufig">Häufig</option>
+                                    <option value="regulaer">Regulär</option>
                                     <option value="selten">Selten</option>
                                 </select>
                             </div>

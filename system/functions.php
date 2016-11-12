@@ -1,10 +1,4 @@
 <?php //Einstellungsübermittlung
-
-
-
-
-
-
 function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
   {
     $sql_ok = false;
@@ -20,7 +14,7 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
             $sql .= "SELECT name, id FROM baby_merge_vorname_anzahl WHERE ";
             $sql_ok = "true";
         }
-        if($hauf== "sehr beliebt" && $type == "hund"){
+        if($hauf== "haeufig" && $type == "hund"){
             $removeAnd = true;
              $removeWhere = false;
             $sql .= "SELECT name
@@ -31,7 +25,7 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
                     ) AS X
                     where counter <= (33/100 * @counter) AND ";
                       $sql_ok = true;            
-        } else if($hauf== "sehr beliebt" && $type == "baby"){
+        } else if($hauf== "haeufig" && $type == "baby"){
             $removeAnd = true;
              $removeWhere = false;
             $sql .= "SELECT name
@@ -43,7 +37,7 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
                     where counter <= (33/100 * @counter) AND ";
                       $sql_ok = true;            
         }
-        else if($hauf== "beliebt" && $type == "hund"){
+        else if($hauf== "regulaer" && $type == "hund"){
              $removeAnd = true;
              $removeWhere = false;
              $sql .= "SELECT name
@@ -55,7 +49,7 @@ function update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht)
                     where counter <= (66/100 * @counter) AND counter >= (33/100 * @counter) AND ";
                       $sql_ok = true;    
             
-        } else if($hauf== "beliebt" && $type == "baby"){
+        } else if($hauf== "regulaer" && $type == "baby"){
              $removeAnd = true;
              $removeWhere = false;
              $sql .= "SELECT name
