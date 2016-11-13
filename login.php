@@ -21,7 +21,6 @@
 
     if($ergebnis)
     {
-        $duell_id=74;
         print_r("login erfolgreich! juhui!");
         $_SESSION["currentUser"]  = $ergebnis;
         //Update duell
@@ -30,15 +29,12 @@
         
          if($typ == "baby"){
             $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 1, $duell);";
-            $result = get_result($query);
-              //$duell_id = $pdo->lastInsertId();
-             //$sql = "SELECT id FROM duell ORDER BY id DESC LIMIT 1;";
-             //$duell_id =   get_result($sql);
-             //$duell = json_encode($duell_id);
+            $result = get_result_last_id($query);
+             $duell_id = $result[0];
         } else if($typ == "hund"){
             $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 2, $duell);";
-           //$result = get_result($query);
-            //$duell_id =   $pdo->lastInsertId();
+             $result = get_result_last_id($query);
+             $duell_id = $result[0];
         }
        
          ?>
@@ -63,24 +59,24 @@
         <html>
 
         <head>
-    
-        <title>Luisa - Die Namensapp</title>
 
-        <!-- Meta Information -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            <title>Luisa - Die Namensapp</title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/filterSlide.css">
+            <!-- Meta Information -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <!-- SCRIPT -->
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+            <!-- CSS -->
+            <link rel="stylesheet" href="css/style.css">
+            <link rel="stylesheet" type="text/css" href="css/filterSlide.css">
 
-        <!-- FONT -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-            
+            <!-- SCRIPT -->
+            <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+            <!-- FONT -->
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+
             <?php
         if($verhalten == 1) {
     ?>
