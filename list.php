@@ -53,11 +53,11 @@
   </head>
 <body>
 <!-- On right side -->
-     <div class="section">
-         <div class="topbar">
-            <div class="txt_topbar">Zwischenstand</div>
-        </div>
-    </div> <!-- section -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">Zwischenstand</div>
+       </div> <!-- navbar-inner -->
+    </div> <!-- navbar -->
 <div class="list-block">
   <ul>
     <!-- one element -->

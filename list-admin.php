@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="css/my-app.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-      
   </head>
 <body>
 <div class="navbar">
@@ -32,7 +31,7 @@
     <div class="list-block">
       <ul>
         <!-- one element -->
-        <li class="swipeout">
+        <li class="swipeout duell_border">
           <div class="swipeout-content item-content duell_bg">
             <div id="name01" class="item-media">Duell noch 2 Tage</div>
           </div>
@@ -124,8 +123,9 @@
       </ul>
     </div>
 </div>
-    
     <script>
+    var myApp = new Framework7();
+    var $$ = Dom7;
 
     $$('.action1').on('click', function () {
       myApp.alert('Action 1');

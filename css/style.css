@@ -584,7 +584,17 @@ input[type='submit']
 
 }
 
-.swipeout:first-child {
+.share{
+    background-color: #68d2c4!important;
+}
+
+
+.trash{
+    padding: 0px 60px 0px 0px; 
+    height: 60%;
+}
+
+.duell_border:first-child {
     border: none;
 }
  .duell_bg {
