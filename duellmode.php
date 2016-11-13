@@ -21,13 +21,11 @@
         
         ?>
         <script>
-            var duellArray = <?php echo print_r($duell); ?>;
-            console.log("Duell:" + duellArray);
+            //hole die gelikeden namen aus der Datenbank
+            var duell_array = <?php print_r($duell['namensliste']); ?>;
+            //Kontrolle
+            console.log("Duell:" + duell_array);
 
-            var duell = localStorage.getItem('liked');
-            var duell_array = JSON.parse(duell);
-            //console.log(duell_array);
-            //console.log(duell_array.length);
             $(document).ready(function () {
                 var i = 0;
                 var laenge = duell_array.length - 2;
