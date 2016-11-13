@@ -351,7 +351,7 @@
 
 .list-block{
     border: none;
-    margin: 0px !important;
+    margin: -1px !important;
 }
 
  textarea:focus,
@@ -580,6 +580,10 @@ input[type='submit']
 
  /* Liste */
 
+.list_container{
+
+}
+
 .swipeout:first-child {
     border: none;
 }
@@ -588,7 +592,7 @@ input[type='submit']
  }
 
 .left{
-    padding-left: 5%;
+    padding-left: 4.5%;
  }
 
 .navbar, .subnavbar, .toolbar {
@@ -619,7 +623,6 @@ input#filtersubmit {
     border: none;
     width: 41px;
     height: 42px;
-    background: transparent url(style/images/search_icon.png) no-repeat scroll;
 }
 
 #filtersubmit{

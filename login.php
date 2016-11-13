@@ -42,18 +42,18 @@
     <script>
         window.location.href = 'duell.php?duell_id=<?php echo $duell_id; ?>';
     </script>
-    <?php
-        
-       
-    }
-        else
-        {
-            print_r("login falsch! bäh!");
+        <?php
+
+
         }
-        
-    }
-    
-?>
+            else
+            {
+                echo("login falsch! bäh!");
+            }
+
+        }
+
+    ?>
 
         <!DOCTYPE html>
         <html>
@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="formline">
-                        <?php
+                    <?php
                     if($verhalten == 0){
                     ?>
                             Bitte logge dich ein:
