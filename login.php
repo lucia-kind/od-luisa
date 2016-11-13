@@ -94,7 +94,19 @@
                     </div>
 
                     <div class="formline">
-
+                        <?php 
+                          
+                            if($abfrage == true){
+                                
+                            echo("Bitte geben sie die korrekten Zugangsdaten an.");
+                            } 
+                            else if($abfrage = NULL){
+                                
+                            echo("lololo");
+                            }  
+                        ?>
+                        
+                        
                     </div>
 
                     <div class="formline">
