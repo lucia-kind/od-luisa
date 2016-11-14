@@ -18,11 +18,12 @@
         <?php   
           session_start(); 
     if (isset($_SESSION["currentUser"])) { 
+       
         if(isset($_POST['SubmitButton'])){ //check if form was submitted
+             $duell_id = $_GET["duell_id"];
            $dauer = $_POST['dateTo'];
-           $duell_id = $_GET["duell_id"];
            $id = $_SESSION["currentUser"]['user_id'];
-           $query ="UPDATE duell SET `dauer`= '$dauer' WHERE id = $duell_id;";
+           $query ="UPDATE duell SET `dauer`= '$dauer', `url` = 'duellmode.php?duell_id=$duell_id' WHERE id = $duell_id;";
             get_result($query); 
         }
           

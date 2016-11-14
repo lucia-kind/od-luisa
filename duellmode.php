@@ -9,15 +9,19 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <?php 
         
-        $duell_id = 74;
+        session_start(); 
+    if (isset($_SESSION["currentUser"])) { 
         
-        if(isset($_GET["duell_id"])) {
         $duell_id = $_GET["duell_id"];
-        } else {
-          $duell_id = "not defined";
-        }
-        $sql = "SELECT namensliste FROM duell WHERE id = 74;";
+        $sql = "SELECT namensliste FROM duell WHERE id = $duell_id;";
         $duell = get_result($sql)->fetch_array();
+          
+        if (isset($_POST['hiddenForm'])) {
+            $winner = $_POST['winner']; 
+            $query = "INSERT INTO wins (name, duell_id) VALUES ($winner, $duell_id);";
+            get_result($query);
+        }
+
         
         ?>
         <script>
@@ -37,9 +41,10 @@
                         document.getElementById('name02').innerHTML = duell_array.shift();
                         i++;
                     } else {
-                        console.log("Halt! Du bist zu weit gegangen.");
                         var winner = document.getElementById('name01').innerHTML;
                         console.log(winner);
+                        document.getElementById("hidden_winner").value = winner;
+                        document.getElementById("hiddenForm").submit();
                     }
                 }
                 document.getElementById('name02').onclick = function () {
@@ -49,6 +54,10 @@
                     } else {
                         var winner = document.getElementById('name02').innerHTML;
                         console.log(winner);
+                        document.getElementById("hidden_winner").value = winner;
+                        document.getElementById("hiddenForm").submit();
+                        //speichere in hidden field submit und dann in db
+
                     }
 
                 }
@@ -77,12 +86,20 @@
                     <div id="name02" class="txt_two">
                         Name 02
                     </div>
+                    <form id="hiddenForm" method="post">
+                        <input type="hidden" id="hidden_winner" name="winner">
+                    </form>
                     <!--noch austauschen-->
                 </div>
             </div>
 
             <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
             <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+            <?php
+         } else {
+        echo "Bitte erst einloggen, <a href='login.php'>hier</a>.";
+    }
+        ?>
         </body>
 
     </html>
