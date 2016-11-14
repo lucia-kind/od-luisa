@@ -23,7 +23,7 @@
              $duell_id = $_GET["duell_id"];
            $dauer = $_POST['dateTo'];
            $id = $_SESSION["currentUser"]['user_id'];
-           $query ="UPDATE duell SET `dauer`= '$dauer', `url` = 'duellmode.php?duell_id=$duell_id' WHERE id = $duell_id;";
+           $query ="UPDATE duell SET `dauer`= '$dauer' WHERE id = $duell_id;";
             get_result($query); 
         }
           

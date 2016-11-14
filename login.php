@@ -30,19 +30,22 @@
          if($typ == "baby"){
             $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 1, $duell);";
             $result = get_result_last_id($query);
-             $duell_id = $result[0];
+            $duell_id = $result[0];
         } else if($typ == "hund"){
             $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 2, $duell);";
              $result = get_result_last_id($query);
              $duell_id = $result[0];
         }
+            $sql ="UPDATE duell SET `url` = 'duellmode.php?duell_id=$duell_id' WHERE id = $duell_id;";
+            get_result($sql);
+        //macht url zum teilen
        
          ?>
     <!--Weiterleitung Duell-->
     <script>
         window.location.href = 'duell.php?duell_id=<?php echo $duell_id; ?>';
     </script>
-        <?php
+    <?php
 
 
         }
@@ -92,20 +95,20 @@
                     <div class="registrieren topbar">
                         <div class="txt_topbar">Login</div>
                     </div>
-                    
+
                     <div class="formline">
 
                     </div>
-                    
+
                     <div class="formline">
-                    <?php
+                        <?php
                     if($verhalten == 0){
                     ?>
                             Bitte logge dich ein:
                             <br/>
                     </div>
 
-            
+
 
 
                     <div class="formline">
@@ -117,9 +120,9 @@
                         <input type="password" placeholder="Passwort" id="pw" name="password" />
                         <br/>
                     </div>
-                    
+
                     <div class="formline">
-                      <?php
+                        <?php
                         
                         if (isset($abfrage) && $abfrage == true){
                             echo("Tut uns leid deine Nutzerangaben sind nicht korrekt. Versuche es noch einmal.");
@@ -130,7 +133,7 @@
                     <div class="formline duell_link">
                         <a href="registrieren.php">registrieren</a>
                     </div>
-                    
+
                     <div class="formline">
 
                     </div>
