@@ -33,6 +33,7 @@
                 <div class="winner">
                     <?php $name = $_GET["name"]; 
                     echo $name;
+                      $duell_id = $_GET["duell_id"];
                     ?>
                 </div>
             </div>
@@ -42,7 +43,7 @@
             </div>
 
             <div class="duell_bottom">
-                <input type="submit" class="submit" value="Endresultat">
+                <input type="submit" class="submit" value="Endresultat" onclick="liste();">
             </div>
 
         </div>
@@ -51,14 +52,10 @@
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/js/framework7.min.js"></script>
         <script>
-            var myApp = new Framework7();
+            function liste() {
+                window.location.href = 'list-admin.php?duell_id=<?php echo $duell_id; ?>';
 
-            // Range Picker
-            var calendarRange = myApp.calendar({
-                input: '#calendar-range',
-                dateFormat: 'dd M yyyy',
-                rangePicker: true
-            });
+            }
         </script>
     </body>
 

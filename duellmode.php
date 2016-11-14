@@ -21,7 +21,7 @@
             $query = "INSERT INTO wins (win_name, duell_id) VALUES ('$winner', $duell_id);";
             get_result($query); ?>
         <script>
-            window.location.href = 'win.php?name=<?php echo $winner; ?>';
+            window.location.href = 'win.php?name=<?php echo $winner; ?>&duell_id=<?php echo $duell_id; ?>';
         </script>
 
         <?php
