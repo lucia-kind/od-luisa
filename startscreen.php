@@ -4,6 +4,7 @@
 	require_once("system/functions.php");
 
     //$result = get_dogs_name();
+    $filterTab = "<script>var filterClosed = false;</script>";
     $hauf ="";
     $anfang="";
     $nachname="";
@@ -17,6 +18,9 @@
      }
 
     if(isset($_POST['SubmitButton'])){ //check if form was submitted
+        
+        $filterTab = '<script>var filterClosed = true;</script>';
+        
         if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];//Achtung: wie berechnen wir die?
         //$hauf = $_POST['Haeufigkeit'];
         $anfang = $_POST["abuchstabe"];
@@ -58,13 +62,13 @@
         <script>
             //hier wird das Tinder initiert bzw nur ein name angezeigt
             //muss am Anfang stehen
-            $(document).ready(function () {
+            /* $(document).ready(function () {
                 // mache alle unsichtbar ausser das erste
                 $('.dogname').not(':first').addClass("invisible");
                 //gibt dem ersten die class visible
                 $('.dogname').first().addClass("visible");
-                //spreche den angezeigten über klasse namen an
-            });
+                //spreche den angezeigten über klasse namen an 
+            }); */
 
             //Variablen definieren
             var haufen;
@@ -124,10 +128,21 @@
                   $array = [];//leerer Array für Namen
                               //<!-- hier werden X Namen aufgelistet-->
                             
-               
+                $firstloop = true; 
+                            
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
+                             <?php if($firstloop) { ?>
 
-                                <div id="<?php echo $dog['id']?>" class="dogname">
+                                   <div id="<?php echo $dog['id']?>" class="dogname visible">
+
+
+                            <?php $firstloop = false; ?>
+                                 <?php  } else{ ?>
+                    
+                                    <div id="<?php echo $dog['id']?>" class="dogname invisible">
+                                  <?php  }  ?>
+
+                                
                                     <?php
                         array_push($array, $dog['name']);
                             //und im Array gespeichert
@@ -303,6 +318,9 @@
 
             <!--Tinder Ende -->
 
+            <!-- Filtervariable -->
+            <?php echo $filterTab; ?>
+        
             <!-- Filter kommt hoch beim laden -->
             <script>
                 $("#clickme").click(function (e) {
@@ -313,12 +331,10 @@
 
 
                 $(document).ready(function () {
-                    jQuery('#newsbox').delay(2000).slideDown();
-                    jQuery('.newsClose').click(function (e) {
-                        e.preventDefault();
-                        jQuery('#newsbox').slideUp();
-
-                    });
+                    if(!filterClosed) {
+                        jQuery('#newsbox').delay(2000).slideDown();                        
+                    }
+                   
                 });
             </script>
 
