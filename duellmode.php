@@ -16,10 +16,11 @@
         $sql = "SELECT namensliste FROM duell WHERE id = $duell_id;";
         $duell = get_result($sql)->fetch_array();
           
-        if (isset($_POST['hiddenForm'])) {
+        if (isset($_POST['winner'])) {
             $winner = $_POST['winner']; 
-            $query = "INSERT INTO wins (name, duell_id) VALUES ($winner, $duell_id);";
+            $query = "INSERT INTO wins (win_name, duell_id) VALUES ('$winner', $duell_id);";
             get_result($query);
+            print_r($query);
         }
 
         
@@ -56,6 +57,7 @@
                         console.log(winner);
                         document.getElementById("hidden_winner").value = winner;
                         document.getElementById("hiddenForm").submit();
+                        //document.hiddenForm.submit();
                         //speichere in hidden field submit und dann in db
 
                     }

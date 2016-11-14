@@ -66,7 +66,6 @@
                     <!-- page-content -->
                 </div>
 
-
                 <div class="formline duell_link">
                     <input type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
 
