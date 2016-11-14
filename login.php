@@ -6,7 +6,7 @@
     if(!isset($_SESSION["email"]) and !isset($_GET["page"])){
         $verhalten = 0;
     }
-    
+
     if(isset($_GET["page"]) && $_GET["page"] == "log") { 
         
     $email = strtolower($_POST["email"]);
@@ -48,7 +48,7 @@
         }
             else
             {
-                echo("login falsch! bäh!");
+                echo("");
             }
 
         }
@@ -92,23 +92,11 @@
                     <div class="registrieren topbar">
                         <div class="txt_topbar">Login</div>
                     </div>
-
+                    
                     <div class="formline">
-                        <?php 
-                          
-                            if($abfrage == true){
-                                
-                            echo("Bitte geben sie die korrekten Zugangsdaten an.");
-                            } 
-                            else if($abfrage = NULL){
-                                
-                            echo("lololo");
-                            }  
-                        ?>
-                        
-                        
-                    </div>
 
+                    </div>
+                    
                     <div class="formline">
                     <?php
                     if($verhalten == 0){
@@ -116,6 +104,9 @@
                             Bitte logge dich ein:
                             <br/>
                     </div>
+
+            
+
 
                     <div class="formline">
                         <input placeholder="E-Mail" type="email" id="email" name="email" />
@@ -126,15 +117,24 @@
                         <input type="password" placeholder="Passwort" id="pw" name="password" />
                         <br/>
                     </div>
-
+                    
+                    <div class="formline">
+                      <?php
+                        
+                        if (isset($abfrage) && $abfrage == true){
+                            echo("Tut uns leid deine Nutzerangaben sind nicht korrekt. Versuche es noch einmal.");
+                        }
+                        ?>
+                    </div>
 
                     <div class="formline duell_link">
                         <a href="registrieren.php">registrieren</a>
                     </div>
-
+                    
                     <div class="formline">
 
                     </div>
+
 
                     <div class="formline">
                         <input type="hidden" id="duell_list" name="duell_list">
@@ -166,14 +166,9 @@
         if ($verhalten == 1) {
         ?>
 
-                Du hast dich richtig eingeloggt und wirst nun weitergleitet ....
+                <h2></h2>
 
                 <?php
-        }
-        if ($verhalten == 2) {
-        ?>
-                    Du hast dich nicht richtig eingeloggt. <a href="login.php">Zurück</a>
-                    <?php
         }
         ?>
 
