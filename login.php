@@ -43,7 +43,8 @@
          ?>
     <!--Weiterleitung Duell-->
     <script>
-        window.location.href = 'duell.php?duell_id=<?php echo $duell_id; ?>';
+      location.href = 'http://google.com';
+       /*window.location = '/duell.php?duell_id=<?php echo $duell_id; ?>';*/
     </script>
     <?php
 

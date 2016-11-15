@@ -46,7 +46,7 @@
 
         <!-- Meta Information -->
         <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/style.css">
@@ -102,13 +102,8 @@
     </head>
 
     <body>
-        <!--<div class="mobileHide">
-            Diese Web-Applikation ist nur für Mobile Nutzer zugänglich.
-        </div> -->
-        <div id="orr">
-        </div>
-        
-        <div class="section"> <!-- add  mobileShow here -->
+
+        <div class="section">
             <div class="topbar">
 
                 <div class="txt_topbar">
@@ -158,9 +153,8 @@
                                 </div>
                                 <?php } ?>
                                     <?php echo $nachname;?>
-                        
-                            </div><!-- dogname visible-->
-                    </ul>
+                        </ul>
+                    </div>
                     <!-- container -->
                 </div>
                 <!-- demo -->
@@ -198,7 +192,7 @@
 
         <!-- STOP FILTER TIME -->
                             
-        <div id="newsbox"> <!-- add  mobileShow here -->
+        <div id="newsbox">
             <section id="object">
 
                 <!--FORMULAR ANFANG-->
@@ -220,8 +214,8 @@
                         </div>
 
                         <div class="formline">
-                            <input class="gender" type="radio" name="geschlecht" value="männlich">männlich
-                            <input class="gender" type="radio" name="geschlecht" value="weiblich">weiblich
+                            <input type="radio" name="geschlecht" value="männlich">männlich
+                            <input type="radio" name="geschlecht" value="weiblich">weiblich
                         </div>
 
                         <div class="formline">
@@ -246,15 +240,14 @@
                         <div class="formline">
                         </div>
 
-                        <div class="spacer">
+                        <div class="formline">
                         </div>
 
                         <div id="filter" style="padding: 10px;" class="tickbox">
                             <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
                         </div>
                         <!-- filter tickbox -->
-                        <!--geht nicht ohne-->
-                        <!-- <input style="padding-top: 5%; height: 35%;" type="image" src="img/tick.png" onclick="window.location.href='/startscreen.php';" /> -->
+                       
                     </div>
                     <!-- section -->
 
@@ -343,37 +336,6 @@
                    
                 });
             </script>
-            
-            <!-- verhindert das die App gedreht werden darf-->
-            <script>
-            jQuery(function($) {
-            $('body').bind('orientationchange', function(e) {
-                check_orientation();
-            });
-                
-            check_orientation();
-            });
-                var check_orientation = function() {
-                if(typeof window.orientation == 'undefined') {
-                    //not a mobile 
-                    return true;
-                }
-                if(Math.abs(window.orientation) != 0) {
-                    //landscape mode
-                    $('#orr').fadeIn().bind('touchstart', function(e) {
-                        e.preventDefault();
-                    });
-                    alert("Bitte drehen sie das Gerät");
-                    return false;
-                }
-                else {
-                    //portrait mode
-                    $('#orr').fadeOut();
-                    return true;
-                }
-            };
-            </script>
-            
 
     </body>
 
