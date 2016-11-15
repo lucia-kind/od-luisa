@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <title>Calendar</title>
+        <title>Luisa - Die Namensapp</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/css/framework7.ios.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/css/framework7.ios.colors.min.css">
         <link rel="stylesheet" href="css/style.css">
@@ -46,59 +46,45 @@
 
     <body>
         <form method="post">
+            
             <div class="section">
-
+                
                 <div class="registrieren topbar">
                     <div class="txt_topbar">Duell</div>
                 </div>
 
-
                 <div class="formline">
                 </div>
+                
                 <div class="formline">
                 </div>
 
-
                 <div class="formline">
-                    <div class="page-content">
                         <div class="list-block">
-                            <ul>
-                                <li>
-                                    <div style="background-color: #f0414b;" class="item-content">
-                                        
-                                        <input style="width: 45%; margin: 0 auto;" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="item-content date_picker"> 
+                                <input id="date" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
+                            </div>
                         </div>
-                    </div>
                     <!-- page-content -->
                 </div>
 
                 <div class="formline duell_link">
-
-
                 </div>
 
-
-
-
+                <div class="formline">
+                    <!--target-->
+                    <button id="copy-button" class="button_duell" data-clipboard-target="#post-shortlink">Link in Zwischenablage kopieren</button>
+                </div>
+                
                 <div class="formline">
                     <!--Link-->
                     <input id="post-shortlink" value="<?php echo $url_link['url']; ?>">
-                    <!--target-->
-                    <button id="copy-button" class="button_duell" data-clipboard-target="#post-shortlink">Link kopieren</button>
                 </div>
 
                 <div class="formline duell_link">
-
-
-
                 </div>
 
                 <div class="formline">
-
-
                 </div>
 
                 <div class="duell_bottom_einst">

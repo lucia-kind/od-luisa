@@ -538,6 +538,16 @@ input[type='submit']
     background-color: white;
 }
 
+.date_picker{
+    background-color: #f0414b; 
+    min-height: 70px!important;
+
+}
+
+#date{
+width: 45%; margin: 0 auto;
+}
+
 .dauer{
     padding-left: 2.5%;
 }
@@ -579,6 +589,13 @@ input[type='submit']
      height: 90%;
      font-size: 1em;
  }
+
+#post-shortlink{
+    width:100%;
+    font-size: 1em;
+    background-color: #D7FFF8;
+    height: 50%;
+}
 
  /* Liste */
 
