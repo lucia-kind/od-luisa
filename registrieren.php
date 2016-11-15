@@ -5,49 +5,50 @@ require_once("system/security.php");
 
 ?>
 
-<!DOCTYPE html> 
-<html> 
-<head>
-    
-    <title>Luisa - Die Namensapp</title>
+    <!DOCTYPE html>
+    <html>
 
-    <!-- Meta Information -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/filterSlide.css">
+        <title>Luisa - Die Namensapp</title>
 
-    <!-- SCRIPT -->
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <!-- Meta Information -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-    
-</head> 
-    
-<body>
-    
-    <form action="?register=1" method="post">
-        
-        <div class="section">
-    
-            <div class="registrieren topbar">
-                <div class="txt_topbar">Registrieren</div>
-            </div>
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/filterSlide.css">
 
-            <div class="formline">
-            </div>
+        <!-- SCRIPT -->
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
-            <div class="formline">
-                 Um ein Duell zu erstellen, musst du dich registrieren.
-            </div>
+        <!-- FONT -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
-            <div class="formline">
+    </head>
 
-                <?php
+    <body>
+
+        <form action="?register=1" method="post">
+
+            <div class="section">
+
+                <div class="registrieren topbar">
+                    <div class="txt_topbar">Registrieren</div>
+                </div>
+
+                <div class="formline">
+                </div>
+
+                <div class="formline">
+                    Um ein Duell zu erstellen, musst du dich registrieren.
+                </div>
+
+                <div class="formline">
+
+                    <?php
                 $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
                 if(isset($_GET['register'])) {
@@ -90,10 +91,40 @@ require_once("system/security.php");
 
                         $statement = $pdo->prepare("INSERT INTO user (email, password) VALUES (:email, :password)");
                         $result = $statement->execute(array('email' => $email, 'password' => $password_hash));
+                        
+        $abfrage = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
+        $ergebnis = get_result($abfrage)->fetch_assoc();               
+        $_SESSION["currentUser"]  = $ergebnis;
+          $id = $ergebnis['user_id'];
+        //Update duell
+        $duell = json_encode($_POST['duell_list']); 
+        $typ = $_POST['typ'];
+        
+         if($typ == "baby"){
+            $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 1, $duell);";
+            $result = get_result_last_id($query);
+            $duell_id = $result[0];
+        } else if($typ == "hund"){
+            $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 2, $duell);";
+             $result = get_result_last_id($query);
+             $duell_id = $result[0];
+        }
+            $sql ="UPDATE duell SET `url` = 'duellmode.php?duell_id=$duell_id' WHERE id = $duell_id;";
+            get_result($sql);
+        //macht url zum teilen
+                        
+
 
                         if($result) {		
-                            echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+                            echo 'erfolg.';
                             $showFormular = false;
+                              ?>
+                        <script>
+                            window.location = '/duell.php?duell_id=<?php echo $duell_id; ?>';
+                        </script>
+                        <?php
+                            
+                            
                         } else {
                             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
                         }
@@ -102,38 +133,56 @@ require_once("system/security.php");
 
                 if($showFormular) {
                 ?>
-            </div>
-    
-            <div class="formline">
-                <input type="email" placeholder="E-Mail" id="email" name="email">
-            </div>
+                </div>
 
-            <div class="formline">
-                <input type="password" placeholder="Passwort" name="password" id="pw">
-            </div>
+                <div class="formline">
+                    <input type="email" placeholder="E-Mail" id="email" name="email">
+                </div>
 
-            <div class="formline">
-                <input type="password" placeholder="Passwort wiederholen" name="password2" id="pw">
-            </div>
+                <div class="formline">
+                    <input type="password" placeholder="Passwort" name="password" id="pw">
+                </div>
 
-            <div class="formline duell_link">
-                <a href="login.php">einloggen</a>
-            </div>
+                <div class="formline">
+                    <input type="password" placeholder="Passwort wiederholen" name="password2" id="pw">
+                </div>
 
-            <div class="formline">
-            </div>
+                <div class="formline duell_link">
+                    <a href="login.php">einloggen</a>
+                </div>
 
-            <div class="duell_bottom">
-                <input type="submit" class="submit" value="Abschicken">
-            </div>
+                <div class="formline">
+                </div>
 
-        </div> <!-- section -->
-        
-    </form>
-    
-<?php
+                <div class="duell_bottom">
+                    <input type="submit" class="submit" value="Registrieren">
+                </div>
+                <div class="formline">
+                    <input type="hidden" id="duell_list" name="duell_list">
+                    <!--hier speichere ich die Namen für die Datenbank-->
+                    <input type="hidden" id="typ" name="typ">
+                    <!--hier speichere ich den typ für die Datenbank-->
+
+                </div>
+
+            </div>
+            <!-- section -->
+
+        </form>
+
+        <?php
 } //Ende von if($showFormular)
 ?>
- 
-</body>
-</html>
+            <script src="js/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var duell_names = localStorage.getItem("liked");
+                    $('#duell_list').val(duell_names);
+                    var typ_duell = localStorage.getItem("type");
+                    $('#typ').val(typ_duell);
+                });
+            </script>
+
+    </body>
+
+    </html>

@@ -3,7 +3,6 @@
 	require_once("system/security.php");
 	require_once("system/functions.php");
 
-    //$result = get_dogs_name();
     $filterTab = "<script>var filterClosed = false;</script>";
     $hauf ="";
     $anfang="";
@@ -22,7 +21,6 @@
         $filterTab = '<script>var filterClosed = true;</script>';
         
         if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];
-        //$hauf = $_POST['Haeufigkeit'];
         $anfang = $_POST["abuchstabe"];
         $nachname = $_POST["vname"];
         $max = $_POST["maxi"];
@@ -35,10 +33,6 @@
     //macht die Abfrage über die Datenbank
 
 ?>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
     <!DOCTYPE html>
     <html>
 
@@ -128,7 +122,6 @@
                                    echo $dog['name'];
                              //wird angezeigt
                         ?>
-<<<<<<< HEAD
                                                 </div>
                                                 <!-- ! div für entweder visible oder invisible -->
                                                 <?php }
@@ -140,14 +133,7 @@
                                                             <?php echo count($array)?>
                                                         </div>
 
-=======
-                                </div> <!-- ! div für entweder visible oder invisible -->
-                        <?php } ?>
-                                <?php echo $nachname;?>
-                               <div class="count"> <?php echo count($array)?></div>
-                            
-          
->>>>>>> origin/master
+
                         </ul>
                         </div>
                         <!-- container -->
