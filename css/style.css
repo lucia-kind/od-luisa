@@ -104,7 +104,7 @@
  
  .menu {
      position: relative;
-     height: 10%;
+     height: 15%;
      width: 100%;
      font-size: 1.5em;
  }
@@ -154,7 +154,7 @@
  .name_tinder {
      position: relative;
      padding-top: 10%;
-     height: 45%;
+     height: 40%;
      width: 100%;
      background-color: white;
      vertical-align: middle;
@@ -640,4 +640,38 @@ input#filtersubmit {
 #filtersubmit{
     padding: 5%;
     padding-top: 1%;
+}
+
+spacer{
+    height: 5%;
+}
+
+/* Mobile Only */
+
+.mobileShow {display: none;}
+/* Smartphone Portrait and Landscape */
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px){ .mobileShow { display: inline;}}
+
+.mobileHide { display: inline;}
+/* Smartphone Portrait and Landscape */
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px){  .mobileHide { display: none;}}
+
+
+/* Verhindert das drehen der Web App */ 
+
+#orr {	
+	display:none;
+	position:fixed;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background:rgba(0,0,0,0.75);
+	z-index:1999;
 }

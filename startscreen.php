@@ -46,7 +46,7 @@
 
         <!-- Meta Information -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/style.css">
@@ -102,8 +102,13 @@
     </head>
 
     <body>
-
-        <div class="section">
+        <!--<div class="mobileHide">
+            Diese Web-Applikation ist nur für Mobile Nutzer zugänglich.
+        </div> -->
+        <div id="orr">
+        </div>
+        
+        <div class="section"> <!-- add  mobileShow here -->
             <div class="topbar">
 
                 <div class="txt_topbar">
@@ -133,7 +138,7 @@
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
                              <?php if($firstloop) { ?>
 
-                                   <div id="<?php echo $dog['id']?>" class="dogname visible">
+                            <div id="<?php echo $dog['id']?>" class="dogname visible">
 
 
                             <?php $firstloop = false; ?>
@@ -153,8 +158,9 @@
                                 </div>
                                 <?php } ?>
                                     <?php echo $nachname;?>
-                        </ul>
-                    </div>
+                        
+                            </div><!-- dogname visible-->
+                    </ul>
                     <!-- container -->
                 </div>
                 <!-- demo -->
@@ -192,7 +198,7 @@
 
         <!-- STOP FILTER TIME -->
                             
-        <div id="newsbox">
+        <div id="newsbox"> <!-- add  mobileShow here -->
             <section id="object">
 
                 <!--FORMULAR ANFANG-->
@@ -337,6 +343,37 @@
                    
                 });
             </script>
+            
+            <!-- verhindert das die App gedreht werden darf-->
+            <script>
+            jQuery(function($) {
+            $('body').bind('orientationchange', function(e) {
+                check_orientation();
+            });
+                
+            check_orientation();
+            });
+                var check_orientation = function() {
+                if(typeof window.orientation == 'undefined') {
+                    //not a mobile 
+                    return true;
+                }
+                if(Math.abs(window.orientation) != 0) {
+                    //landscape mode
+                    $('#orr').fadeIn().bind('touchstart', function(e) {
+                        e.preventDefault();
+                    });
+                    alert("Bitte drehen sie das Gerät");
+                    return false;
+                }
+                else {
+                    //portrait mode
+                    $('#orr').fadeOut();
+                    return true;
+                }
+            };
+            </script>
+            
 
     </body>
 
