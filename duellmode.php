@@ -13,8 +13,14 @@
    
         $winner = "empty";
         $duell_id = $_GET["duell_id"];
-        $sql = "SELECT namensliste FROM duell WHERE id = $duell_id;";
+        $sql = "SELECT namensliste, dauer FROM duell WHERE id = $duell_id;";
         $duell = get_result($sql)->fetch_array();
+        
+        $duell_dauer= strtotime($duell['dauer']); //Enddatum              
+        $timefromdb = strtotime(date('Y-m-d'));
+        $timeleft = $duell_dauer-$timefromdb;
+        $daysleft = round((($timeleft/24)/60)/60); //runde auf Tage
+       
           
         if (isset($_POST['winner'])) {
             $winner = $_POST['winner']; 
@@ -83,21 +89,31 @@
                     <div class="topbar">
                         <div class="txt_topbar">Duell</div>
                     </div>
-                    <div class="select_duellone">
-                        <div id="name01" class="txt_one">
-                            Name 01
+                    <?php 
+                    if ($daysleft > 0) { ?>
+                        <div class="select_duellone">
+                            <div id="name01" class="txt_one">
+                                Name 01
+                            </div>
+                            <!--noch austauschen-->
                         </div>
-                        <!--noch austauschen-->
-                    </div>
-                    <div class="select_duelltwo">
-                        <div id="name02" class="txt_two">
-                            Name 02
+                        <div class="select_duelltwo">
+                            <div id="name02" class="txt_two">
+                                Name 02
+                            </div>
+                            <form id="hiddenForm" method="post">
+                                <input type="hidden" id="hidden_winner" name="winner">
+                            </form>
+                            <!--noch austauschen-->
                         </div>
-                        <form id="hiddenForm" method="post">
-                            <input type="hidden" id="hidden_winner" name="winner">
-                        </form>
-                        <!--noch austauschen-->
-                    </div>
+                        <?php } else {
+                        ?>
+                            <div class="txt_one">
+                                <?php echo "Duell vorbei!"; //falls daysleft 0 ist
+                        echo "<br>Zum Endresultat: <a href='list.php?duell_id=".$duell_id."'>hier</a>"; ?>
+                            </div>
+                            <?php }
+                ?>
                 </div>
 
                 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>

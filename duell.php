@@ -46,25 +46,25 @@
 
     <body>
         <form method="post">
-            
+
             <div class="section">
-                
+
                 <div class="registrieren topbar">
                     <div class="txt_topbar">Duell</div>
                 </div>
 
                 <div class="formline">
                 </div>
-                
+
                 <div class="formline">
                 </div>
 
                 <div class="formline">
-                        <div style="margin: 0!important;"class="list-block">
-                            <div class="item-content date_picker"> 
-                                <input id="date" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
-                            </div>
+                    <div style="margin: 0!important;" class="list-block">
+                        <div class="item-content date_picker">
+                            <input id="date" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
                         </div>
+                    </div>
                     <!-- page-content -->
                 </div>
 
@@ -75,7 +75,7 @@
                     <!--target-->
                     <button id="copy-button" class="button_duell" data-clipboard-target="#post-shortlink">Link in Zwischenablage kopieren</button>
                 </div>
-                
+
                 <div class="formline">
                     <!--Link-->
                     <input id="post-shortlink" value="<?php echo $url_link['url']; ?>">
