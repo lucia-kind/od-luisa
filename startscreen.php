@@ -35,6 +35,10 @@
     //macht die Abfrage über die Datenbank
 
 ?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     <!DOCTYPE html>
     <html>
 
@@ -124,6 +128,7 @@
                                    echo $dog['name'];
                              //wird angezeigt
                         ?>
+<<<<<<< HEAD
                                                 </div>
                                                 <!-- ! div für entweder visible oder invisible -->
                                                 <?php }
@@ -135,6 +140,14 @@
                                                             <?php echo count($array)?>
                                                         </div>
 
+=======
+                                </div> <!-- ! div für entweder visible oder invisible -->
+                        <?php } ?>
+                                <?php echo $nachname;?>
+                               <div class="count"> <?php echo count($array)?></div>
+                            
+          
+>>>>>>> origin/master
                         </ul>
                         </div>
                         <!-- container -->
