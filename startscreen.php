@@ -30,29 +30,11 @@
         if(isset($_POST["geschlecht"])) {
            $geschlecht = $_POST['geschlecht'];
             }
-        //update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
     }
     $result = update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
     //macht die Abfrage über die Datenbank
 
 ?>
-
-      <?php
-      while (list ($key, $val) = each ($array) )  {
-          //für jeden namen im array
-          $i = 0;
-          $number = 0;
-          while ($i < count($array)) {
-              //wenn i kleiner herzensarray
-          if($val == $array[$i]){
-              //falls der name dem namen in den herzen entspricht
-              $number = $array[$i];
-               $i++;
-            
-          } else { $i++; }
-          }}
-    ?>
-
     <!DOCTYPE html>
     <html>
 
@@ -94,7 +76,6 @@
             var geschlecht = <?php echo json_encode($geschlecht); ?>;
             var type = <?php echo json_encode($type); ?>;
             console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht + "typ:" + type);
-
         </script>
 
     </head>
@@ -130,24 +111,30 @@
                 
                             
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
-                    <?php if($firstloop) { ?>
-                        <div id="<?php echo $dog['id']?>" class="dogname visible">
-                            <?php $firstloop = false; ?>
-                                <?php  } else{ ?>
-                                <div id="<?php echo $dog['id']?>" class="dogname invisible">
-                                <?php  }  ?>
+                                <?php if($firstloop) { ?>
+                                    <div id="<?php echo $dog['id']?>" class="dogname visible">
+                                        <?php $firstloop = false; ?>
+                                            <?php  } else{ ?>
+                                                <div id="<?php echo $dog['id']?>" class="dogname invisible">
+                                                    <?php  }  ?>
 
-                        <?php
+                                                        <?php
                         array_push($array, $dog['name']);
                             //und im Array gespeichert
                                    echo $dog['name'];
                              //wird angezeigt
                         ?>
-                                </div> <!-- ! div für entweder visible oder invisible -->
-                        <?php } ?>
-                                <?php echo $nachname;?>
-                               <div class="count"> <?php echo count($array)?></div>
-          
+                                                </div>
+                                                <!-- ! div für entweder visible oder invisible -->
+                                                <?php }
+                                        
+                                        ?>
+                                                    <?php echo $nachname;?>
+                                                        <div class="count">
+                                                            <span id="aktuell"></span> /
+                                                            <?php echo count($array)?>
+                                                        </div>
+
                         </ul>
                         </div>
                         <!-- container -->
@@ -259,80 +246,74 @@
             <script src="http://malsup.github.com/jquery.form.js"></script>
             <!-- TINDER CODE-->
 
+            <script>
+                //der aktuelle Name
+                //achtung, später nur id übergeben
+                var namensArray = <?php echo json_encode($array); ?>;
+                console.log(namensArray);
 
-            <?php 
-        //like und dislike mit php?
-        
-        
-        ?>
+                var disliked = [];
+                var liked = [];
+                var clicks = 1;
+                document.getElementById('aktuell').innerHTML = clicks;
 
+                //Tinderfunktionen
+                function like() { //parameter übergeben
+                    liked.push(namensArray[0]);
+                    namensArray.shift();
+
+                    console.log("liked:" + liked);
+                    //nächster Name
+                    $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
+                    $("div.container div.visible").first().addClass("shown").removeClass("visible");
+                    clicks = clicks + 1;
+                    document.getElementById('aktuell').innerHTML = clicks;
+                }
+
+                function dislike() {
+                    disliked.push(namensArray[0]);
+                    namensArray.shift();
+
+                    console.log("disliked:" + disliked);
+                    //nächster Name
+                    $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
+                    $("div.container div.visible").first().addClass("shown").removeClass("visible");
+                    clicks = clicks + 1;
+                    document.getElementById('aktuell').innerHTML = clicks;
+
+                }
+                //Tinderfunktionen Ende
+
+                //übergang zum Duell
+                var typ = "<?php echo $type; ?>";
+
+                $("#duell_start").click(function () {
+                    localStorage.setItem("liked", JSON.stringify(liked));
+                    localStorage.setItem("type", typ);
+                });
+                //übergang zum Duell Ende
+            </script>
+
+            <!--Tinder Ende -->
+
+            <!-- Filtervariable -->
+            <?php echo $filterTab; ?>
+
+                <!-- Filter kommt hoch beim laden -->
                 <script>
-                    //der aktuelle Name
-                    //achtung, später nur id übergeben
-                    var namensArray = <?php echo json_encode($array); ?>;
-                    console.log(namensArray);
-
-                    var disliked = [];
-                    var liked = [];
-
-                    //Tinderfunktionen
-                    function like() { //parameter übergeben
-                        liked.push(namensArray[0]);
-                        namensArray.shift();
-
-                        console.log("liked:" + liked);
-                        //nächster Name
-                        $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
-                        $("div.container div.visible").first().addClass("shown").removeClass("visible");
-                    }
-
-                    function dislike() {
-                        disliked.push(namensArray[0]);
-                        namensArray.shift();
-
-                        console.log("disliked:" + disliked);
-                        //nächster Name
-                        $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
-                        $("div.container div.visible").first().addClass("shown").removeClass("visible");
-
-                    }
-                    //Tinderfunktionen Ende
-
-                    //übergang zum Duell
-                    var typ = "<?php echo $type; ?>";
-
-                    $("#duell_start").click(function () {
-                        localStorage.setItem("liked", JSON.stringify(liked));
-                        localStorage.setItem("type", typ);
+                    $("#clickme").click(function (e) {
+                        e.preventDefault();
+                        jQuery('#newsbox').slideDown();
+                        // Animation complete.
                     });
 
+                    $(document).ready(function () {
+                        if (!filterClosed) {
+                            jQuery('#newsbox').delay(500).slideDown();
+                        }
 
-
-                    //übergang zum Duell Ende
-                    console.log("<?php echo $array[0]; ?>"); //der erste name des Arrays
+                    });
                 </script>
-
-                <!--Tinder Ende -->
-
-                <!-- Filtervariable -->
-                <?php echo $filterTab; ?>
-
-                    <!-- Filter kommt hoch beim laden -->
-                    <script>
-                        $("#clickme").click(function (e) {
-                            e.preventDefault();
-                            jQuery('#newsbox').slideDown();
-                            // Animation complete.
-                        });
-
-
-                        $(document).ready(function () {
-                            if (!filterClosed) {
-                                jQuery('#newsbox').delay(2000).slideDown();
-                            }
-
-                        });
-                    </script>
 
     </body>
 
