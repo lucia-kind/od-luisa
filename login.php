@@ -43,8 +43,7 @@
          ?>
     <!--Weiterleitung Duell-->
     <script>
-      location.href = 'http://google.com';
-       /*window.location = '/duell.php?duell_id=<?php echo $duell_id; ?>';*/
+      window.location = '/duell.php?duell_id=<?php echo $duell_id; ?>';
     </script>
     <?php
 
@@ -149,7 +148,7 @@
                     </div>
 
                     <div class="duell_bottom">
-                        <input type="submit" id="submit" class="submit" name="einloggen" />
+                        <input type="submit" id="submit" class="submit" name="einloggen" value="Abschicken"> />
                     </div>
                 </div>
                 <!-- section -->

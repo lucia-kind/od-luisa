@@ -21,10 +21,10 @@
         
         $filterTab = '<script>var filterClosed = true;</script>';
         
-        if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];//Achtung: wie berechnen wir die?
+        if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];
         //$hauf = $_POST['Haeufigkeit'];
         $anfang = $_POST["abuchstabe"];
-        $nachname = $_POST["vname"];//What tun wir damit?
+        $nachname = $_POST["vname"];
         $max = $_POST["maxi"];
         $min = $_POST["mini"];
         if(isset($_POST["geschlecht"])) {
@@ -89,14 +89,6 @@
             var type = <?php echo json_encode($type); ?>;
             console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht + "typ:" + type);
 
-
-            //AJAX FORM
-            /*$(document).ready(function () {
-                // bind 'myForm' and provide a simple callback function 
-                $('#myForm').ajaxForm(function () {
-                    alert("Filter angewendet.");
-                });
-            });*/
         </script>
 
     </head>
@@ -129,17 +121,20 @@
                               //<!-- hier werden X Namen aufgelistet-->
                             
                 $firstloop = true; 
+                
                             
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
                              <?php if($firstloop) { ?>
 
                             <div id="<?php echo $dog['id']?>" class="dogname visible">
+                               
 
 
                             <?php $firstloop = false; ?>
                                  <?php  } else{ ?>
                     
                                     <div id="<?php echo $dog['id']?>" class="dogname invisible">
+                                        
                                   <?php  }  ?>
 
                                 
@@ -153,6 +148,20 @@
                                 </div>
                                 <?php } ?>
                                     <?php echo $nachname;?>
+                               <div class="count"> <?php echo count($array)?></div>
+                                    <?php 
+                                      while (list ($key, $val) = each ($duell_array) )  {
+                                      //für jeden namen im duell_array
+                                      $i = 0;
+                                      $number = 0;
+                                      while ($i < count($hearts)) {
+                                          //wenn i kleiner herzensarray
+                                      if($val == $hearts[$i][0]){
+                                          //falls der name dem namen in den herzen entspricht
+                                          $number = $hearts[$i][1];
+                                           $i++;
+
+                                      } else { $i++; } ?>
                         </ul>
                     </div>
                     <!-- container -->
