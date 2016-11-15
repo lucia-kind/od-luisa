@@ -37,6 +37,22 @@
 
 ?>
 
+      <?php
+      while (list ($key, $val) = each ($array) )  {
+          //für jeden namen im array
+          $i = 0;
+          $number = 0;
+          while ($i < count($array)) {
+              //wenn i kleiner herzensarray
+          if($val == $array[$i]){
+              //falls der name dem namen in den herzen entspricht
+              $number = $array[$i];
+               $i++;
+            
+          } else { $i++; }
+          }}
+    ?>
+
     <!DOCTYPE html>
     <html>
 
@@ -114,62 +130,24 @@
                 
                             
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
-                                <?php if($firstloop) { ?>
-
-                                    <div id="<?php echo $dog['id']?>" class="dogname visible">
-
-
-<<<<<<< HEAD
-                            <div id="<?php echo $dog['id']?>" class="dogname visible">
-                               
-=======
-                                        <?php $firstloop = false; ?>
-                                            <?php  } else{ ?>
->>>>>>> origin/master
-
-                                                <div id="<?php echo $dog['id']?>" class="dogname invisible">
-                                                    <?php  }  ?>
-
-<<<<<<< HEAD
+                    <?php if($firstloop) { ?>
+                        <div id="<?php echo $dog['id']?>" class="dogname visible">
                             <?php $firstloop = false; ?>
-                                 <?php  } else{ ?>
-                    
-                                    <div id="<?php echo $dog['id']?>" class="dogname invisible">
-                                        
-                                  <?php  }  ?>
-=======
->>>>>>> origin/master
+                                <?php  } else{ ?>
+                                <div id="<?php echo $dog['id']?>" class="dogname invisible">
+                                <?php  }  ?>
 
-                                                        <?php
+                        <?php
                         array_push($array, $dog['name']);
                             //und im Array gespeichert
                                    echo $dog['name'];
                              //wird angezeigt
                         ?>
-
-<<<<<<< HEAD
-                                </div>
-                                <?php } ?>
-                                    <?php echo $nachname;?>
+                                </div> <!-- ! div für entweder visible oder invisible -->
+                        <?php } ?>
+                                <?php echo $nachname;?>
                                <div class="count"> <?php echo count($array)?></div>
-                                    <?php 
-                                      while (list ($key, $val) = each ($duell_array) )  {
-                                      //für jeden namen im duell_array
-                                      $i = 0;
-                                      $number = 0;
-                                      while ($i < count($hearts)) {
-                                          //wenn i kleiner herzensarray
-                                      if($val == $hearts[$i][0]){
-                                          //falls der name dem namen in den herzen entspricht
-                                          $number = $hearts[$i][1];
-                                           $i++;
-
-                                      } else { $i++; } ?>
-=======
-                                                </div>
-                                                <?php } ?>
-                                                    <?php echo $nachname;?>
->>>>>>> origin/master
+          
                         </ul>
                         </div>
                         <!-- container -->
