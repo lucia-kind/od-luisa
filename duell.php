@@ -27,17 +27,30 @@
         }
        
         if(isset($_POST['SubmitButton'])){ //check if form was submitted
-             $duell_id = $_GET["duell_id"];
-           $dauer = $_POST['dateTo'];
+            $duell_id = $_GET["duell_id"];
+                              
+                    
+            $dauer = $_POST['dateTo'];
+            $duell_dauer = strtotime($dauer);
+            $currenttime = strtotime(date('Y-m-d'));
+            $timeleft = $duell_dauer-$currenttime;
+            $daysleft = round((($timeleft/24)/60)/60); //runde auf Tage 
            $id = $_SESSION["currentUser"]['user_id'];
-           $query ="UPDATE duell SET `dauer`= '$dauer' WHERE id = $duell_id;";
-            get_result($query); 
-            
-            ?>
+            if($daysleft < 1) { ?>
             <script>
-                window.location.href = 'duellmode.php?duell_id=<?php echo $duell_id; ?>';
+                alert(<?php echo $daysleft ?>);
             </script>
             <?php
+            } else {
+           $query ="UPDATE duell SET `dauer`= '$dauer' WHERE id = $duell_id;";
+            get_result($query); 
+           
+            ?>
+                <script>
+                    window.location.href = 'duellmode.php?duell_id=<?php echo $duell_id; ?>';
+                </script>
+                <?php  
+            }
         }
           
         ?>
