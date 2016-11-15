@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="formline">
-                        <div class="list-block">
+                        <div style="margin: 0!important;"class="list-block">
                             <div class="item-content date_picker"> 
                                 <input id="date" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
                             </div>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="duell_bottom_einst">
-                    <input type="submit" id="SubmitButton" name="SubmitButton" value="Duell starten" />
+                    <input class="duell_starten" type="submit" id="SubmitButton" name="SubmitButton" value="Duell starten" />
                 </div>
 
             </div>

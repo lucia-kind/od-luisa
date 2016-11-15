@@ -523,6 +523,14 @@
     height: 100%;
 }
 
+.duell_starten{
+    font-size: 1em;
+    color: white;
+    width: 100%;
+    height: 100%;
+    background-color:#68D2C4;
+}
+
 input[type='submit']
 {
    -webkit-appearance: none;
@@ -541,7 +549,6 @@ input[type='submit']
 .date_picker{
     background-color: #f0414b; 
     min-height: 70px!important;
-
 }
 
 #date{
@@ -563,7 +570,7 @@ width: 45%; margin: 0 auto;
  .duell_bottom_einst {
      position: relative;
      padding-top: 1%;
-     height: 9%;
+     height: 10%;
      width: 100%;
      font-size: 1.2em;
      background-color: #68d2c4;
