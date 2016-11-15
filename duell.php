@@ -59,13 +59,14 @@
                 </div>
 
 
-                <div class="dauer">
+                <div class="formline">
                     <div class="page-content">
                         <div class="list-block">
                             <ul>
                                 <li>
-                                    <div style="width: 92.5%; background-color: #f0414b;" class="item-content">
-                                        <input type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
+                                    <div style="background-color: #f0414b;" class="item-content">
+                                        
+                                        <input style="width: 45%; margin: 0 auto;" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
                                     </div>
                                 </li>
                             </ul>

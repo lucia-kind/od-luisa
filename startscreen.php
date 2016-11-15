@@ -37,22 +37,6 @@
 
 ?>
 
-      <?php
-      while (list ($key, $val) = each ($array) )  {
-          //für jeden namen im array
-          $i = 0;
-          $number = 0;
-          while ($i < count($array)) {
-              //wenn i kleiner herzensarray
-          if($val == $array[$i]){
-              //falls der name dem namen in den herzen entspricht
-              $number = $array[$i];
-               $i++;
-            
-          } else { $i++; }
-          }}
-    ?>
-
     <!DOCTYPE html>
     <html>
 
@@ -147,6 +131,7 @@
                         <?php } ?>
                                 <?php echo $nachname;?>
                                <div class="count"> <?php echo count($array)?></div>
+                            
           
                         </ul>
                         </div>
