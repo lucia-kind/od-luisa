@@ -220,8 +220,8 @@
                         </div>
 
                         <div class="formline">
-                            <input type="radio" name="geschlecht" value="männlich">männlich
-                            <input type="radio" name="geschlecht" value="weiblich">weiblich
+                            <input class="gender" type="radio" name="geschlecht" value="männlich">männlich
+                            <input class="gender" type="radio" name="geschlecht" value="weiblich">weiblich
                         </div>
 
                         <div class="formline">
@@ -246,7 +246,7 @@
                         <div class="formline">
                         </div>
 
-                        <div class="formline">
+                        <div class="spacer">
                         </div>
 
                         <div id="filter" style="padding: 10px;" class="tickbox">

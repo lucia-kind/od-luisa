@@ -398,7 +398,7 @@
  
  .tickbox {
      position: relative;
-     height: 10%;
+     height: 15%;
      width: 100%;
      font-size: 1.2em;
      background-color: #f0414b;
@@ -642,8 +642,13 @@ input#filtersubmit {
     padding-top: 1%;
 }
 
-spacer{
+.spacer{
+    position: relative;
+    background-color: #ffffff;
     height: 5%;
+    width: 90%;
+    padding-left: 20px;
+    font-size: 1.2em;
 }
 
 /* Mobile Only */
