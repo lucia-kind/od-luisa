@@ -44,29 +44,50 @@
                             <a style="color:black; background-color:#D7FFF8;" href="#" class="action1">teilen</a>
                         </div>
                     </li>
+                    <!--hier kommt php -->
+                    <!-- Listenansicht -->
+                    <?php 
+                        $duell_id = $_GET["duell_id"];
+                    //aus der url
+                        $sql = "SELECT namensliste FROM duell WHERE id = $duell_id;";
+                    //hole alle namen im duell
+                        $duell = get_result($sql)->fetch_array();
+                    //als array
+                        $duell_array = json_decode($duell['namensliste']);
+                    //erkenne den array durch json_decode
+                        $query = "SELECT win_name, COUNT(win_name) as herzen FROM wins WHERE duell_id = $duell_id GROUP BY win_name;";
+                    //finde alle gewinnernamen zu dieser duell id und groupiere sie
+                        $hearts_result = get_result($query);
+                        $hearts = mysqli_fetch_all($hearts_result);
+
+      
+      while (list ($key, $val) = each ($duell_array) )  {
+          //für jeden namen im duell_array
+          $i = 0;
+          $number = 0;
+          while ($i < count($hearts)) {
+              //wenn i kleiner herzensarray
+          if($val == $hearts[$i][0]){
+              //falls der name dem namen in den herzen entspricht
+              $number = $hearts[$i][1];
+               $i++;
+            
+          } else { $i++; }
+          }
+        
+          echo "<li class='swipeout'><div class='swipeout-content item-content'><div class='item-media'>".$val."</div><div class='item-after'><span class='badge bg-green'>".$number."</span></div></div><div class='swipeout-actions-right'><a href='#' class='swipeout-delete'> <img style='padding: 0px 60px 0px 0px; height: 60%;' src='img/trash.svg'></a></div></li>"; 
+      }
+                        ?>
+
+                        <!-- Listenansicht Ende -->
                 </ul>
             </div>
         </div>
-        <!--hier kommt php -->
-        <!-- Listenansicht -->
-        <?php 
-                       $duell_id = $_GET["duell_id"];
-                        $sql = "SELECT namensliste FROM duell WHERE id = $duell_id;";
-                        $duell = get_result($sql)->fetch_array();
-                        ?>
-            <script>
-                var duell_array = <?php print_r($duell['namensliste']); ?>;
-                duell_array.forEach(makeList);
-                //php while schlaufe und if name = gewinnername dann
-                function makeList(item, index) {
-                    $("ul").append("<li class='swipeout'><div class='swipeout-content item-content'><div class='item-media'>" + item + "</div><div class='item-after'><span class='badge bg-green'>5</span></div></div><div class='swipeout-actions-right'><a href='#' class='swipeout-delete'> <img style='padding: 0px 60px 0px 0px; height: 60%;' src='img/trash.svg'></a></div></li>");
-                }
-            </script>
-            <!-- Listenansicht Ende -->
-            <!-- Path to Framework7 Library JS-->
-            <script type="text/javascript" src="js/framework7.min.js"></script>
-            <!-- Path to your app js-->
-            <script type="text/javascript" src="js/my-app.js"></script>
+
+        <!-- Path to Framework7 Library JS-->
+        <script type="text/javascript" src="js/framework7.min.js"></script>
+        <!-- Path to your app js-->
+        <script type="text/javascript" src="js/my-app.js"></script>
 
     </body>
 
