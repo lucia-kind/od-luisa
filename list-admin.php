@@ -75,12 +75,15 @@
           } else { $i++; }
           }
         
-          echo "<li class='swipeout'><div class='swipeout-content item-content'><div class='item-media'>".$val."</div><div class='item-after'><span class='badge bg-green'>".$number."</span></div></div><div class='swipeout-actions-right'><a href='#' class='swipeout-delete'> <img style='padding: 0px 60px 0px 0px; height: 60%;' src='img/trash.svg'></a></div></li>"; 
+          echo "<li class='swipeout'><div class='swipeout-content item-content'><div class='item-media'>".$val."</div><div class='item-after'><span class='badge bg-green'>".$number."</span></div></div><div class='swipeout-actions-right'><a href='#' class='swipeout-delete' id='".$key."'> <img style='padding: 0px 60px 0px 0px; height: 60%;' src='img/trash.svg'></a></div></li>"; 
       }
                         ?>
 
                         <!-- Listenansicht Ende -->
                 </ul>
+                <form id="hiddenForm" method="post">
+                    <input type="hidden" id="delete_id" name="name_delete">
+                </form>
             </div>
         </div>
 
@@ -88,6 +91,41 @@
         <script type="text/javascript" src="js/framework7.min.js"></script>
         <!-- Path to your app js-->
         <script type="text/javascript" src="js/my-app.js"></script>
+        <script>
+            //var list = document.getElementsByClassName("swipeout-delete").onclick = alert("!");
+
+            window.onload = function () {
+                var anchors = document.getElementsByClassName('swipeout-delete');
+                for (var i = 0; i < anchors.length; i++) {
+                    var anchor = anchors[i];
+                    anchor.onclick = function () {
+                        document.getElementById("delete_id").value = this.id;
+                        document.getElementById("hiddenForm").submit();
+
+                    }
+                }
+            }
+        </script>
+        <?php
+        if (isset($_POST['name_delete'])) {
+            $delete_id = $_POST['name_delete']; 
+            //echo $delete_id;
+            unset($duell_array[$delete_id]);
+            //print_r($duell_array);
+            $update_duell = json_encode($duell_array);
+            //print_r($update_duell);
+            $update_query = "UPDATE duell 
+                            SET namensliste = '$update_duell'  
+                            WHERE id = $duell_id;";
+            get_result($update_query);
+            ?>
+
+            <script>
+                window.location.href = 'list-admin.php?duell_id=<?php echo $duell_id; ?>';
+            </script>
+            <?
+            
+        } ?>
 
     </body>
 
