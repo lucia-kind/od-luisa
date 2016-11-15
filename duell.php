@@ -18,6 +18,13 @@
         <?php   
           session_start(); 
     if (isset($_SESSION["currentUser"])) { 
+        if(isset($_GET['duell_id'])){
+            $duell_id = $_GET["duell_id"];
+            $sql_link = "SELECT url FROM duell WHERE id = $duell_id;";
+            $url = get_result($sql_link);
+            $url_link = mysqli_fetch_assoc($url);
+            
+        }
        
         if(isset($_POST['SubmitButton'])){ //check if form was submitted
              $duell_id = $_GET["duell_id"];
@@ -25,14 +32,15 @@
            $id = $_SESSION["currentUser"]['user_id'];
            $query ="UPDATE duell SET `dauer`= '$dauer' WHERE id = $duell_id;";
             get_result($query); 
-        }
-          
-        ?>
-
-
+            
+            ?>
             <script>
                 window.location.href = 'duellmode.php?duell_id=<?php echo $duell_id; ?>';
             </script>
+            <?php
+        }
+          
+        ?>
 
     </head>
 
@@ -57,7 +65,7 @@
                             <ul>
                                 <li>
                                     <div style="width: 92.5%; background-color: #f0414b;" class="item-content">
-                                        <input style="padding-left:42%;" name="dauer" type="text" placeholder="Dauer" readonly id="calendar-range" value="">
+                                        <input type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
                                     </div>
                                 </li>
                             </ul>
@@ -67,7 +75,7 @@
                 </div>
 
                 <div class="formline duell_link">
-                    <input type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
+
 
                 </div>
 
@@ -75,15 +83,21 @@
 
 
                 <div class="formline">
-                    <button class="button_duell">Link teilen</button>
-
+                    <!--Link-->
+                    <input id="post-shortlink" value="<?php echo $url_link['url']; ?>">
+                    <!--target-->
+                    <button id="copy-button" class="button_duell" data-clipboard-target="#post-shortlink">Link kopieren</button>
                 </div>
 
                 <div class="formline duell_link">
 
+
+
                 </div>
 
                 <div class="formline">
+
+
                 </div>
 
                 <div class="duell_bottom_einst">
@@ -95,17 +109,13 @@
 
         <!-- section -->
 
+        <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/js/framework7.min.js"></script>
+
         <script>
-            var myApp = new Framework7();
-
-            // Range Picker
-            var calendarRange = myApp.calendar({
-                input: '#calendar-range',
-                dateFormat: 'dd M yyyy',
-                rangePicker: false
-            });
+            (function () {
+                new Clipboard('#copy-button');
+            })();
         </script>
         <?php
          } else {
