@@ -43,7 +43,7 @@
          ?>
     <!--Weiterleitung Duell-->
     <script>
-        window.location = 'duell.php?duell_id=<?php echo $duell_id; ?>';
+        window.location.href = 'duell.php?duell_id=<?php echo $duell_id; ?>';
     </script>
     <?php
 
