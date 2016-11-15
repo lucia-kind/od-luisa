@@ -155,7 +155,7 @@
  .name_tinder {
      position: relative;
      padding-top: 10%;
-     height: 40%;
+     height: 30%;
      width: 100%;
      background-color: white;
      vertical-align: middle;
@@ -339,6 +339,12 @@
      padding-left: 20px;
      font-size: 1.2em;
  }
+
+ .count{
+    width: 80%;
+    text-align: right;
+    height: 10%;
+}
  
  .dauer {
      position: relative;

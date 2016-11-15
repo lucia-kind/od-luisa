@@ -128,11 +128,6 @@
                                         
                                         ?>
                                                     <?php echo $nachname;?>
-                                                        <div class="count">
-                                                            <span id="aktuell"></span> /
-                                                            <?php echo count($array)?>
-                                                        </div>
-
 
                         </ul>
                         </div>
@@ -141,6 +136,12 @@
                     <!-- demo -->
                 </div>
                 <!-- name_tinder -->
+                
+                <div class="count">
+                    <span id="aktuell"></span> /
+                    <?php echo count($array)?>
+                </div>
+                
                 <div class="hearts">
                     <!--<button type="button" id="button">click me </button>-->
                     <!--invisible versuch ende-->
