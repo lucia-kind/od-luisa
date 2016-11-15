@@ -60,16 +60,6 @@
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
         <script>
-            //hier wird das Tinder initiert bzw nur ein name angezeigt
-            //muss am Anfang stehen
-            /* $(document).ready(function () {
-                // mache alle unsichtbar ausser das erste
-                $('.dogname').not(':first').addClass("invisible");
-                //gibt dem ersten die class visible
-                $('.dogname').first().addClass("visible");
-                //spreche den angezeigten über klasse namen an 
-            }); */
-
             //Variablen definieren
             var haufen;
             var nachname;
@@ -131,211 +121,213 @@
                 $firstloop = true; 
                             
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
-                             <?php if($firstloop) { ?>
+                                <?php if($firstloop) { ?>
 
-                            <div id="<?php echo $dog['id']?>" class="dogname visible">
+                                    <div id="<?php echo $dog['id']?>" class="dogname visible">
 
 
-                            <?php $firstloop = false; ?>
-                                 <?php  } else{ ?>
-                    
-                                    <div id="<?php echo $dog['id']?>" class="dogname invisible">
-                                  <?php  }  ?>
+                                        <?php $firstloop = false; ?>
+                                            <?php  } else{ ?>
 
-                                
-                                    <?php
+                                                <div id="<?php echo $dog['id']?>" class="dogname invisible">
+                                                    <?php  }  ?>
+
+
+                                                        <?php
                         array_push($array, $dog['name']);
                             //und im Array gespeichert
                                    echo $dog['name'];
                              //wird angezeigt
                         ?>
 
-                                </div>
-                                <?php } ?>
-                                    <?php echo $nachname;?>
+                                                </div>
+                                                <?php } ?>
+                                                    <?php echo $nachname;?>
                         </ul>
+                        </div>
+                        <!-- container -->
                     </div>
-                    <!-- container -->
+                    <!-- demo -->
                 </div>
-                <!-- demo -->
-            </div>
-            <!-- name_tinder -->
-            <div class="hearts">
-                <!--<button type="button" id="button">click me </button>-->
-                <!--invisible versuch ende-->
-                <div class="bheart">
-                    <input style="height: 100px;" type="image" src="img/sheart.svg" onclick="like();" />
-                </div>
-                
-                <div class="bheart">
-                    <input style="height: 100px;" type="image" src="img/sbheart.svg" onclick="dislike();" />
-                </div>
-                <div class="clear"></div>
-            </div>
-            <!-- hearts -->
+                <!-- name_tinder -->
+                <div class="hearts">
+                    <!--<button type="button" id="button">click me </button>-->
+                    <!--invisible versuch ende-->
+                    <div class="bheart">
+                        <input style="height: 100px;" type="image" src="img/sheart.svg" onclick="like();" />
+                    </div>
 
-            <div class="menu">
-                <div id="duell_start" class="duell">
-                    <a href="registrieren.php" class="duell_startscreen_button">Duell!</a>
-                </div> <!-- duell_start -->
-                
-                <div class="einstellungen">
-                    <a href="#" id="clickme" class="button"><img style="height: 40px;" src="img/einstellungen.svg"></a>
+                    <div class="bheart">
+                        <input style="height: 100px;" type="image" src="img/sbheart.svg" onclick="dislike();" />
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
+                <!-- hearts -->
+
+                <div class="menu">
+                    <div id="duell_start" class="duell">
+                        <a href="registrieren.php" class="duell_startscreen_button">Duell!</a>
+                    </div>
+                    <!-- duell_start -->
+
+                    <div class="einstellungen">
+                        <a href="#" id="clickme" class="button"><img style="height: 40px;" src="img/einstellungen.svg"></a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- menu -->
             </div>
-            <!-- menu -->
-        </div>
-        <!-- section -->
-        <!-- Ende STARTSCREEN --!>
+            <!-- section -->
+            <!-- Ende STARTSCREEN --!>
         
 
         <!-- STOP FILTER TIME -->
-                            
-        <div id="newsbox">
-            <section id="object">
 
-                <!--FORMULAR ANFANG-->
-                <form id="myForm" method="post">
-                    <!--action="filter.php"-->
+            <div id="newsbox">
+                <section id="object">
 
-                    <div class="section">
+                    <!--FORMULAR ANFANG-->
+                    <form id="myForm" method="post">
+                        <!--action="filter.php"-->
 
-                        <div class="topbar">
-                            <div class="txt_topbar">Einstellungen</div>
+                        <div class="section">
+
+                            <div class="topbar">
+                                <div class="txt_topbar">Einstellungen</div>
+                            </div>
+
+                            <div class="formline">
+                                <input type="text" placeholder="Nachname" id="vname" name="vname">
+                            </div>
+
+                            <div class="formline">
+                                <input type="text" maxlength="1" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
+                            </div>
+
+                            <div class="formline">
+                                <input type="radio" name="geschlecht" value="männlich">männlich
+                                <input type="radio" name="geschlecht" value="weiblich">weiblich
+                            </div>
+
+                            <div class="formline">
+                                Maximal
+                                <input type="number" placeholder="x" max="20" id="minimaxi" name="maxi"> Zeichen
+                            </div>
+
+                            <div class="formline">
+                                Minimal
+                                <input type="number" max="20" placeholder="x" id="minimaxi" name="mini"> Zeichen
+                            </div>
+
+                            <div class="formline">
+                                <select id="dropdown" name="Haeufigkeit">
+                                    <option value="haeufigkeit">Häufigkeit</option>
+                                    <option value="sehr beliebt">Sehr beliebt</option>
+                                    <option value="beliebt">Beliebt</option>
+                                    <option value="selten">Selten</option>
+                                </select>
+                            </div>
+
+                            <div class="formline">
+                            </div>
+
+                            <div class="formline">
+                            </div>
+
+                            <div id="filter" style="padding: 10px;" class="tickbox">
+                                <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
+                            </div>
+                            <!-- filter tickbox -->
+
                         </div>
+                        <!-- section -->
 
-                        <div class="formline">
-                            <input type="text" placeholder="Nachname" id="vname" name="vname">
-                        </div>
+                    </form>
+                    <!--FORM ENDE -->
 
-                        <div class="formline">
-                            <input type="text" maxlength="1" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
-                        </div>
+                </section>
+                <!-- section -->
+            </div>
+            <!-- newsbox-->
 
-                        <div class="formline">
-                            <input type="radio" name="geschlecht" value="männlich">männlich
-                            <input type="radio" name="geschlecht" value="weiblich">weiblich
-                        </div>
+            <script type="text/javascript" src="js/jquery.min.js"></script>
+            <script src="http://malsup.github.com/jquery.form.js"></script>
+            <!-- TINDER CODE-->
 
-                        <div class="formline">
-                            Maximal
-                            <input type="number" placeholder="x" max="20" id="minimaxi" name="maxi"> Zeichen
-                        </div>
 
-                        <div class="formline">
-                            Minimal
-                            <input type="number" max="20" placeholder="x" id="minimaxi" name="mini"> Zeichen
-                        </div>
-
-                        <div class="formline">
-                            <select id="dropdown" name="Haeufigkeit">
-                                <option value="haeufigkeit">Häufigkeit</option>
-                                <option value="sehr beliebt">Sehr beliebt</option>
-                                <option value="beliebt">Beliebt</option>
-                                <option value="selten">Selten</option>
-                            </select>
-                        </div>
-
-                        <div class="formline">
-                        </div>
-
-                        <div class="formline">
-                        </div>
-
-                        <div id="filter" style="padding: 10px;" class="tickbox">
-                            <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
-                        </div>
-                        <!-- filter tickbox -->
-                       
-                    </div>
-                    <!-- section -->
-
-                </form>
-                <!--FORM ENDE -->
-
-            </section>
-            <!-- section -->
-        </div> <!-- newsbox-->
-
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script src="http://malsup.github.com/jquery.form.js"></script>
-        <!-- TINDER CODE-->
-        
-                            
-        <?php 
+            <?php 
         //like und dislike mit php?
         
         
         ?>
 
-            <script>
-                //der aktuelle Name
-                //achtung, später nur id übergeben
-                var namensArray = <?php echo json_encode($array); ?>;
-                console.log(namensArray);
+                <script>
+                    //der aktuelle Name
+                    //achtung, später nur id übergeben
+                    var namensArray = <?php echo json_encode($array); ?>;
+                    console.log(namensArray);
 
-                var disliked = [];
-                var liked = [];
+                    var disliked = [];
+                    var liked = [];
 
-                //Tinderfunktionen
-                function like() { //parameter übergeben
-                    liked.push(namensArray[0]);
-                    namensArray.shift();
+                    //Tinderfunktionen
+                    function like() { //parameter übergeben
+                        liked.push(namensArray[0]);
+                        namensArray.shift();
 
-                    console.log("liked:" + liked);
-                    //nächster Name
-                    $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
-                    $("div.container div.visible").first().addClass("shown").removeClass("visible");
-                }
-
-                function dislike() {
-                    disliked.push(namensArray[0]);
-                    namensArray.shift();
-
-                    console.log("disliked:" + disliked);
-                    //nächster Name
-                    $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
-                    $("div.container div.visible").first().addClass("shown").removeClass("visible");
-
-                }
-                //Tinderfunktionen Ende
-
-                //übergang zum Duell
-                var typ = "<?php echo $type; ?>";
-
-                $("#duell_start").click(function () {
-                    localStorage.setItem("liked", JSON.stringify(liked));
-                    localStorage.setItem("type", typ);
-                });
-
-
-
-                //übergang zum Duell Ende
-                console.log("<?php echo $array[0]; ?>"); //der erste name des Arrays
-            </script>
-
-            <!--Tinder Ende -->
-
-            <!-- Filtervariable -->
-            <?php echo $filterTab; ?>
-        
-            <!-- Filter kommt hoch beim laden -->
-            <script>
-                $("#clickme").click(function (e) {
-                    e.preventDefault();
-                    jQuery('#newsbox').slideDown();
-                    // Animation complete.
-                });
-
-
-                $(document).ready(function () {
-                    if(!filterClosed) {
-                        jQuery('#newsbox').delay(2000).slideDown();                        
+                        console.log("liked:" + liked);
+                        //nächster Name
+                        $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
+                        $("div.container div.visible").first().addClass("shown").removeClass("visible");
                     }
-                   
-                });
-            </script>
+
+                    function dislike() {
+                        disliked.push(namensArray[0]);
+                        namensArray.shift();
+
+                        console.log("disliked:" + disliked);
+                        //nächster Name
+                        $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
+                        $("div.container div.visible").first().addClass("shown").removeClass("visible");
+
+                    }
+                    //Tinderfunktionen Ende
+
+                    //übergang zum Duell
+                    var typ = "<?php echo $type; ?>";
+
+                    $("#duell_start").click(function () {
+                        localStorage.setItem("liked", JSON.stringify(liked));
+                        localStorage.setItem("type", typ);
+                    });
+
+
+
+                    //übergang zum Duell Ende
+                    console.log("<?php echo $array[0]; ?>"); //der erste name des Arrays
+                </script>
+
+                <!--Tinder Ende -->
+
+                <!-- Filtervariable -->
+                <?php echo $filterTab; ?>
+
+                    <!-- Filter kommt hoch beim laden -->
+                    <script>
+                        $("#clickme").click(function (e) {
+                            e.preventDefault();
+                            jQuery('#newsbox').slideDown();
+                            // Animation complete.
+                        });
+
+
+                        $(document).ready(function () {
+                            if (!filterClosed) {
+                                jQuery('#newsbox').delay(2000).slideDown();
+                            }
+
+                        });
+                    </script>
 
     </body>
 
