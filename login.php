@@ -45,6 +45,7 @@
     <script>
       window.location = '/duell.php?duell_id=<?php echo $duell_id; ?>';
     </script>
+
     <?php
 
 
