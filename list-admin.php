@@ -45,8 +45,8 @@
                         </div>
                     </li>
                     <!--hier kommt php -->
-                    <!-- Listenansicht -->
-                    <?php 
+<!-- Listenansicht -->
+<?php 
                         $duell_id = $_GET["duell_id"];
                     //aus der url
                         $sql = "SELECT namensliste FROM duell WHERE id = $duell_id;";

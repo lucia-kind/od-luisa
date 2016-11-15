@@ -18,6 +18,7 @@
 
     </head>
 
+
     <body>
         <div class="section">
 
@@ -51,12 +52,25 @@
 
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/js/framework7.min.js"></script>
-        <script>
-            function liste() {
-                window.location.href = 'list-admin.php?duell_id=<?php echo $duell_id; ?>';
+        <?php   
+          session_start(); 
+    if (isset($_SESSION["currentUser"])) { 
+    ?>
+            <script>
+                function liste() {
+                    window.location.href = 'list-admin.php?duell_id=<?php echo $duell_id; ?>';
 
-            }
-        </script>
+                }
+            </script>
+            <?php
+         } else { ?>
+                <script>
+                    function liste() {
+                        window.location.href = 'list.php?duell_id=<?php echo $duell_id; ?>';
+                    }
+                </script>
+                <?php } ?>
     </body>
+
 
     </html>

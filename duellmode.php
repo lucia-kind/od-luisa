@@ -10,7 +10,7 @@
     <?php 
         
         session_start(); 
-    if (isset($_SESSION["currentUser"])) { 
+   
         $winner = "empty";
         $duell_id = $_GET["duell_id"];
         $sql = "SELECT namensliste FROM duell WHERE id = $duell_id;";
@@ -102,11 +102,7 @@
 
                 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
                 <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-                <?php
-         } else {
-        echo "Bitte erst einloggen, <a href='login.php'>hier</a>.";
-    }
-        ?>
+
             </body>
 
     </html>
