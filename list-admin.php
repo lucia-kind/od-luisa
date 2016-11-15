@@ -22,6 +22,21 @@
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <?php 
+                $duell_id = $_GET["duell_id"];
+                    //aus der url
+                        $sql = "SELECT namensliste, dauer FROM duell WHERE id = $duell_id;";
+                    //hole alle namen im duell und dauer
+                        $duell = get_result($sql)->fetch_array();
+                    //als array
+                    //erkenne den array durch json_decode
+                        $duell_array = json_decode($duell['namensliste']);
+                    //und berechne die dauer aus dem enddatum
+                    $duell_dauer= strtotime($duell['dauer']); //Enddatum              
+                    $timefromdb = strtotime(date('Y-m-d'));
+                    $timeleft = $duell_dauer-$timefromdb;
+                    $daysleft = round((($timeleft/24)/60)/60); //runde auf Tage        
+        ?>
     </head>
 
     <body>
@@ -37,7 +52,8 @@
                     <!-- one element -->
                     <li class="swipeout duell_border">
                         <div class="swipeout-content item-content duell_bg">
-                            <div id="name01" class="item-media">Duell noch 2 Tage</div>
+                            <div id="name01" class="item-media">Duell noch
+                                <?php echo $daysleft?> Tage</div>
                         </div>
                         <div class="swipeout-actions-right">
                             <!-- Add this button and item will be deleted automatically -->
@@ -45,16 +61,8 @@
                         </div>
                     </li>
                     <!--hier kommt php -->
-<!-- Listenansicht -->
-<?php 
-                        $duell_id = $_GET["duell_id"];
-                    //aus der url
-                        $sql = "SELECT namensliste FROM duell WHERE id = $duell_id;";
-                    //hole alle namen im duell
-                        $duell = get_result($sql)->fetch_array();
-                    //als array
-                        $duell_array = json_decode($duell['namensliste']);
-                    //erkenne den array durch json_decode
+                    <!-- Listenansicht -->
+                    <?php 
                         $query = "SELECT win_name, COUNT(win_name) as herzen FROM wins WHERE duell_id = $duell_id GROUP BY win_name;";
                     //finde alle gewinnernamen zu dieser duell id und groupiere sie
                         $hearts_result = get_result($query);
