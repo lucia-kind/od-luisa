@@ -39,8 +39,8 @@
                 </div>
             </div>
 
-            <div class="duell_bottom_einst">
-                <a href="#">teilen</a>
+            <div class="duell_bottom_einst" style="background-color:white;">
+           
             </div>
 
             <div class="duell_bottom">
