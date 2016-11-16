@@ -4,7 +4,7 @@
      padding: 0;
      margin: 0;
      border: 0;
-     top:0;
+
  }
  
  a {
@@ -90,6 +90,8 @@
  }
 
  /* Startscreen Baby + Hunde */
+
+
 
  .invisible {
      display: none;

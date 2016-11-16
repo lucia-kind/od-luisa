@@ -45,7 +45,7 @@
                return true;
             
             } else { 
-                document.getElementById("newsbox").style.display="none";
+                jQuery('#newsbox').slideUp();
                 return false;  
                        } 
                     
