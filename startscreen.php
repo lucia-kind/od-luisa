@@ -52,34 +52,9 @@
         }
                      
     </script>
-<<<<<<< Updated upstream
+
     <!DOCTYPE html>
     <html>
-=======
-    <?php 
-    if(isset($_POST['SubmitButton'])){ //check if form was submitted         
-        $filterTab = '<script>var filterClosed = true;</script>';
-        
-        if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];
-        $anfang = $_POST["abuchstabe"];
-        $nachname = $_POST["vname"];
-        $max = $_POST["maxi"];
-        $min = $_POST["mini"];
-        if(isset($_POST["geschlecht"])) {
-           $geschlecht = $_POST['geschlecht'];
-            }
-    }
-    $result = update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
-    ?>
-        <script>
-            } else {
-                alert("Form must be filled out");
-                
-            }
-        </script>
-        <?php
-
->>>>>>> Stashed changes
 
     <head>
 
@@ -130,110 +105,57 @@
 
                 <div class="txt_topbar">
                     <?php if($type == "baby"){
-                echo "Babyname";
-                } else if($type == "hund"){
-                echo "Hundename";
-                } ?>
+                    echo "Babyname";
+                    } else if($type == "hund"){
+                    echo "Hundename";
+                    } ?>
+                </div> <!--txt_topbar-->
+                
+            </div> <!-- topbar -->
 
-
-                </div>
-                <!--txt_topbar-->
-            </div>
-            <!-- topbar -->
-
-
-<<<<<<< Updated upstream
             <div class="name_tinder">
                 <div id="demo slider">
                     <div class="container">
                         <ul>
                             <?php 
-                  $array = [];//leerer Array für Namen
-                              //<!-- hier werden X Namen aufgelistet-->
-=======
-                    <div class="name_tinder">
-                        <div id="demo slider">
-                            <div class="container">
-                                <ul>
-                                    <?php 
-                                    $array = [];//leerer Array für Namen
-                                    //<!-- hier werden X Namen aufgelistet-->
->>>>>>> Stashed changes
+                            $array = [];//leerer Array für Namen
+                            //<!-- hier werden X Namen aufgelistet-->
                             
-                                    $firstloop = true; 
-                            
-<<<<<<< Updated upstream
-                while ($dog = mysqli_fetch_assoc($result)) { 
-                    if($firstloop) { 
-                            // falls name ungleich schon gesehene namen
+                            $firstloop = true; 
+
+                            while ($dog = mysqli_fetch_assoc($result)) { 
+                                if($firstloop) { 
+                                // falls name ungleich schon gesehene namen
                             ?>
-                                <div id="<?php echo $dog['id']?>" class="dogname visible">
-                                    <?php $firstloop = false; ?>
-                                        <?php  } else{ 
-                                    // falls name ungleich schon gesehene namen
-                                    ?>
-                                            <div id="<?php echo $dog['id']?>" class="dogname invisible">
-                                                <?php  }  
-                        array_push($array, $dog['name']);
-                            //und im Array gespeichert
-                                   echo $dog['name'];
-                             //wird angezeigt
-                        ?>
-                                            </div>
-                                            <!-- ! div für entweder visible oder invisible -->
-                                            <?php }
-                                        
-                                        ?>
-                                                <?php echo $nachname;?>
-
-                        </ul>
-=======
-                                    while ($dog = mysqli_fetch_assoc($result)) { 
-                                        if($firstloop) { 
-                                            // falls name ungleich schon gesehene namen
-                                    ?>
                                     
-                                    <div id="<?php echo $dog['id']?>" class="dogname visible">
-                                        <?php $firstloop = false; ?>
-                                        <?php  } else{ 
-                                        // falls name ungleich schon gesehene namen
-                                        ?>
-                                    <div id="<?php echo $dog['id']?>" class="dogname invisible">
-                                        <?php  }  
-                                        array_push($array, $dog['name']);
-                                        //und im Array gespeichert
-                                        echo $dog['name'];
-                                        //wird angezeigt
-                                        ?>
-                                    </div>
-                                        <!-- ! div für entweder visible oder invisible -->
-                                        <?php 
-                                            }
-                                        ?>
-                                        <?php echo $nachname;?>
-                                </ul>
-                                </div>
-                                <!-- container -->
+                            <div id="<?php echo $dog['id']?>" class="dogname visible">
+                                <?php $firstloop = false; ?>
+                                <?php  } else{ 
+                                // falls name ungleich schon gesehene namen
+                                ?>
+                            <div id="<?php echo $dog['id']?>" class="dogname invisible">
+                                <?php  }  
+                                array_push($array, $dog['name']);
+                                //und im Array gespeichert
+                                echo $dog['name'];
+                                //wird angezeigt
+                                ?>
                             </div>
-                            <!-- demo -->
-                        </div>
-                        <!-- name_tinder -->
-
-                        <div class="count">
-                            <span id="aktuell"></span> /
-                            <?php echo count($array)?>
->>>>>>> Stashed changes
-                        </div>
-                        <!-- container -->
-                    </div>
-                    <!-- demo -->
-                </div>
-                <!-- name_tinder -->
+                            <!-- ! div für entweder visible oder invisible -->
+                            <?php 
+                                }
+                            ?>
+                            <?php echo $nachname;?>
+                        </ul>
+                    </div> <!-- container -->
+                </div> <!-- demo -->
+            </div> <!-- name_tinder -->
 
                 <div class="count">
                     <span id="aktuell"></span> /
                     <?php echo count($array)?>
                 </div>
+
 
                 <div class="hearts">
                     <!--<button type="button" id="button">click me </button>-->
@@ -245,26 +167,25 @@
                     <div class="bheart">
                         <input style="height: 100px;" type="image" src="img/sbheart.svg" onclick="dislike();" />
                     </div>
+                    
                     <div class="clear"></div>
-                </div>
-                <!-- hearts -->
+                </div> <!-- hearts -->
 
                 <div class="menu">
                     <div id="duell_start" class="duell">
                         <a href="registrieren.php" class="duell_startscreen_button">Duell!</a>
-                    </div>
-                    <!-- duell_start -->
-
+                    </div> <!-- duell_start -->
+                    
                     <div class="einstellungen">
                         <a href="#" id="clickme" class="button"><img style="height: 40px;" src="img/einstellungen.svg"></a>
                     </div>
+                    
                     <div class="clear"></div>
-                </div>
-                <!-- menu -->
-            </div>
-            <!-- section -->
-            <!-- Ende STARTSCREEN --!>
-        
+                </div> <!-- menu -->
+    </div>
+                    <!-- section -->
+                    <!-- Ende STARTSCREEN --!>
+
 
         <!-- STOP FILTER TIME -->
 
@@ -321,7 +242,7 @@
                                 </select>
                             </div>
 
-<<<<<<< Updated upstream
+
                             <div class="formline">
                             </div>
 
@@ -332,18 +253,6 @@
                                 <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
                             </div>
                             <!-- filter tickbox -->
-=======
-                        $("#duell_start").click(function () {
-                            localStorage.setItem("liked", JSON.stringify(liked));
-                            localStorage.setItem("type", typ);
-                        });
-                        //übergang zum Duell Ende
-                    </script>
-                    <!--Tinder Ende -->
-
-                        <!-- Filtervariable -->
-                        <?php echo $filterTab; ?>
->>>>>>> Stashed changes
 
                         </div>
                         <!-- section -->
@@ -358,6 +267,7 @@
 
             <script type="text/javascript" src="js/jquery.min.js"></script>
             <script src="http://malsup.github.com/jquery.form.js"></script>
+                        
             <!-- TINDER CODE-->
 
             <script>
