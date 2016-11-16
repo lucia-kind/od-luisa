@@ -41,6 +41,7 @@
     </head>
 
     <body>
+        <div id="orr"></div>
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="left">Zwischenstand </div>
@@ -125,6 +126,39 @@
                 }
             }
         </script>
+        
+        <!-- verhindert das die App gedreht werden darf-->
+        <script>
+                        jQuery(function($) {
+                        $('body').bind('orientationchange', function(e) {
+                            check_orientation();
+                        });
+
+                        check_orientation();
+                        });
+                            var check_orientation = function() {
+                            if(typeof window.orientation == 'undefined') {
+                                //not a mobile 
+                                return true;
+                            }
+                            if(Math.abs(window.orientation) != 0) {
+                                //landscape mode
+                                $('#orr').fadeIn().bind('touchstart', function(e) {
+                                    e.preventDefault();
+                                });
+                                alert("Bitte drehen sie das Gerät");
+                                return false;
+                            }
+                            else {
+                                //portrait mode
+                                $('#orr').fadeOut();
+                                return true;
+                            }
+                        };
+        </script>
+        
+
+
         <?php
         if (isset($_POST['name_delete'])) {
             $delete_id = $_POST['name_delete']; 

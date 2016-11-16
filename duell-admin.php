@@ -26,6 +26,7 @@
       
   </head>
 <body>
+    <div id="orr"></div>
     <div class="navbar">
         <div class="navbar-inner">
             <div class="left">Duelle</div>
