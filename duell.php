@@ -124,6 +124,11 @@
     }
         ?>
 
+        <!-- Browserübergreifend Date-Picker -->
+        <script>
+            if ( $('#date')[0].type != 'date' ) $('#date').datepicker();
+        </script>
+        
     </body>
 
     </html>
