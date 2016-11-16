@@ -83,7 +83,7 @@
           } else { $i++; }
           }
         
-          echo "<li class='swipeout'><div class='swipeout-content item-content'><div class='item-media'>".$val."</div><div class='item-after'><span class='badge bg-green'>".$number."</span></div></div><div class='swipeout-actions-right'><a href='#' class='swipeout-delete' id='".$key."'> <img style='padding: 0px 60px 0px 0px; height: 60%;' src='img/trash.svg'></a></div></li>"; 
+          echo "<li class='swipeout'><div class='swipeout-content item-content'><div class='item-media'>".$val."</div><div class='item-after'><span class='badge bg-green'>".$number."</span></div></div><div class='swipeout-actions-right'><a href='#' class='swipeout-delete' id='".$key."'> <img style='padding: 0px 60px 0px 0px; height: 35px;' src='img/trash.svg'></a></div></li>"; 
       }
                         ?>
 

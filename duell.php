@@ -38,7 +38,7 @@
            $id = $_SESSION["currentUser"]['user_id'];
             if($daysleft < 1) { ?>
             <script>
-                alert(<?php echo $daysleft ?>);
+                alert('Dein Duell muss mindestens einen Tag lang daueren.');
             </script>
             <?php
             } else {
@@ -75,7 +75,7 @@
                 <div class="formline">
                     <div style="margin: 0!important;" class="list-block">
                         <div class="item-content date_picker">
-                            <input id="date" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
+                            <input id="date" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" text="Dauer"/>
                         </div>
                     </div>
                     <!-- page-content -->
