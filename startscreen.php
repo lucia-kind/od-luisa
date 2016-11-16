@@ -42,15 +42,36 @@
             console.log(geschlecht + " " + anfang + " " + max + " " + min + " " + haufigkeit);
 
             if (geschlecht != "" || anfang != "" || max != "" || min != "" || haufigkeit != "haeufigkeit") {
-                return true;
-                    
+               return true;
+            
             } else { 
-                       
-                return false;
-                           
+                document.getElementById("newsbox").style.display="none";
+                return false;  
                        } 
+                    
         }
                      
+    </script>
+
+    <script>
+            //Variablen definieren
+            var haufen;
+            var nachname;
+            var max;
+            var min;
+            var anfang;
+            var geschlecht;
+
+            //<!-- test post form-->
+
+            var haufen = <?php echo json_encode($hauf); ?>;
+            var nachname = <?php echo json_encode($nachname); ?>;
+            var max = <?php echo json_encode($max); ?>;
+            var min = <?php echo json_encode($min); ?>;
+            var anfang = <?php echo json_encode($anfang); ?>;
+            var geschlecht = <?php echo json_encode($geschlecht); ?>;
+            var type = <?php echo json_encode($type); ?>;
+            console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht + "typ:" + type);
     </script>
 
     <!DOCTYPE html>
@@ -74,7 +95,6 @@
         <!-- FONT -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-
     </head>
 
     <body>
@@ -180,7 +200,9 @@
         <!-- STOP FILTER TIME -->
 
             <div id="newsbox">
-                <section id="object">
+                <section id="animation">
+                    <div class="animation-container">
+                        <div id="object" class="animate tossing">
 
                     <!--FORMULAR ANFANG-->
                     <form id="myForm" method="post" action="startscreen.php?typ=<?php echo $type ?>" onsubmit="return validateForm();">
@@ -250,8 +272,12 @@
                     </form>
                     <!--FORM ENDE -->
 
-                </section>
-                <!-- section -->
+                    </div>
+                    <!-- object -->
+                </div>
+                <!-- animation container -->
+            </section>
+            <!-- section -->
             </div>
             <!-- newsbox-->
 
@@ -292,10 +318,6 @@
                     }
                     //speichere die bereits gesehenen namen im localstorage bei jedem click
                     //nach onclick clickme verschieben
-                    var allseen = JSON.parse(localStorage.getItem("seen")) || [];
-                    allseen.push(seen);
-                    localStorage.setItem("seen", JSON.stringify(allseen));
-                    //wenn alle durch
                 }
 
                 function dislike() {
@@ -332,15 +354,18 @@
 
                 <!-- Filter kommt hoch beim laden -->
                 <script>
+                    
                     $("#clickme").click(function (e) {
                         e.preventDefault();
                         jQuery('#newsbox').slideDown();
                         // Animation complete.
+              
                     });
 
-                    $(document).ready(function () {
+                    $(window).load(function () {
                         if (!filterClosed) {
-                            jQuery('#newsbox').delay(500).slideDown();
+                            jQuery('#newsbox').delay(2000).slideDown();
+                            
                         }
 
                     });
