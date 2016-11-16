@@ -53,27 +53,6 @@
                      
     </script>
 
-    <script>
-            //Variablen definieren
-            var haufen;
-            var nachname;
-            var max;
-            var min;
-            var anfang;
-            var geschlecht;
-
-            //<!-- test post form-->
-
-            var haufen = <?php echo json_encode($hauf); ?>;
-            var nachname = <?php echo json_encode($nachname); ?>;
-            var max = <?php echo json_encode($max); ?>;
-            var min = <?php echo json_encode($min); ?>;
-            var anfang = <?php echo json_encode($anfang); ?>;
-            var geschlecht = <?php echo json_encode($geschlecht); ?>;
-            var type = <?php echo json_encode($type); ?>;
-            console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht + "typ:" + type);
-    </script>
-
     <!DOCTYPE html>
     <html>
 
