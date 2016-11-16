@@ -38,7 +38,7 @@
            $id = $_SESSION["currentUser"]['user_id'];
             if($daysleft < 1) { ?>
             <script>
-                alert('Dein Duell muss mindestens einen Tag lang daueren.');
+                alert('Dein Duell muss mindestens einen Tag dauern.');
             </script>
             <?php
             } else {

@@ -22,7 +22,7 @@
         <?php  
         $duell_id = $_GET["duell_id"];
                     //aus der url
-                 $sql = "SELECT namensliste, dauer FROM duell WHERE id = $duell_id;";
+                 $sql = "SELECT namensliste, dauer, url FROM duell WHERE id = $duell_id;";
                     //hole alle namen im duell und dauer
                         $duell = get_result($sql)->fetch_array();
                     //als array
@@ -32,7 +32,8 @@
                     $duell_dauer= strtotime($duell['dauer']); //Enddatum              
                     $timefromdb = strtotime(date('Y-m-d'));
                     $timeleft = $duell_dauer-$timefromdb;
-                    $daysleft = round((($timeleft/24)/60)/60); //runde auf Tage  
+                    $daysleft = round((($timeleft/24)/60)/60); //runde auf Tage 
+                    $url = $duell['url'];
         
         ?>
 
@@ -56,8 +57,8 @@
                             <?php echo $daysleft?> Tage</div>
                     </div>
                     <div class="swipeout-actions-right">
-                        <!-- Add this button and item will be deleted automatically -->
-                        <a style="color:black; background-color:#D7FFF8;" href="#" class="action1">teilen</a>
+                           <a style="color:black; background-color:#D7FFF8;" href="#" class="action1"> <button id="copy-button" class="" data-clipboard-target="#post-shortlink">   <!--target-->
+                            <input id="post-shortlink" value="<?php echo $url; ?>">Link kopieren</button></a>
                     </div>
                 </li>
                 <!--hier kommt php -->
@@ -93,6 +94,15 @@
         <script type="text/javascript" src="js/framework7.min.js"></script>
         <!-- Path to your app js-->
         <script type="text/javascript" src="js/my-app.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
+
+
+        <script>
+            //ZWISCHENABLAGE LINK
+            (function () {
+                new Clipboard('#copy-button');
+            })();
+        </script>
 
     </body>
 
