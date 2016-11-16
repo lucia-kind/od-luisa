@@ -125,7 +125,6 @@
                             if ($rows == 0){ ?>
                                 <div class="dogname visible">Keine Namen gefunden.</div>   
                                 <?php } else{
-                                echo "hat funktioniert";
 
                             while ($dog = mysqli_fetch_assoc($result)) { 
                                
@@ -358,13 +357,14 @@
                     $("#clickme").click(function (e) {
                         e.preventDefault();
                         jQuery('#newsbox').slideDown();
-                        // Animation complete.
-              
+                        // Animation complete.          
+
                     });
 
                     $(window).load(function () {
                         if (!filterClosed) {
                             jQuery('#newsbox').delay(2000).slideDown();
+    
                             
                         }
 
