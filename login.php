@@ -36,7 +36,7 @@
              $result = get_result_last_id($query);
              $duell_id = $result[0];
         }
-            $sql ="UPDATE duell SET `url` = 'duellmode.php?duell_id=$duell_id' WHERE id = $duell_id;";
+            $sql ="UPDATE duell SET `url` = 'http://467536-2.web.fh-htwchur.ch/duellmode.php?duell_id=$duell_id' WHERE id = $duell_id;";
             get_result($sql);
         print_r($sql);
         
@@ -45,7 +45,7 @@
          ?>
     <!--Weiterleitung Duell-->
     <script>
-      window.location = '/duell.php?duell_id=<?php echo $duell_id; ?>';
+        window.location = '/duell.php?duell_id=<?php echo $duell_id; ?>';
     </script>
 
     <?php
