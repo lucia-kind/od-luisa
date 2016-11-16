@@ -82,10 +82,42 @@
     });  
 
     </script>
+    
+    <!-- verhindert das die App gedreht werden darf-->
+    <script>
+            jQuery(function($) {
+            $('body').bind('orientationchange', function(e) {
+                check_orientation();
+            });
+                
+            check_orientation();
+            });
+                var check_orientation = function() {
+                if(typeof window.orientation == 'undefined') {
+                    //not a mobile 
+                    return true;
+                }
+                if(Math.abs(window.orientation) != 0) {
+                    //landscape mode
+                    $('#orr').fadeIn().bind('touchstart', function(e) {
+                        e.preventDefault();
+                    });
+                    alert("Bitte drehen sie das Gerät");
+                    return false;
+                }
+                else {
+                    //portrait mode
+                    $('#orr').fadeOut();
+                    return true;
+                }
+            };
+    </script>
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/my-app.js"></script>
+    
+    
 
 </body>
 </html>
