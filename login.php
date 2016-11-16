@@ -91,6 +91,7 @@
         </head>
 
         <body>
+            <div id="orr"></div>
             <form method="post" action="login.php?page=log">
                 <div class="section">
                     <div class="registrieren topbar">
@@ -162,6 +163,33 @@
                     var typ_duell = localStorage.getItem("type");
                     $('#typ').val(typ_duell);
                 });
+                
+                jQuery(function($) {
+                $('body').bind('orientationchange', function(e) {
+                    check_orientation();
+                });
+
+                check_orientation();
+                });
+                    var check_orientation = function() {
+                    if(typeof window.orientation == 'undefined') {
+                        //not a mobile 
+                        return true;
+                    }
+                    if(Math.abs(window.orientation) != 0) {
+                        //landscape mode
+                        $('#orr').fadeIn().bind('touchstart', function(e) {
+                            e.preventDefault();
+                        });
+                        alert("Bitte drehen sie das Gerät");
+                        return false;
+                    }
+                    else {
+                        //portrait mode
+                        $('#orr').fadeOut();
+                        return true;
+                    }
+                };
             </script>
 
 
