@@ -52,8 +52,34 @@
         }
                      
     </script>
+<<<<<<< Updated upstream
     <!DOCTYPE html>
     <html>
+=======
+    <?php 
+    if(isset($_POST['SubmitButton'])){ //check if form was submitted         
+        $filterTab = '<script>var filterClosed = true;</script>';
+        
+        if($_POST['Haeufigkeit'] != 'haeufigkeit') $hauf = $_POST['Haeufigkeit'];
+        $anfang = $_POST["abuchstabe"];
+        $nachname = $_POST["vname"];
+        $max = $_POST["maxi"];
+        $min = $_POST["mini"];
+        if(isset($_POST["geschlecht"])) {
+           $geschlecht = $_POST['geschlecht'];
+            }
+    }
+    $result = update_namelist($type, $hauf, $anfang, $max, $min, $geschlecht);
+    ?>
+        <script>
+            } else {
+                alert("Form must be filled out");
+                
+            }
+        </script>
+        <?php
+
+>>>>>>> Stashed changes
 
     <head>
 
@@ -116,6 +142,7 @@
             <!-- topbar -->
 
 
+<<<<<<< Updated upstream
             <div class="name_tinder">
                 <div id="demo slider">
                     <div class="container">
@@ -123,10 +150,19 @@
                             <?php 
                   $array = [];//leerer Array für Namen
                               //<!-- hier werden X Namen aufgelistet-->
+=======
+                    <div class="name_tinder">
+                        <div id="demo slider">
+                            <div class="container">
+                                <ul>
+                                    <?php 
+                                    $array = [];//leerer Array für Namen
+                                    //<!-- hier werden X Namen aufgelistet-->
+>>>>>>> Stashed changes
                             
-                $firstloop = true; 
-                
+                                    $firstloop = true; 
                             
+<<<<<<< Updated upstream
                 while ($dog = mysqli_fetch_assoc($result)) { 
                     if($firstloop) { 
                             // falls name ungleich schon gesehene namen
@@ -151,6 +187,42 @@
                                                 <?php echo $nachname;?>
 
                         </ul>
+=======
+                                    while ($dog = mysqli_fetch_assoc($result)) { 
+                                        if($firstloop) { 
+                                            // falls name ungleich schon gesehene namen
+                                    ?>
+                                    
+                                    <div id="<?php echo $dog['id']?>" class="dogname visible">
+                                        <?php $firstloop = false; ?>
+                                        <?php  } else{ 
+                                        // falls name ungleich schon gesehene namen
+                                        ?>
+                                    <div id="<?php echo $dog['id']?>" class="dogname invisible">
+                                        <?php  }  
+                                        array_push($array, $dog['name']);
+                                        //und im Array gespeichert
+                                        echo $dog['name'];
+                                        //wird angezeigt
+                                        ?>
+                                    </div>
+                                        <!-- ! div für entweder visible oder invisible -->
+                                        <?php 
+                                            }
+                                        ?>
+                                        <?php echo $nachname;?>
+                                </ul>
+                                </div>
+                                <!-- container -->
+                            </div>
+                            <!-- demo -->
+                        </div>
+                        <!-- name_tinder -->
+
+                        <div class="count">
+                            <span id="aktuell"></span> /
+                            <?php echo count($array)?>
+>>>>>>> Stashed changes
                         </div>
                         <!-- container -->
                     </div>
@@ -249,6 +321,7 @@
                                 </select>
                             </div>
 
+<<<<<<< Updated upstream
                             <div class="formline">
                             </div>
 
@@ -259,6 +332,18 @@
                                 <input class="newsClose" id="filtersubmit" style=" width: 100px; height: 40px; background:url(img/tick.svg);background-repeat: no-repeat;" type="submit" name="SubmitButton" value="submit" />
                             </div>
                             <!-- filter tickbox -->
+=======
+                        $("#duell_start").click(function () {
+                            localStorage.setItem("liked", JSON.stringify(liked));
+                            localStorage.setItem("type", typ);
+                        });
+                        //übergang zum Duell Ende
+                    </script>
+                    <!--Tinder Ende -->
+
+                        <!-- Filtervariable -->
+                        <?php echo $filterTab; ?>
+>>>>>>> Stashed changes
 
                         </div>
                         <!-- section -->
