@@ -43,6 +43,16 @@
 		return $result;
 	}
 
+    function get_result_last_id($sql)
+	{
+		$db = get_db_connection();
+        echo $sql;
+		$result = mysqli_query($db, $sql);
+        $last_id = mysqli_insert_id($db);
+		mysqli_close($db);
+		return array($last_id, $result);
+	}
+
 	/* *********************************************************
 	/* Hundenamen
 	/* ****************************************************** */

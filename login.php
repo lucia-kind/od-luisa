@@ -21,12 +21,12 @@
 
     if($ergebnis)
     {
-        print_r("login erfolgreich! juhui!");
+        print_r("login erfolgreich! juhui! hurra");
         $_SESSION["currentUser"]  = $ergebnis;
         //Update duell
         $duell = json_encode($_POST['duell_list']); 
         $typ = $_POST['typ'];
-        
+        print_r($typ);
          if($typ == "baby"){
             $query ="INSERT INTO duell (user_id, type, namensliste) VALUES ($id, 1, $duell);";
             $result = get_result_last_id($query);
@@ -38,6 +38,8 @@
         }
             $sql ="UPDATE duell SET `url` = 'duellmode.php?duell_id=$duell_id' WHERE id = $duell_id;";
             get_result($sql);
+        print_r($sql);
+        
         //macht url zum teilen
        
          ?>
