@@ -57,8 +57,10 @@
                                 <?php echo $daysleft?> Tage</div>
                         </div>
                         <div class="swipeout-actions-right">
-                            <a style="color:black; background-color:#D7FFF8;" href="#" class="action1"> <button id="copy-button" class="" data-clipboard-target="#post-shortlink">   <!--target-->
-                            <input id="post-shortlink" value="<?php echo $url; ?>">Link kopieren</button></a>
+                            <a style="color:black; background-color:#D7FFF8;" href="#" class="action1">         <button id="copy-button" data-clipboard-target="#post-shortlink">      <!--target-->
+                                    <input id="post-shortlink" value="<?php echo $url; ?>"><span style="color:black; font-size: 1.5em;">Link kopieren</span>
+                                </button>
+                            </a>
                         </div>
                     </li>
                     <!--hier kommt php -->

@@ -524,9 +524,21 @@ width: 45%; margin: 0 auto;
     font-size: 1em;
     background-color: #D7FFF8;
     height: 50%;
+    z-index: 0;
 }
 
  /* Liste */
+#copy-button{
+    background: #D7FFF8;
+    height: 100%;
+    z-index:1;
+}
+
+#copy-button input{
+    color:#D7FFF8;
+    background-color: #D7FFF8;
+}
+
 
 .list_container{
 

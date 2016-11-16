@@ -334,10 +334,6 @@
 
                 <!-- Filter kommt hoch beim laden -->
                 <script>
-                    jQuery('.newsClose').click(function (e) {
-                        e.preventDefault();
-                        jQuery('#newsbox').slideUp();
-                    });	
                     
                     $("#clickme").click(function (e) {
                         e.preventDefault();
