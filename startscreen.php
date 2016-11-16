@@ -44,9 +44,9 @@
             if (geschlecht != "" || anfang != "" || max != "" || min != "" || haufigkeit != "haeufigkeit") {
                 return true;
                     
-                       } else { 
+            } else { 
                        
-                           return false;
+                return false;
                            
                        } 
         }
@@ -75,27 +75,6 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
-        <script>
-            //Variablen definieren
-            var haufen;
-            var nachname;
-            var max;
-            var min;
-            var anfang;
-            var geschlecht;
-
-            //<!-- test post form-->
-
-            var haufen = <?php echo json_encode($hauf); ?>;
-            var nachname = <?php echo json_encode($nachname); ?>;
-            var max = <?php echo json_encode($max); ?>;
-            var min = <?php echo json_encode($min); ?>;
-            var anfang = <?php echo json_encode($anfang); ?>;
-            var geschlecht = <?php echo json_encode($geschlecht); ?>;
-            var type = <?php echo json_encode($type); ?>;
-            console.log("Häufigkeit: " + haufen + "min: " + min + "max: " + max + "anfang:" + anfang + "nachname: " + nachname + "geschlecht:" + geschlecht + "typ:" + type);
-        </script>
-
     </head>
 
     <body>
@@ -116,34 +95,45 @@
             <div class="name_tinder">
                 <div id="demo slider">
                     <div class="container">
-                        <ul>
+                        <ul id="list_ansicht">
                             <?php 
                             $array = [];//leerer Array für Namen
                             //<!-- hier werden X Namen aufgelistet-->
                             
-                            $firstloop = true; 
+                            $firstloop = true;
+                           $rows = mysqli_num_rows($result);
+                            if ($rows == 0){ ?>
+                                <div class="dogname visible">Keine Namen gefunden.</div>   
+                                <?php } else{
+                                echo "hat funktioniert";
 
                             while ($dog = mysqli_fetch_assoc($result)) { 
+                               
                                 if($firstloop) { 
                                 // falls name ungleich schon gesehene namen
                             ?>
                                     
                             <div id="<?php echo $dog['id']?>" class="dogname visible">
                                 <?php $firstloop = false; ?>
-                                <?php  } else{ 
+                                <?php  } else { 
+                                    
                                 // falls name ungleich schon gesehene namen
                                 ?>
                             <div id="<?php echo $dog['id']?>" class="dogname invisible">
                                 <?php  }  
                                 array_push($array, $dog['name']);
                                 //und im Array gespeichert
-                                echo $dog['name'];
+                              
+                                   echo $dog['name'];
                                 //wird angezeigt
+                                   
                                 ?>
                             </div>
                             <!-- ! div für entweder visible oder invisible -->
                             <?php 
-                                }
+                               
+                            }
+                                 }
                             ?>
                             <?php echo $nachname;?>
                         </ul>
@@ -275,35 +265,52 @@
                 //achtung, später nur id übergeben
                 var namensArray = <?php echo json_encode($array); ?>;
                 //console.log(namensArray);
+                var count = namensArray.length;
 
-                var disliked = [];
+                var seen = [];
                 var liked = [];
                 var clicks = 1;
                 document.getElementById('aktuell').innerHTML = clicks;
 
                 //Tinderfunktionen
-                function like() { //parameter übergeben
+                function like() {
+                    //die namen fürs duell
                     liked.push(namensArray[0]);
+                    //die bereits angezeigten namen
+                    seen.push(namensArray[0]);
                     namensArray.shift();
-
-                    console.log("liked:" + liked);
                     //nächster Name
                     $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
                     $("div.container div.visible").first().addClass("shown").removeClass("visible");
+                    //anzahl gesehner namen
                     clicks = clicks + 1;
                     document.getElementById('aktuell').innerHTML = clicks;
+                    //wenn alle namen durchgesehen
+                    if(clicks > count){
+                        //alert("Keine weiteren Namen");
+                        document.getElementById("list_ansicht").innerHTML = "<li><div class='dogname visible'>Keine weiteren Namen</div></li>"
+                    }
+                    //speichere die bereits gesehenen namen im localstorage bei jedem click
+                    //nach onclick clickme verschieben
+                    var allseen = JSON.parse(localStorage.getItem("seen")) || [];
+                    allseen.push(seen);
+                    localStorage.setItem("seen", JSON.stringify(allseen));
+                    //wenn alle durch
                 }
 
                 function dislike() {
-                    disliked.push(namensArray[0]);
+                    //die bereits angezeigten namen
+                    seen.push(namensArray[0]);
                     namensArray.shift();
-
-                    console.log("disliked:" + disliked);
-                    //nächster Name
                     $("div.container div.invisible").first().addClass("visible").removeClass("invisible");
                     $("div.container div.visible").first().addClass("shown").removeClass("visible");
+                     //anzahl gesehner namen
                     clicks = clicks + 1;
                     document.getElementById('aktuell').innerHTML = clicks;
+                    //wenn alle namen durch
+                    if(clicks > count){
+                       document.getElementById("list_ansicht").innerHTML = "<li><div class='dogname visible'>Keine weiteren Namen</div></li>"
+                    }
 
                 }
                 //Tinderfunktionen Ende
