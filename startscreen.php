@@ -16,6 +16,8 @@
          $type = "not defined";
      }
 
+//hier per JAVACRIPT PRÜFEN OB ausgefüllt
+
     if(isset($_POST['SubmitButton'])){ //check if form was submitted
         
         $filterTab = '<script>var filterClosed = true;</script>';
@@ -110,9 +112,11 @@
                             
                 while ($dog = mysqli_fetch_assoc($result)) { ?>
                                 <?php if($firstloop) { ?>
+                            //falls nicht bereits angezeigt
                                     <div id="<?php echo $dog['id']?>" class="dogname visible">
                                         <?php $firstloop = false; ?>
                                             <?php  } else{ ?>
+                                        //falls nicht angezeigt
                                                 <div id="<?php echo $dog['id']?>" class="dogname invisible">
                                                     <?php  }  ?>
 
