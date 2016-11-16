@@ -9,10 +9,9 @@
 
     <h1>My First Heading</h1>
     <p>My first paragraph.</p>
-    <form id="myForm" method="post">
         <!--action="filter.php"-->
 
-        <form method="post">
+        <form id="myForm" method="post" onsubmit="return validateForm();">
 
             <input type="text" placeholder="Nachname" id="vname" name="vname">
 
@@ -31,7 +30,7 @@
             </select>
 
             <div id="filter" style="padding: 10px;" class="tickbox">
-                <input type="submit" name="SubmitButton" value="submit" onclick="validateForm()" />
+                <input type="submit" name="SubmitButton" value="submit"  />
             </div>
         </form>
 
@@ -39,6 +38,7 @@
         <script>
             //FORM darf nicht leer sein
             function validateForm() {
+                //alert("juhu");
                 var geschlecht = document.forms["myForm"]["geschlecht"].value;
                 //var nachname = document.forms["myForm"]["vname"].value;
                 var anfang = document.forms["myForm"]["abuchstabe"].value;
