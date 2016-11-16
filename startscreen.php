@@ -213,13 +213,21 @@
                                 <input type="text" placeholder="Nachname" id="vname" name="vname">
                             </div>
 
+
                             <div class="formline">
                                 <input type="text" maxlength="1" placeholder="Anfangsbuchstabe" id="abst" name="abuchstabe">
                             </div>
-
+                            
                             <div class="formline">
-                                <input type="radio" name="geschlecht" value="männlich">männlich
-                                <input type="radio" name="geschlecht" value="weiblich">weiblich
+                                <div class="radio_float">
+                                    <input type="radio" name="geschlecht" value="männlich"> <span class="radio">männlich</span>
+                                </div>
+                                        
+                                <div class="radio_float">
+                                    <input type="radio" name="geschlecht" value="weiblich"><span class="radio">weiblich</span>
+                                </div>
+                                        
+                                <div class="clear"></div>
                             </div>
 
                             <div class="formline">
